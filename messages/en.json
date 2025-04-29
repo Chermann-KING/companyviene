@@ -1,0 +1,75 @@
+{
+    "navigation": {
+        "home": "Home",
+        "about": "About",
+        "products": "Products & Services",
+        "contact": "Contact"
+    },
+    "header": {
+        "languageSelector": {
+            "fr": "FR",
+            "en": "EN"
+        }
+    },
+    "hero": {
+        "title": {
+            "line1": "Making your",
+            "line2": "business simpler",
+            "line3": "with",
+            "line4": "and",
+            "engineering": "engineering",
+            "digitalisation": "digitalisation"
+        },
+        "cta": "View our products"
+    },
+    "recruitment": {
+        "title": "Local recruitment",
+        "titleHighlight": "Consultants",
+        "description": "Are you a young graduate in digital or engineering fields? Apply for an internship with us",
+        "cta": "Submit application"
+    },
+    "footer": {
+        "contact": {
+            "title": "Contact",
+            "address": "Libreville, Gabon",
+            "phone": "+241 77 91 58 82",
+            "email": "info@companyviene.com"
+        },
+        "quickLinks": {
+            "title": "Quick Links",
+            "about": "About",
+            "products": "Products & Services",
+            "contact": "Contact"
+        },
+        "social": {
+            "title": "Follow Us",
+            "linkedin": "LinkedIn CompanyViene"
+        },
+        "copyright": "All rights reserved.",
+        "privacyPolicy": "Privacy Policy"
+    },
+    "DomainesActivites": {
+        "title": "Our areas of ",
+        "titleHighlight": "expertise",
+        "digitalisation": {
+            "title": "Digitalization, Digital Transformation & Digital Design",
+            "description": "Digital tools offer tremendous possibilities in improving processes across all business sectors. CompanyViene, through its VieneDesign service, offers to support you in your digital transformation, while taking care of data protection and cybersecurity aspects."
+        },
+        "optimisation": {
+            "title": "Process Management Optimization (As-Is → To-be)",
+            "description": "CompanyViene in this service proposes to support you in establishing a schematic state of existing Processes (AS-IS), which paves the way for a second stage of optimized, high value-added and simplified proposals (TO-BE)."
+        },
+        "durabilite": {
+            "title": "Sustainability & circular economies",
+            "description": "CompanyViene can help you measure and reduce your environmental impact by offering digital tools and solutions. This service also enables us to integrate the pillars of sustainability (environmental, economic and social) into our proposals, so that you can create sustainable, recyclable or reusable products."
+        },
+        "performance": {
+            "title": "Energy performance of buildings",
+            "description": "Thanks to the VieneHouse service, CompanyViene can help you control consumption by integrating passive cooling concepts, enabling you to save up to 30% of your consumption due to the cooling needs of living spaces."
+        },
+        "energie": {
+            "title": "Energy & Utilities - Electricity/Water/Gas:",
+            "description": "CompanyViene offers support in the areas of energy, water and their efficient use. CompanyViene offers studies and solutions on the use of fossil fuels, combined with new renewable resources. EnerViene also offers analyses of the outlook for market needs."
+        }
+    }
+}

@@ -1,9 +1,14 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function RecrutementSection() {
+  const t = useTranslations("recruitment");
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,16 +30,14 @@ export default function RecrutementSection() {
           <div className="w-full md:w-1/2 flex flex-col justify-center">
             {/* Titre */}
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Recrutement en local
+              {t("title")}
               <br />
-              de <span className="text-primary-main">Consultants</span>
+              de{" "}
+              <span className="text-primary-main">{t("titleHighlight")}</span>
             </h2>
 
             {/* Description */}
-            <p className="text-gray-700 mb-8">
-              Vous êtes jeune diplômé(e) dans les métiers digitaux ou
-              d'ingénierie? Postulez pour un stage chez nous
-            </p>
+            <p className="text-gray-700 mb-8">{t("description")}</p>
 
             {/* Bouton de candidature */}
             <div>
@@ -46,7 +49,7 @@ export default function RecrutementSection() {
                   <div className="w-10 h-10 bg-primary-main rounded-full flex items-center justify-center mr-3 group-hover:bg-primary-dark transition-colors duration-300">
                     <ArrowRight className="h-6 w-6 text-white" />
                   </div>
-                  <span>Soumettre une candidature</span>
+                  <span>{t("cta")}</span>
                 </div>
               </Link>
             </div>

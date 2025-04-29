@@ -1,63 +1,63 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 // Définition du type pour les données des domaines
 type Domaine = {
   id: number;
-  title: string;
+  titleKey: string;
   subtitle?: string;
   imageSrc: string;
-  description: string;
+  descriptionKey: string;
 };
 
 // Données des domaines d'activités
 const domaines: Domaine[] = [
   {
     id: 1,
-    title: "Digitalisation, Transformation numérique & Design numérique",
+    titleKey: "digitalisation.title",
     imageSrc: "/assets/images/domaine-digitalisation.png",
-    description:
-      "Les outils digitaux offrent de formidables possibilités dans l'amélioration de processus dans tous les secteurs d'activité. CompanyViene se propose via son service VieneDesign de vous accompagner dans votre transformation digitale, tout en prenant soin des aspects de protection des données et de cyber sécurité.",
+    descriptionKey: "digitalisation.description",
   },
   {
     id: 2,
-    title: "Optimisation des Processus de gestion (As-Is →To-be)",
+    titleKey: "optimisation.title",
     imageSrc: "/assets/images/domaine-optimisation.png",
-    description:
-      "CompanyViene dans ce service propose de vous supporter dans l'établissement d'État des lieux schématique des Processus existants (AS-IS), qui ouvre la voie à une seconde étape de propositions optimisées, à forte valeur ajoutée et simplifiées (TO-BE).",
+    descriptionKey: "optimisation.description",
   },
   {
     id: 3,
-    title: "Durabilité & économies circulaires",
+    titleKey: "durabilite.title",
     imageSrc: "/assets/images/domaine-durabilite.png",
-    description:
-      "CompanyViene vous accompagne dans la Mesure et la réduction de l'impact environnemental, ceci en proposant des outils et solutions digitales. Ce service permet également d'intégrer les piliers de durabilité (environnement, économie, social) dans nos forces de propositions pour vous permettre d'aboutir à la réalisation de produits durables, recyclables ou réutilisables.",
+    descriptionKey: "durabilite.description",
   },
   {
     id: 4,
-    title: "Performance énergétique des bâtiments",
+    titleKey: "performance.title",
     imageSrc: "/assets/images/domaine-performance.png",
-    description:
-      "CompanyViene grâce au service VieneHouse vous accompagne dans la maîtrise de consommation en intégrant les notions de rafraîchissement passif pour vous permettre d'économiser jusqu'à 30% de votre consommation dues aux besoins en rafraîchissement des espaces de vie.",
+    descriptionKey: "performance.description",
   },
   {
     id: 5,
-    title: "Energie & Utilités - Electricité/Eau/Gaz:",
+    titleKey: "energie.title",
     subtitle: "Production - Distribution - Transport - Fourniture",
     imageSrc: "/assets/images/domaine-energie.png",
-    description:
-      "CompanyViene, vous propose un accompagnement dans les questions des énergies, de l'eau et leur utilisation efficiente. CompanyViene propose des études & Solutions sur l'utilisation des énergies fossiles, combinées aux nouvelles ressources renouvelables. EnerViene propose également des analyses sur les perspectives de besoins des marchés.",
+    descriptionKey: "energie.description",
   },
 ];
 
 export default function DomainesActivites() {
+  const t = useTranslations("DomainesActivites");
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Titre de la section */}
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-          Nos domaines d'
-          <span className="text-primary-main">activités</span>
+          {t("title")}
+          <span className="text-primary-main">{t("titleHighlight")}</span>
         </h2>
 
         {/* Grille de cartes */}
@@ -71,7 +71,7 @@ export default function DomainesActivites() {
               <div className="relative w-32 h-32 border-4 border-gray-300 rounded-full overflow-hidden">
                 <Image
                   src={domaine.imageSrc}
-                  alt={domaine.title}
+                  alt={t(`${domaine.titleKey}`)}
                   fill
                   sizes="(max-width: 768px) 128px, (max-width: 1024px) 128px, 128px"
                   className="object-cover"
@@ -83,7 +83,7 @@ export default function DomainesActivites() {
               {/* Titre et sous-titre */}
               <div className="flex flex-col items-center gap-1">
                 <h3 className="text-base font-bold text-secondary-main text-left">
-                  {domaine.title}
+                  {t(`${domaine.titleKey}`)}
                 </h3>
                 {domaine.subtitle && (
                   <h4 className="text-sm text-gray-500 text-left">
@@ -94,7 +94,7 @@ export default function DomainesActivites() {
 
               {/* Description */}
               <p className="text-xs text-gray-600 text-left">
-                {domaine.description}
+                {t(`${domaine.descriptionKey}`)}
               </p>
             </div>
           ))}

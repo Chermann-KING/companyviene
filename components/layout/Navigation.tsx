@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const navigation = [
-  { name: "Accueil", href: "/" },
-  { name: "À propos", href: "/a-propos" },
-  { name: "Produits & Services", href: "/produits-services" },
-  { name: "Contact", href: "/contact" },
+  { nameKey: "home", href: "/" },
+  { nameKey: "about", href: "/a-propos" },
+  { nameKey: "products", href: "/produits-services" },
+  { nameKey: "contact", href: "/contact" },
 ];
 
 export default function Navigation({ mobile = false }) {
   const pathname = usePathname();
+  const t = useTranslations("navigation");
 
   const linkClasses = (href: string) => {
     const baseClasses = mobile
@@ -27,11 +29,11 @@ export default function Navigation({ mobile = false }) {
     <>
       {navigation.map((item) => (
         <Link
-          key={item.name}
+          key={item.nameKey}
           href={item.href}
           className={linkClasses(item.href)}
         >
-          {item.name}
+          {t(item.nameKey)}
         </Link>
       ))}
     </>

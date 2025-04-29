@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function HeroSection() {
+  const t = useTranslations("hero");
+
   return (
     <div className="relative bg-white overflow-hidden h-[calc(100vh-64px)]">
       {/* Background Image */}
@@ -25,15 +30,19 @@ export default function HeroSection() {
           <div className="w-full lg:w-1/2">
             {/* Title */}
             <h1 className="text-4xl tracking-tight font-extrabold text-secondary-main sm:text-5xl md:text-6xl">
-              <div className="block">Making your</div>
-              <div className="block">business simpler</div>
+              <div className="block">{t("title.line1")}</div>
+              <div className="block">{t("title.line2")}</div>
               <div className="block">
-                <span>with </span>
-                <span className="text-primary-main">engineering</span>
+                <span>{t("title.line3")} </span>
+                <span className="text-primary-main">
+                  {t("title.engineering")}
+                </span>
               </div>
               <div className="block">
-                <span>and </span>
-                <span className="text-primary-main">digitalisation</span>
+                <span>{t("title.line4")} </span>
+                <span className="text-primary-main">
+                  {t("title.digitalisation")}
+                </span>
               </div>
             </h1>
 
@@ -47,7 +56,7 @@ export default function HeroSection() {
                   <div className="w-10 h-10 bg-primary-main rounded-full flex items-center justify-center mr-3 group-hover:bg-primary-dark transition-colors duration-300">
                     <ArrowRight className="h-6 w-6 text-white" />
                   </div>
-                  <span>Visualiser nos produits</span>
+                  <span>{t("cta")}</span>
                 </div>
               </Link>
             </div>

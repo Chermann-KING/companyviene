@@ -1,0 +1,75 @@
+{
+    "navigation": {
+        "home": "Accueil",
+        "about": "À propos",
+        "products": "Produits & Services",
+        "contact": "Contact"
+    },
+    "header": {
+        "languageSelector": {
+            "fr": "FR",
+            "en": "EN"
+        }
+    },
+    "hero": {
+        "title": {
+            "line1": "Making your",
+            "line2": "business simpler",
+            "line3": "with",
+            "line4": "and",
+            "engineering": "engineering",
+            "digitalisation": "digitalisation"
+        },
+        "cta": "Visualiser nos produits"
+    },
+    "recruitment": {
+        "title": "Recrutement en local",
+        "titleHighlight": "Consultants",
+        "description": "Vous êtes jeune diplômé(e) dans les métiers digitaux ou d'ingénierie? Postulez pour un stage chez nous",
+        "cta": "Soumettre une candidature"
+    },
+    "footer": {
+        "contact": {
+            "title": "Contact",
+            "address": "Libreville, Gabon",
+            "phone": "+241 77 91 58 82",
+            "email": "info@companyviene.com"
+        },
+        "quickLinks": {
+            "title": "Liens rapides",
+            "about": "À propos",
+            "products": "Produits & Services",
+            "contact": "Contact"
+        },
+        "social": {
+            "title": "Suivez-nous",
+            "linkedin": "LinkedIn CompanyViene"
+        },
+        "copyright": "Tous droits réservés.",
+        "privacyPolicy": "Politique de confidentialité"
+    },
+    "DomainesActivites": {
+        "title": "Nos domaines d'",
+        "titleHighlight": "activités",
+        "digitalisation": {
+            "title": "Digitalisation, Transformation numérique & Design numérique",
+            "description": "Les outils digitaux offrent de formidables possibilités dans l'amélioration de processus dans tous les secteurs d'activité. CompanyViene se propose via son service VieneDesign de vous accompagner dans votre transformation digitale, tout en prenant soin des aspects de protection des données et de cyber sécurité."
+        },
+        "optimisation": {
+            "title": "Optimisation des Processus de gestion (As-Is →To-be)",
+            "description": "CompanyViene dans ce service propose de vous supporter dans l'établissement d'État des lieux schématique des Processus existants (AS-IS), qui ouvre la voie à une seconde étape de propositions optimisées, à forte valeur ajoutée et simplifiées (TO-BE)."
+        },
+        "durabilite": {
+            "title": "Durabilité & économies circulaires",
+            "description": "CompanyViene vous accompagne dans la Mesure et la réduction de l'impact environnemental, ceci en proposant des outils et solutions digitales. Ce service permet également d'intégrer les piliers de durabilité (environnement, économie, social) dans nos forces de propositions pour vous permettre d'aboutir à la réalisation de produits durables, recyclables ou réutilisables."
+        },
+        "performance": {
+            "title": "Performance énergétique des bâtiments",
+            "description": "CompanyViene grâce au service VieneHouse vous accompagne dans la maîtrise de consommation en intégrant les notions de rafraîchissement passif pour vous permettre d'économiser jusqu'à 30% de votre consommation dues aux besoins en rafraîchissement des espaces de vie."
+        },
+        "energie": {
+            "title": "Energie & Utilités - Electricité/Eau/Gaz:",
+            "description": "CompanyViene, vous propose un accompagnement dans les questions des énergies, de l'eau et leur utilisation efficiente. CompanyViene propose des études & Solutions sur l'utilisation des énergies fossiles, combinées aux nouvelles ressources renouvelables. EnerViene propose également des analyses sur les perspectives de besoins des marchés."
+        }
+    }
+}
