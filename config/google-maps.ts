@@ -1,7 +1,7 @@
 export const defaultMapConfig = {
   center: {
-    lat: 0.3901,
-    lng: 9.4544,
+    lat: 0.3924,
+    lng: 9.4536,
   },
   zoom: 13,
   options: {

@@ -71,5 +71,67 @@
             "title": "Energy & Utilities - Electricity/Water/Gas:",
             "description": "CompanyViene offers support in the areas of energy, water and their efficient use. CompanyViene offers studies and solutions on the use of fossil fuels, combined with new renewable resources. EnerViene also offers analyses of the outlook for market needs."
         }
+    },
+    "about": {
+        "hero": {
+            "title": "Learn more about",
+            "titleHighlight": "us?",
+            "description": "CompanyViene is a company whose partners are engineers, IT specialists, and experts in various engineering fields with extensive international experience in the new technologies sector. Our partners are spread across a wide network of experts in France, Belgium, Gabon, Equatorial Guinea, Central African Republic, Cameroon, Congo, Senegal, and DRC."
+        },
+        "objectives": {
+            "title": "Our",
+            "titleHighlight": "objectives",
+            "description": "Provide our clients with simple solutions, optimize in relation to sustainability, to improve their service quality. The solutions proposed by CompanyViene are based on SMART project management tools. Our ambition is to add value through strengthening and training local staff while relying on European expertise at the international level."
+        },
+        "vision": {
+            "title": "Our",
+            "titleHighlight": "vision",
+            "values": {
+                "development": {
+                    "title": "Human Development",
+                    "description": "A measurement tool to assess the level of development achieved by a territory according to 3 criteria: life expectancy, education level, and standard of living. We base our projects on these criteria."
+                },
+                "sharing": {
+                    "title": "Sharing",
+                    "description": "It's about sharing knowledge, skills, development. Sharing is a high value-added word that constitutes one of the fundamental values of our company."
+                },
+                "simplicity": {
+                    "title": "Simplicity",
+                    "description": "Clear communication of objectives and tasks to be accomplished helps optimize everyone's time and energy. We favor simple and effective solutions."
+                },
+                "equity": {
+                    "title": "Equity",
+                    "description": "Taking into account the needs of each stakeholder ensures balance. Every person has the right to treatment identical to that of their peers."
+                },
+                "profitability": {
+                    "title": "Profitability",
+                    "description": "The pursuit of profitability is necessary to ensure the sustainability of our activities. CompanyViene ensures that its investment and development strategies allow each of its clients to make profits."
+                }
+            }
+        },
+        "structure": {
+            "title": "Our",
+            "titleHighlight": "structure",
+            "enerViene": {
+                "title": "EnerViene",
+                "description": "EnerViene is the Design Office of CompanyViene Holding. It brings together a vast network of engineers, computer scientists and technicians with specialisations in various sectors and professional experience in major international companies.",
+                "strategy": "EnerViene's strategy can be described in 3 main stages:",
+                "steps": [
+                    "An initial diagnostic approach (Diagnostic Journey)",
+                    "In a second step, a detailed analysis of solutions is carried out (Proof of Validation) and KPIs are implemented",
+                    "The third and final step consists of implementing Solutions adapted according to the filter of services and products in our portfolio (E-To-Be Customization)"
+                ],
+                "conclusion": "This final step can also lead to the implementation of innovative and digital solutions."
+            },
+            "vieneBusiness": {
+                "title": "VieneBusiness",
+                "description": "VieneBusiness is the financing and project management structure in which CompanyViene is involved in the co-development of solutions and products in partnership with external players. It provides project leaders with real added value in the new technologies sector with support in terms of management, expertise and project financing.",
+                "additional": "VieneBusiness is also responsible for implementing CompanyViene's CSR policy. The platform is responsible for managing donations and support for the most vulnerable. It enables CompanyViene's vision to be implemented on the basis of its 5 pillars: human development, sharing, simplicity, equity and profitability."
+            }
+        },
+        "team": {
+            "title": "Our",
+            "titleHighlight": "CompanyViene team"
+        }
     }
 }

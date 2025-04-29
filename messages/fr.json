@@ -71,5 +71,67 @@
             "title": "Energie & Utilités - Electricité/Eau/Gaz:",
             "description": "CompanyViene, vous propose un accompagnement dans les questions des énergies, de l'eau et leur utilisation efficiente. CompanyViene propose des études & Solutions sur l'utilisation des énergies fossiles, combinées aux nouvelles ressources renouvelables. EnerViene propose également des analyses sur les perspectives de besoins des marchés."
         }
+    },
+    "about": {
+        "hero": {
+            "title": "En savoir plus sur",
+            "titleHighlight": "nous?",
+            "description": "CompanyViene est une société, dont les partenaires sont des ingénieurs, des informaticiens, et des experts dans différents domaines d'ingénierie avec une longue expérience à l'international dans le secteur des nouvelles technologies. Nos partenaires sont répartis en un large réseau d'experts en France, en Belgique, au Gabon, en Guinée Équatoriale, en Centrafrique, au Cameroun, au Congo, au Sénégal et en RDC."
+        },
+        "objectives": {
+            "title": "Nos",
+            "titleHighlight": "objectifs",
+            "description": "Apporter à nos clients des solutions simples, optimiser en rapport à la durabilité, pour améliorer leur qualité de services. Les solutions proposées par CompanyViene se basent sur des outils de gestion de projet de type SMART. Notre ambition est d'apporter de la valeur ajoutée grâce au renforcement et la formation de personnel local tout en s'appuyant sur des expertises européennes au niveau international."
+        },
+        "vision": {
+            "title": "Notre",
+            "titleHighlight": "vision",
+            "values": {
+                "development": {
+                    "title": "Le Développement humain",
+                    "description": "Un outil de mesure permettant d'évaluer le niveau de développement atteint par un territory selon 3 critères: espérance de vie, niveau d'éducation et niveau de vie. Nous nous basons sur ces critères pour définir nos projets."
+                },
+                "sharing": {
+                    "title": "Le Partage",
+                    "description": "C'est le partage des savoirs, des connaissances, du développement, le Partage et un mot à forte valeur ajoutée qui constitue l'une des valeurs fondamentales de notre société."
+                },
+                "simplicity": {
+                    "title": "La Simplicité",
+                    "description": "Une communication claire des objectifs et des tâches à réaliser permet d'optimiser le temps et l'énergie de chacun. Nous privilégions des solutions simples et efficaces."
+                },
+                "equity": {
+                    "title": "L'Équité",
+                    "description": "La prise en compte des besoins de chaque partie prenante permet d'assurer l'équilibre. Chaque personne a droit à un traitement identique à celui de ses pairs."
+                },
+                "profitability": {
+                    "title": "La Rentabilité",
+                    "description": "La recherche de rentabilité est une nécessité pour assurer la pérennité de nos activités. CompanyViene veille à ce que ses stratégies d'investissement et de développement permettent à chacun de ses clients de réaliser des profits."
+                }
+            }
+        },
+        "structure": {
+            "title": "Notre",
+            "titleHighlight": "structure",
+            "enerViene": {
+                "title": "EnerViene",
+                "description": "EnerViene est le Bureau d’études de la Holding CompanyViene. Il regroupe un vaste réseau d’ingénieurs, d’informaticiens, de techniciens avec des domaines de spécialisation dans divers secteurs d’activités et une expérience professionnelle dans de grandes entreprises internationales.",
+                "strategy": "La stratégie d’EnerViene peut se décrire en 3 étapes principales :",
+                "steps": [
+                    "Une première approche de diagnostic (Diagnostic Journey)",
+                    "Dans une seconde étape, une analyse détaillée de solutions est réalisée (Proof of Validation) et effectuée des KPI",
+                    "La troisième et dernière étape consiste à la mise en place de Solutions adaptées en fonction du filtre de services et de produits de notre portfolio (Customisation E-To-Be)"
+                ],
+                "conclusion": "Cette dernière étape peut ouvrir la voie à l’implémentation de solutions innovantes et numériques."
+            },
+            "vieneBusiness": {
+                "title": "VieneBusiness",
+                "description": "VieneBusiness est la structure de financement et de gestion de projets dans laquelle CompanyViene s’engage dans le co-développement de solutions & produits en partenariat avec des acteurs extérieurs. Elle permet à des porteurs de projet, avec une valeur ajoutée réelle dans le secteur des nouvelles technologies, de se voir accompagnés sur les plans du management, de l’expertise et du financement de projets.",
+                "additional": "VieneBusiness a également le rôle de réaliser la politique RSE de CompanyViene. La plateforme a la charge de la gestion des dons et soutiens aux plus vulnérables. Elle permet de mettre en œuvre la vision de CompanyViene sur la base de ses 5 piliers : Le développement humain, le partage, la simplicité, l’équité et la rentabilité."
+            }
+        },
+        "team": {
+            "title": "Notre",
+            "titleHighlight": "équipe CompanyViene"
+        }
     }
 }
