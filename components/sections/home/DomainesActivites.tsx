@@ -17,14 +17,14 @@ const domaines: Domaine[] = [
     title: "Digitalisation, Transformation numérique & Design numérique",
     imageSrc: "/assets/images/domaine-digitalisation.png",
     description:
-      "Les outils digitaux offrent de formidables possibilités dans l’amélioration de processus dans tous les secteurs d’activité. CompanyViene se propose via son service VieneDesign de vous accompagner dans votre transformation digitale, tout en prenant soin des aspects de protection des données et de cyber sécurité.",
+      "Les outils digitaux offrent de formidables possibilités dans l'amélioration de processus dans tous les secteurs d'activité. CompanyViene se propose via son service VieneDesign de vous accompagner dans votre transformation digitale, tout en prenant soin des aspects de protection des données et de cyber sécurité.",
   },
   {
     id: 2,
     title: "Optimisation des Processus de gestion (As-Is →To-be)",
     imageSrc: "/assets/images/domaine-optimisation.png",
     description:
-      "CompanyViene dans ce service propose de vous supporter dans l’établissement d’État des lieux schématique des Processus existants (AS-IS), qui ouvre la voie à une seconde étape de propositions optimisées, à forte valeur ajoutée et simplifiées (TO-BE).",
+      "CompanyViene dans ce service propose de vous supporter dans l'établissement d'État des lieux schématique des Processus existants (AS-IS), qui ouvre la voie à une seconde étape de propositions optimisées, à forte valeur ajoutée et simplifiées (TO-BE).",
   },
   {
     id: 3,
@@ -73,7 +73,10 @@ export default function DomainesActivites() {
                   src={domaine.imageSrc}
                   alt={domaine.title}
                   fill
+                  sizes="(max-width: 768px) 128px, (max-width: 1024px) 128px, 128px"
                   className="object-cover"
+                  quality={75}
+                  loading="lazy"
                 />
               </div>
 

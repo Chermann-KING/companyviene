@@ -14,7 +14,9 @@ export default function RecrutementSection() {
               src="/assets/images/comapnyviene-recrutement.png"
               alt="CompanyViene Recrutement - Poignée de main"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
               className="object-cover"
+              quality={75}
               priority
             />
           </div>
