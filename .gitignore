@@ -1,0 +1,60 @@
+# Node modules
+node_modules/
+
+# Build output
+.next/
+out/
+
+# Production
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*.local
+.env.local
+
+# Next.js cache
+.next/
+.vercel/
+.cache/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sw?
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Testing
+coverage/
+.jest/
+
+# Local data
+*.local
+
+# Vercel CLI
+.vercel/
+
+# Optional: Ignore lock files if using a single package manager
+# Uncomment only the ones you're NOT using
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Optional: Ignore generated static export if used
+export/
+
+# Optional: Ignore storybook if used
+.storybook-out/
+.storybook-static/
