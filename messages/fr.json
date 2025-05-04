@@ -148,14 +148,26 @@
         "products": {
             "title": "Nos",
             "titleHighlight": "Produits",
-            "vieneRegister": {
+            "VieneRegister": {
                 "title": "VieneRegister",
-                "description": "VieneRegister est une application mobile sur smartphone (Android) conçue et développer par nos équipes. Un portail est également à entreprise dans une base de données sécurisée des informations utiles relatives aux entrées et aux organisation grâce à son QR Code d'identification unique, totalement conçue pour répondre à la gestion d'effectif dans VieneRegister, elle peut être décliner en application de gestion de stock ou de personnes.",
+                "description": "VieneRegister est une application mobile sur smartphone (Androïd) conçue et développée par nos équipes. Elle permet aux utilisateurs d’enregistrer dans une base de données sécurisée des informations utiles relatives aux membres d’une organisation grâce à des QR Codes d’identification uniques. Initialement conçue pour répondre à la gestion d’effectif dans l’enseignement, elle peut être déclinée en application de gestion de stock ou de processus.",
                 "features": [
-                    "Ce produit simple d'utilisation permet grâce à une gestion efficace des permissions, d'attribuer une ou plusieurs fonctionnalités spécifiques à un utilisateur donné en fonction de son rôle dans l'organisation (inscription, validation du personnel, Vérification du statut et base de données, Extraction de données dans un fichier Excel, Scan QR Code, impression des cartes/Qrcode).",
-                    "VieneRegister est doté d'une Architecture Robuste qui permet de pouvoir effectuer et de s'adapter au besoin de client grâce à son API de haut niveau.",
-                    "Une Base de données sécurisée sur le Cloud est mise à la disposition de nos clients via cette application."
+                    "Ce produit simple d’utilisation permet grâce à une gestion efficace des permissions, d’attribuer une ou plusieurs fonctionnalités spécifiques à un utilisateur donné en fonction de son rôle dans l’organisation (Inscription, Validation du paiement, Vérification du statut en base de données, Extraction de données dans un fichier Excel, Scan de QR Code, Impression de cartes/reçus …).",
+                    "VieneRegister est doté d’une Architecture Robuste qui permet au produit d’évoluer et de s’adapter au besoin du client grâce à son jeu subtil de Permissions.",
+                    "Une Base de données sécurisée sur le Drive est mise à la disposition de nos clients via cette application."
                 ],
+                "status": "(Produit Disponible)"
+            },
+            "CoolTrack": {
+                "title": "CoolTrack",
+                "description": "CoolTrack est une application de tracking dans l’acheminement colis. L’application facilite la mise en place d’un système de suivi du statut des bordereaux. Elle permet entre autres de gérer l’enregistrement, les retraits, la facturation des colis ou la messagerie des opérateurs de transport.",
+                "features": [],
+                "status": "(Produit Disponible)"
+            },
+            "TMS": {
+                "title": "TMS",
+                "description": "TMS est une application destinée à la gestion de tickets de passagers pour les Transports de personnes. L’application permet de faciliter les enregistrements de passagers, la facturation, ou encore de garder de la traçabilité sur les voyages effectués.",
+                "features": [],
                 "status": "(Produit Disponible)"
             }
         },
@@ -164,7 +176,7 @@
             "titleHighlight": "Services",
             "vieneDesign": {
                 "title": "VieneDesign",
-                "description": "VieneDesign est un service orienté de CompanyViene dédié à la conception de produit numérique (conception, design de marque, création de stratégie, conception d'interface, recherche applicative utilisateur, conception d'application web et mobile). Cette offre de base est l'ensemble de nos équipes à l'international et permet de fournir un excellent rapport qualité/prix à nos clients.",
+                "description": "VieneDesign est un service digital de CompanyViene destiné à la conception de charte graphique d’entreprise, image de marque, création de catalogue, conception publicitaire, recherche expérience utilisateur, conception d’application web et mobile. Cette offre se base sur l’expertise de nos équipes à l’internationale et permet de fournir un excellent rapport qualité/prix à nos clients.",
                 "status": "(Service Disponible)"
             },
             "vieneHouse": {

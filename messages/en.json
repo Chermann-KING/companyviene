@@ -148,14 +148,26 @@
         "products": {
             "title": "Our",
             "titleHighlight": "Products",
-            "vieneRegister": {
+            "VieneRegister": {
                 "title": "VieneRegister",
-                "description": "VieneRegister is a mobile smartphone application (Android) designed and developed by our teams. A portal is also available for businesses to securely store useful information related to entries and organizations through its unique QR Code identification, fully designed to handle workforce management in VieneRegister, it can be adapted into an application for stock or personnel management.",
+                "description": "VieneRegister is a mobile application for smartphones (Android) designed and developed by our teams. It enables users to record useful information about the members of an organisation in a secure database using unique identification QR codes. Initially designed to meet the needs of workforce management in the education sector, it can also be used as a stock or process management application.",
                 "features": [
-                    "This user-friendly product allows, through efficient permission management, to assign one or more specific functionalities to a given user based on their role in the organization (registration, personnel validation, status verification and database, data extraction to Excel file, QR Code scanning, card/QRcode printing).",
-                    "VieneRegister is equipped with a Robust Architecture that allows it to adapt to client needs through its high-level API.",
-                    "A secure Cloud database is made available to our clients through this application."
+                    "This easy-to-use product uses effective permissions management to assign one or more specific functions to a given user depending on their role in the organisation (registration, payment validation, database status check, data extraction into an Excel file, QR code scanning, card/receipt printing, etc.).",
+                    "VieneRegister has a Robust Architecture that allows the product to evolve and adapt to customer needs thanks to its subtle set of Permissions.",
+                    "A secure database on the Drive is available to our customers via this application."
                 ],
+                "status": "(Product Available)"
+            },
+            "CoolTrack": {
+                "title": "CoolTrack",
+                "description": "CoolTrack is a parcel tracking application. The application makes it easy to set up a system for tracking the status of bills of lading. Among other things, it can be used to manage the registration, withdrawal and invoicing of parcels or courier services by transport operators.",
+                "features": [],
+                "status": "(Product Available)"
+            },
+            "TMS": {
+                "title": "TMS",
+                "description": "TMS is an application designed to manage passenger tickets for passenger transport. The application facilitates passenger check-in and invoicing, as well as keeping track of journeys made.",
+                "features": [],
                 "status": "(Product Available)"
             }
         },
@@ -164,16 +176,16 @@
             "titleHighlight": "Services",
             "vieneDesign": {
                 "title": "VieneDesign",
-                "description": "VieneDesign is a CompanyViene service dedicated to digital product design (conception, brand design, strategy creation, interface design, user application research, web and mobile application design). This basic offer represents our international teams and allows us to provide excellent value for money to our clients.",
+                "description": "VieneDesign is CompanyViene's digital service for designing corporate graphics, brand image, catalogue design, advertising design, user experience research and web and mobile application design. This offer is based on the expertise of our international teams and enables us to provide our customers with excellent value for money.",
                 "status": "(Service Available)"
             },
             "vieneHouse": {
                 "title": "VieneHouse",
-                "description": "VieneHouse is an architectural and civil engineering service in sustainable construction, with a global position to support our clients through expertise in digital simulation for energy-efficient home construction.",
+                "description": "VieneHouse is an architectural and civil engineering service in sustainable construction, its global position is to support our customers through the expertise of digital simulation in the construction of energy-efficient housing customer.",
                 "features": [
-                    "Thermal quality or ambient temperature comfort",
-                    "Electrical energy automation via solar panels and thermal energy recovery",
-                    "Construction cost management through local resource evaluation and construction material determination"
+                    "Thermal quality or comfort of ambient temperature",
+                    "Automation of electrical energy via solar panels and recovery of thermal energy",
+                    "Managing construction costs by assessing local resources and determining construction materials"
                 ],
                 "status": "(Service Available)"
             }

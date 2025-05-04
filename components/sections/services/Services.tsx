@@ -10,7 +10,7 @@ export default function Services() {
     {
       id: "vieneDesign",
       icon: "/assets/icons/design.svg",
-      features: [] as string[],
+      features: (servicesT.raw("vieneDesign.features") || []) as string[],
     },
     {
       id: "vieneHouse",
@@ -20,8 +20,8 @@ export default function Services() {
   ];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="relative bg-white overflow-hidden h-[calc(100vh-64px)]py-16">
+      <div className="container mx-auto px-4 py-16">
         <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl mb-16">
           {servicesT("title")}{" "}
           <span className="text-primary-main">
@@ -44,18 +44,18 @@ export default function Services() {
                     className="object-contain"
                   /> */}
                 </div>
-                <h3 className="text-2xl font-semibold">
+                <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
                   {servicesT(`${service.id}.title`)}
                 </h3>
               </div>
 
-              <p className="text-gray-600 mb-6">
+              <p className="text-xl text-gray-600 mb-6">
                 {servicesT(`${service.id}.description`)}
               </p>
 
               {Array.isArray(service.features) &&
                 service.features.length > 0 && (
-                  <ul className="space-y-3 mb-6">
+                  <ul className="text-xl space-y-3 mb-6">
                     {service.features.map((feature: string, index: number) => (
                       <li key={index} className="flex items-start">
                         <span className="text-primary-600 mr-2">•</span>
@@ -65,7 +65,7 @@ export default function Services() {
                   </ul>
                 )}
 
-              <div className="mt-6 text-sm text-primary-600 font-medium">
+              <div className="mt-6 text-xl text-primary-600 font-medium">
                 {servicesT(`${service.id}.status`)}
               </div>
             </div>
