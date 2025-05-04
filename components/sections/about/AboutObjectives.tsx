@@ -23,7 +23,7 @@ export default function AboutObjectives() {
 
           {/* Texte */}
           <div>
-            <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl leading-none">
               {t("title")}{" "}
               <span className="text-primary-main">{t("titleHighlight")}</span>
             </h2>

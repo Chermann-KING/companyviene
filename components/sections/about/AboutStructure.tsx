@@ -10,13 +10,13 @@ export default function AboutStructure() {
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Titre de la section */}
-        <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl">
+        <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl leading-none">
           {t("title")}{" "}
           <span className="text-primary-main">{t("titleHighlight")}</span>
         </h2>
 
         {/* <div className="space-y-16"> */}
-        <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-24">
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-24">
           {/* EnerViene */}
           <div className="flex flex-col gap-4 justify-start items-start text-justify">
             <div className="flex items-center gap-6">

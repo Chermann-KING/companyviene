@@ -52,43 +52,45 @@ export default function AboutTeam() {
   const t = useTranslations("about.team");
 
   return (
-    <section className="py-16 bg-white">
+    <section className="pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Titre de la section */}
-        <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl">
-          {t("title")}{" "}
-          <span className="text-primary-main">{t("titleHighlight")}</span>
-        </h2>
+        <div className="flex flex-col gap-12">
+          {/* Titre de la section */}
+          <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl leading-none">
+            {t("title")}{" "}
+            <span className="text-primary-main">{t("titleHighlight")}</span>
+          </h2>
 
-        {/* Grille des membres de l'équipe */}
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          {team.map((member) => (
-            <div key={member.id} className="team_member w-full sm:w-[300px]">
-              <div className="flex flex-col gap-2">
-                {/* Nom et rôle */}
-                <div>
-                  <h3 className="text-base font-semibold text-gray-800 uppercase">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 whitespace-pre-line">
-                    {member.role}
-                  </p>
-                </div>
+          {/* Grille des membres de l'équipe */}
+          <div className="mt-6 flex flex-wrap justify-center gap-12">
+            {team.map((member) => (
+              <div key={member.id} className="team_member w-1/3">
+                <div className="flex flex-col gap-2">
+                  {/* Nom et rôle */}
+                  <div>
+                    <h4 className="text-xl md:text-2xl font-bold text-left leading-none text-gray-800 uppercase">
+                      {member.name}
+                    </h4>
+                    <p className="text-xl text-gray-600 whitespace-pre-line">
+                      {member.role}
+                    </p>
+                  </div>
 
-                {/* LinkedIn */}
-                <div className="mt-2">
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block text-[#1dae00] hover:text-[#158f00] transition-colors duration-300"
-                  >
-                    <Linkedin size={20} />
-                  </a>
+                  {/* LinkedIn */}
+                  <div className="mt-2">
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block text-[#1dae00] hover:text-[#158f00] transition-colors duration-300"
+                    >
+                      <Linkedin size={26} />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
