@@ -24,6 +24,7 @@
     },
     "recruitment": {
         "title": "Local recruitment",
+        "titleOf": "of",
         "titleHighlight": "Consultants",
         "description": "Are you a young graduate in digital or engineering fields? Apply for an internship with us",
         "cta": "Submit application"

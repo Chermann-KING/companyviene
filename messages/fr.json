@@ -24,6 +24,7 @@
     },
     "recruitment": {
         "title": "Recrutement en local",
+        "titleOf": "de",
         "titleHighlight": "Consultants",
         "description": "Vous êtes jeune diplômé(e) dans les métiers digitaux ou d'ingénierie? Postulez pour un stage chez nous",
         "cta": "Soumettre une candidature"

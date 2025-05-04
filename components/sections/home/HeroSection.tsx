@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import CtaButton from "@/components/ui/CtaButton";
 
 export default function HeroSection() {
   const t = useTranslations("hero");
@@ -29,7 +30,7 @@ export default function HeroSection() {
           {/* Content wrapper */}
           <div className="w-full lg:w-1/2">
             {/* Title */}
-            <h1 className="text-4xl tracking-tight font-extrabold text-secondary-main sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl tracking-tight font-extrabold leading-[1.1] text-secondary-main sm:text-5xl md:text-6xl mb-12">
               <div className="block">{t("title.line1")}</div>
               <div className="block">{t("title.line2")}</div>
               <div className="block">
@@ -47,19 +48,7 @@ export default function HeroSection() {
             </h1>
 
             {/* Call to action buttons */}
-            <div>
-              <Link
-                href="/services"
-                className="inline-flex items-center group hover:underline text-lg font-medium"
-              >
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-primary-main rounded-full flex items-center justify-center mr-3 group-hover:bg-primary-dark transition-colors duration-300">
-                    <ArrowRight className="h-6 w-6 text-white" />
-                  </div>
-                  <span>{t("cta")}</span>
-                </div>
-              </Link>
-            </div>
+            <CtaButton href={"/produits-services"} label={t("cta")} />
           </div>
         </div>
       </div>

@@ -1,0 +1,30 @@
+import Link from "next/link";
+import { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
+
+interface CtaButtonProps {
+  href: string;
+  label: string;
+  Icon?: ReactNode; // Icône optionnelle (par défaut flèche si non fourni)
+}
+
+export default function CtaButton({ href, label, Icon }: CtaButtonProps) {
+  return (
+    <Link
+      href={href}
+      className="inline-flex items-center group text-lg font-medium hover:text-primary-dark transition-colors duration-300"
+    >
+      <div className="flex items-center">
+        <div className="w-12 h-12 bg-primary-main rounded-full flex items-center justify-center mr-3 group-hover:bg-primary-dark transition-colors duration-300">
+          {Icon ? Icon : <DefaultArrowIcon />}
+        </div>
+        <span className="text-2xl font-semibold">{label}</span>
+      </div>
+    </Link>
+  );
+}
+
+// Icône par défaut
+function DefaultArrowIcon() {
+  return <ArrowRight className="h-8 w-8 text-white font-semibold" />;
+}
