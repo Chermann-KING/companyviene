@@ -7,14 +7,14 @@ export default function ProductsAndServicesHero() {
   const t = useTranslations("productsandservices.hero");
 
   return (
-    <div className="relative bg-white overflow-hidden min-h-[calc(100vh-64px)]">
+    <section className="relative flex items-center w-full bg-white overflow-hidden min-h-[calc(100vh-64px)]">
       {/* Content Container */}
-      <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div className="w-full max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 lg:pr-0 py-12 lg:py-16">
         {/* Content wrapper */}
         <div className="relative flex flex-col lg:flex-row items-center w-full">
           {/* Texte */}
-          <div className="relative z-10 w-full lg:w-1/2 mb-12 lg:mb-0">
-            <h1 className="text-4xl tracking-tight font-extrabold text-secondary-main sm:text-5xl md:text-6xl">
+          <div className="w-full lg:w-1/2 mb-12 lg:mb-0">
+            <h1 className="text-4xl tracking-tight font-extrabold text-secondary-main sm:text-5xl md:text-6xl leading-none  max-w-lg">
               {t("title")}
               <div className="block mt-2">
                 <span>{t("titleOur")} </span>
@@ -25,7 +25,7 @@ export default function ProductsAndServicesHero() {
                 <span className="text-primary-main">{t("titleServices")}</span>
               </div>
             </h1>
-            <p className="mt-6 text-gray-600 text-lg max-w-lg">
+            <p className="mt-6 text-gray-600 text-xl text-justify max-w-lg">
               {t("description")}
             </p>
           </div>
@@ -42,6 +42,6 @@ export default function ProductsAndServicesHero() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
