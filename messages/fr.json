@@ -200,11 +200,56 @@
             "titleExperts": "avec nos experts",
             "cta": "Prennez-contact"
         },
+        "getInTouch": "Restons en",
+        "getInTouchHighlight": "contact",
+        "description": [
+            "N'hésitez pas à nous contacter !",
+            "Notre équipe est là pour vous aider et vous répondra dans les plus brefs délais.",
+            "Vous pouvez également nous trouver sur les médias sociaux ou visiter notre bureau à l'adresse ci-dessous."
+        ],
+        "address": {
+            "title": "Notre siège social",
+            "street": "Libreville, Gabon",
+            "phone": "+241 77 91 58 82",
+            "email": "info@companyviene.com"
+        },
         "form": {
-            "name": "Nom",
-            "email": "Email",
+            "name": "Nom complet",
+            "email": "E-mail",
+            "phone": "Téléphone",
+            "subject": "Sujet",
             "message": "Message",
-            "submit": "Envoyer"
+            "submit": "Envoyer le message",
+            "submitting": "Envoi en cours...",
+            "placeholder": {
+                "name": "Entrez votre nom complet",
+                "email": "Entrez votre e-mail",
+                "phone": "Entrez votre numéro de téléphone",
+                "subject": "Entrez le sujet",
+                "message": "Écrivez votre message ici"
+            },
+            "validation": {
+                "name": "Veuillez entrer votre nom",
+                "email": "Veuillez entrer une adresse e-mail valide",
+                "phone": "Veuillez entrer un numéro de téléphone valide",
+                "subject": "Veuillez entrer le sujet",
+                "message": "Veuillez entrer votre message",
+                "phoneNumber": "Le numéro de téléphone doit contenir au moins 8 chiffres",
+                "emailFormat": "Le format de l'e-mail est incorrect",
+                "nameFormat": "Le nom ne doit pas contenir de chiffres ou de caractères spéciaux",
+                "subjectFormat": "Le sujet ne doit pas contenir de chiffres ou de caractères spéciaux",
+                "required": "ne peut être vide",
+                "messageLength": "Le message doit contenir au moins 10 caractères"
+            },
+            "success": {
+                "title": "Merci de nous avoir contacté !",
+                "description": "Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais."
+            },
+            "error": {
+                "title": "Une erreur s'est produite",
+                "description": "Nous n'avons pas pu envoyer votre message. Veuillez réessayer plus tard."
+            },
+            "loading": "Chargement en cours..."
         }
     },
     "error": {
