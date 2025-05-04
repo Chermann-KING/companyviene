@@ -190,5 +190,31 @@
                 "status": "(Service Disponible)"
             }
         }
+    },
+    "contact": {
+        "hero": {
+            "title": "Transformez vos",
+            "titleHighlightChallenge": "challenges",
+            "titleTo": "en",
+            "titleHighlightSuccess": "succès",
+            "titleExperts": "avec nos experts",
+            "cta": "Prennez-contact"
+        },
+        "form": {
+            "name": "Nom",
+            "email": "Email",
+            "message": "Message",
+            "submit": "Envoyer"
+        }
+    },
+    "error": {
+        "notFound": {
+            "title": "Page non trouvée",
+            "description": "Désolé, la page que vous recherchez n'existe pas."
+        },
+        "serverError": {
+            "title": "Erreur du serveur",
+            "description": "Une erreur s'est produite sur le serveur. Veuillez réessayer plus tard."
+        }
     }
 }

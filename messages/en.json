@@ -190,5 +190,31 @@
                 "status": "(Service Available)"
             }
         }
+    },
+    "contact": {
+        "hero": {
+            "title": "Transform your",
+            "titleHighlightChallenge": "challenges",
+            "titleTo": "into",
+            "titleHighlightSuccess": "success",
+            "titleExperts": "with our experts",
+            "cta": "Get in touch"
+        },
+        "form": {
+            "name": "Nom",
+            "email": "Email",
+            "message": "Message",
+            "submit": "Send"
+        }
+    },
+    "error": {
+        "notFound": {
+            "title": "Page not found",
+            "description": "Sorry, the page you are looking for does not exist."
+        },
+        "serverError": {
+            "title": "Server error",
+            "description": "An error has occurred on the server. Please try again later."
+        }
     }
 }
