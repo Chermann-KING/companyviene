@@ -49,7 +49,7 @@
         "privacyPolicy": "Privacy Policy"
     },
     "DomainesActivites": {
-        "title": "Our areas of ",
+        "title": "Our areas of",
         "titleHighlight": "expertise",
         "digitalisation": {
             "title": "Digitalization, Digital Transformation & Digital Design",
@@ -68,14 +68,15 @@
             "description": "Thanks to the VieneHouse service, CompanyViene can help you control consumption by integrating passive cooling concepts, enabling you to save up to 30% of your consumption due to the cooling needs of living spaces."
         },
         "energie": {
-            "title": "Energy & Utilities - Electricity/Water/Gas:",
+            "title": "Energy & Utilities - Electricity/Water/Gas",
             "description": "CompanyViene offers support in the areas of energy, water and their efficient use. CompanyViene offers studies and solutions on the use of fossil fuels, combined with new renewable resources. EnerViene also offers analyses of the outlook for market needs."
         }
     },
     "about": {
         "hero": {
             "title": "Learn more about",
-            "titleHighlight": "us?",
+            "titleHighlight": "us",
+            "titleSymbol": "?",
             "description": "CompanyViene is a company whose partners are engineers, IT specialists, and experts in various engineering fields with extensive international experience in the new technologies sector. Our partners are spread across a wide network of experts in France, Belgium, Gabon, Equatorial Guinea, Central African Republic, Cameroon, Congo, Senegal, and DRC."
         },
         "objectives": {
@@ -89,23 +90,23 @@
             "values": {
                 "development": {
                     "title": "Human Development",
-                    "description": "A measurement tool to assess the level of development achieved by a territory according to 3 criteria: life expectancy, education level, and standard of living. We base our projects on these criteria."
+                    "description": "At the heart of CompanyViene's vision, the actions and undertakings initiated by the holding company are aimed at sustainably improving the well-being and fulfilment of individuals in their social environment through ingenious solutions with high added value."
                 },
                 "sharing": {
                     "title": "Sharing",
-                    "description": "It's about sharing knowledge, skills, development. Sharing is a high value-added word that constitutes one of the fundamental values of our company."
+                    "description": "Inspired by systems that are widespread in most developing countries, Sharing is a way of working that enables a group of individuals to improve their living conditions through a better distribution of available goods."
                 },
                 "simplicity": {
                     "title": "Simplicity",
-                    "description": "Clear communication of objectives and tasks to be accomplished helps optimize everyone's time and energy. We favor simple and effective solutions."
+                    "description": "The solutions offered by CompanyViene aim to be usable by all social classes. To achieve this, simplicity is one of CompanyViene's fundamental principles, enabling it to widen the scope of users of its products and services as much as possible."
                 },
                 "equity": {
                     "title": "Equity",
-                    "description": "Taking into account the needs of each stakeholder ensures balance. Every person has the right to treatment identical to that of their peers."
+                    "description": "Each shareholder of CompanyViene is an equal owner of the holding company. However, certain service providers may be involved at specific levels to provide us with their expertise. Equity is a sustainable model on which CompanyViene bases its positive impact on its customers."
                 },
                 "profitability": {
                     "title": "Profitability",
-                    "description": "The pursuit of profitability is necessary to ensure the sustainability of our activities. CompanyViene ensures that its investment and development strategies allow each of its clients to make profits."
+                    "description": "The search for profits and growth are essential to our investment and development strategies. CompanyViene aims to expand geographically, setting up operations in several target countries and creating value and jobs locally."
                 }
             }
         },
@@ -132,6 +133,49 @@
         "team": {
             "title": "Our",
             "titleHighlight": "CompanyViene team"
+        }
+    },
+    "productsandservices": {
+        "hero": {
+            "title": "Discover",
+            "titleOur": "our",
+            "titleProducts": "Products",
+            "titleAnd": "and our",
+            "titleServices": "Services",
+            "description": "CompanyViene is positioned as a supplier of products and services designed to optimise and simplify its customers' management protocols."
+        },
+        "products": {
+            "title": "Our",
+            "titleHighlight": "Products",
+            "vieneRegister": {
+                "title": "VieneRegister",
+                "description": "VieneRegister is a mobile smartphone application (Android) designed and developed by our teams. A portal is also available for businesses to securely store useful information related to entries and organizations through its unique QR Code identification, fully designed to handle workforce management in VieneRegister, it can be adapted into an application for stock or personnel management.",
+                "features": [
+                    "This user-friendly product allows, through efficient permission management, to assign one or more specific functionalities to a given user based on their role in the organization (registration, personnel validation, status verification and database, data extraction to Excel file, QR Code scanning, card/QRcode printing).",
+                    "VieneRegister is equipped with a Robust Architecture that allows it to adapt to client needs through its high-level API.",
+                    "A secure Cloud database is made available to our clients through this application."
+                ],
+                "status": "(Product Available)"
+            }
+        },
+        "services": {
+            "title": "Our",
+            "titleHighlight": "Services",
+            "vieneDesign": {
+                "title": "VieneDesign",
+                "description": "VieneDesign is a CompanyViene service dedicated to digital product design (conception, brand design, strategy creation, interface design, user application research, web and mobile application design). This basic offer represents our international teams and allows us to provide excellent value for money to our clients.",
+                "status": "(Service Available)"
+            },
+            "vieneHouse": {
+                "title": "VieneHouse",
+                "description": "VieneHouse is an architectural and civil engineering service in sustainable construction, with a global position to support our clients through expertise in digital simulation for energy-efficient home construction.",
+                "features": [
+                    "Thermal quality or ambient temperature comfort",
+                    "Electrical energy automation via solar panels and thermal energy recovery",
+                    "Construction cost management through local resource evaluation and construction material determination"
+                ],
+                "status": "(Service Available)"
+            }
         }
     }
 }

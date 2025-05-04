@@ -9,6 +9,7 @@
 
     body {
         @apply text-secondary-main bg-background-light;
+        cursor: default;
     }
 
     h1,

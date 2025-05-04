@@ -42,7 +42,7 @@ export default function Header() {
           {/* Language selector */}
           <div className="hidden md:flex items-center space-x-4">
             {locales.map((locale, index) => (
-              <>
+              <div key={locale} className="flex items-center">
                 {index > 0 && <span className="text-gray-300">|</span>}
                 <Link
                   key={locale}
@@ -55,7 +55,7 @@ export default function Header() {
                 >
                   {t(`languageSelector.${locale}`)}
                 </Link>
-              </>
+              </div>
             ))}
           </div>
 

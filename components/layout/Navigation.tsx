@@ -6,7 +6,7 @@ import { useLocale } from "next-intl";
 const navigation = [
   { nameKey: "home", href: "/" },
   { nameKey: "about", href: "/about" },
-  { nameKey: "products", href: "/products" },
+  { nameKey: "products", href: "/produits-services" },
   { nameKey: "contact", href: "/contact" },
 ];
 

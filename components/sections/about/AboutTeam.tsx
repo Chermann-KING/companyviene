@@ -19,7 +19,7 @@ const team = [
   {
     id: 3,
     name: "Hermann MOUSSAVOU",
-    role: "UX/UI/Graphic App Designer",
+    role: "UX|UI|Graphic Designer",
     linkedin: "https://www.linkedin.com/in/hermann-moussavou/",
   },
   {
@@ -55,13 +55,13 @@ export default function AboutTeam() {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Titre de la section */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+        <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl">
           {t("title")}{" "}
           <span className="text-primary-main">{t("titleHighlight")}</span>
         </h2>
 
         {/* Grille des membres de l'équipe */}
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
           {team.map((member) => (
             <div key={member.id} className="team_member w-full sm:w-[300px]">
               <div className="flex flex-col gap-2">

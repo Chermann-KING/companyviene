@@ -2,11 +2,11 @@ import createMiddleware from "next-intl/middleware";
 import { locales, defaultLocale } from "./i18n/settings";
 
 export default createMiddleware({
-  locales,
-  defaultLocale,
+  locales: ["fr", "en"],
+  defaultLocale: "fr",
   localePrefix: "always",
 });
 
 export const config = {
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  matcher: ["/", "/(fr|en)/:path*"],
 };

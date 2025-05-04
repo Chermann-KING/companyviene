@@ -10,13 +10,13 @@ export default function AboutStructure() {
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Titre de la section */}
-        <h2 className="text-3xl md:text-4xl font-bold text-left mb-16">
+        <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl">
           {t("title")}{" "}
           <span className="text-primary-main">{t("titleHighlight")}</span>
         </h2>
 
         {/* <div className="space-y-16"> */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-24">
           {/* EnerViene */}
           <div className="flex flex-col gap-4 justify-start items-start text-justify">
             <div className="flex items-center gap-6">
@@ -28,22 +28,24 @@ export default function AboutStructure() {
                   className="object-contain object-left"
                 />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-left">
+              <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
                 {t("enerViene.title")}
               </h3>
             </div>
-            <p className="text-gray-600">{t("enerViene.description")}</p>
-            <p className="text-gray-800 font-medium">
+            <p className="text-gray-600 text-xl text-justify">
+              {t("enerViene.description")}
+            </p>
+            <p className="text-gray-800 text-xl font-medium">
               {t("enerViene.strategy")}
             </p>
-            <ul className="list-disc list-inside space-y-2 text-gray-600 ml-4">
+            <ul className="list-disc list-inside space-y-2 text-gray-600 text-xl ml-4">
               {[0, 1, 2].map((index) => (
                 <li key={index} className="pl-2">
                   {t(`enerViene.steps.${index}`)}
                 </li>
               ))}
             </ul>
-            <p className="text-gray-600">{t("enerViene.conclusion")}</p>
+            <p className="text-gray-600 text-xl">{t("enerViene.conclusion")}</p>
           </div>
 
           {/* VieneBusiness */}
@@ -61,8 +63,12 @@ export default function AboutStructure() {
                 {t("vieneBusiness.title")}
               </h3>
             </div>
-            <p className="text-gray-600">{t("vieneBusiness.description")}</p>
-            <p className="text-gray-600">{t("vieneBusiness.additional")}</p>
+            <p className="text-gray-600 text-xl">
+              {t("vieneBusiness.description")}
+            </p>
+            <p className="text-gray-600 text-xl">
+              {t("vieneBusiness.additional")}
+            </p>
           </div>
         </div>
       </div>
