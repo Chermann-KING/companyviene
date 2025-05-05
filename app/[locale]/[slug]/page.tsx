@@ -4,11 +4,13 @@ import { NextIntlClientProvider } from "next-intl";
 import AboutPage from "@/components/pages/about/page";
 import Contact from "@/components/pages/contact/page";
 import ProductsServicesPage from "@/components/pages/products-and-services/page";
+import PrivacyPage from "@/components/pages/privacy/page";
 
 const SLUGS = {
   about: { fr: "a-propos", en: "about" },
   products: { fr: "produits-et-services", en: "products-and-services" },
   contact: { fr: "contact", en: "contact" },
+  privacy: { fr: "politique-de-confidentialite", en: "privacy-policy" },
   // Ici d'autres slugs si besoin
 };
 
@@ -53,6 +55,8 @@ export default async function Page({
             return <ProductsServicesPage />;
           case "contact":
             return <Contact />;
+          case "privacy":
+            return <PrivacyPage />;
           default:
             notFound();
         }

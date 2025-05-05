@@ -278,5 +278,100 @@
             "title": "Server error",
             "description": "An error has occurred on the server. Please try again later."
         }
+    },
+    "privacy": {
+        "title": "Our",
+        "titleHighlight": "Privacy Policy",
+        "description": "At CompanyViene, we attach great importance to protecting your personal data. This privacy policy tells you how we handle your information.",
+        "sections": [
+            {
+                "id": 1,
+                "title": "Object",
+                "content": [
+                    "CompanyViene invites you to read these general conditions for use of the www.companyviene.com website and related services carefully.",
+                    "The term \"Services\" refers to any content accessible via the Internet Protocol.",
+                    "The term \"user\" or \"users\" refers to any person who accesses this website.",
+                    "By accessing the www.companyviene.com website, users agree to these general terms and conditions of use."
+                ]
+            },
+            {
+                "id": 2,
+                "title": "Publisher",
+                "content": [
+                    "The www.companyviene.com website is published by :",
+                    "COMPANYVIENE SARL, Capital of 1.000.000 F CFA, Registered office established at Akounam 2 in Owendo, Telephone: +241 (0)77 91 98 82, Libreville - GABON.",
+                    "The company is represented by NDONG Moctar Gaye and ADOGHE NDONG Landry.",
+                    "The www.companyviene.com website is hosted by PLANETHOSTER Inc. located at 4416 Louis B., Montreal, Canada. Mayer, Laval (Quebec) H7P 0G1, Canada."
+                ]
+            },
+            {
+                "id": 3,
+                "title": "Access to the website",
+                "content": [
+                    "Any User with Internet access may access the Site free of charge. The cost of access (Internet connection, computer equipment, etc.) is borne by the User.",
+                    "Access to all or part of the Website or the associated services is subject to payment or free of charge. Such access is either free or subject to prior registration.",
+                    "The website and its various services may be interrupted or suspended by CompanyViene, in particular for maintenance purposes, without any obligation to give prior notice or justification. The User may not claim any compensation.",
+                    "CompanyViene cannot be held responsible for any force majeure event resulting in network malfunction.",
+                    "Users may contact the site at the following address: info@companyviene.com."
+                ]
+            },
+            {
+                "id": 4,
+                "title": "Responsibility of the User",
+                "content": [
+                    "The User is responsible for the risks associated with the use of his/her login and password, where applicable.",
+                    "Any User's password must remain secret. In the event of disclosure of the password, the Publisher declines all responsibility.",
+                    "Users assume full responsibility for their use of the information and content on the www.companyviene.com website.",
+                    "By publishing on the site, the User grants CompanyViene the non-exclusive and free right, valid throughout the world, to reproduce, represent, adapt, modify, broadcast and distribute his/her publication, either directly or through an authorised third party."
+                ]
+            },
+            {
+                "id": 5,
+                "title": "Responsibility of the Publisher",
+                "content": [
+                    "CompanyViene cannot be held responsible for any malfunction of the server or the network.",
+                    "Similarly, the site cannot be held liable in the event of force majeure or the unforeseeable and insurmountable act of a third party.",
+                    "The www.companyviene.com website undertakes to use all necessary means to guarantee the security and confidentiality of data. However, it does not guarantee total security.",
+                    "CompanyViene reserves the right not to guarantee the reliability of sources, although the information published on the site is deemed reliable."
+                ]
+            },
+            {
+                "id": 6,
+                "title": "Intellectual property",
+                "content": [
+                    "The www.companyviene.com website and all of its content, including texts, still or animated images, videos, databases, programmes, logos, trademarks, etc., are protected by property rights or licences granted to CompanyViene.",
+                    "Subject to the exceptions provided for in the regulations relating to intellectual property and without the prior written authorisation of CompanyViene or the holder of the rights concerned, any reproduction by CompanyViene, any communication, representation, adaptation, translation, transformation, incorporation, commercialisation and/or transfer, in part or in full, to another site of one or more of the aforementioned elements, by any process and on any medium whatsoever, is strictly prohibited.",
+                    "Any unauthorised use of the content of this site constitutes an infringement of copyright and is liable to prosecution."
+                ]
+            },
+            {
+                "id": 7,
+                "title": "Personal data",
+                "content": [
+                    "The personal data policy is drawn up in accordance with the applicable regulations."
+                ]
+            },
+            {
+                "id": 8,
+                "title": "Hypertext links",
+                "content": [
+                    "CompanyViene is not responsible for the domains to which the hypertext links on the site lead and has no control over these links."
+                ]
+            },
+            {
+                "id": 9,
+                "title": "Changes to the general terms and conditions of use",
+                "content": [
+                    "The www.companyviene.com website reserves the right to modify the clauses of these general terms and conditions of use at any time and without justification."
+                ]
+            },
+            {
+                "id": 10,
+                "title": "Applicable law and competent courts",
+                "content": [
+                    "The content and services appearing on the www.companyviene.com site are intended exclusively for users residing in the countries where CompanyViene provides its services, and only the law of those countries is applicable; any disputes will be settled by the courts and tribunals of the countries concerned."
+                ]
+            }
+        ]
     }
 }

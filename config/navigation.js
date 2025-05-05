@@ -88,6 +88,7 @@ export const SLUGS = {
   about: { fr: "a-propos", en: "about" },
   products: { fr: "produits-et-services", en: "products-and-services" },
   contact: { fr: "contact", en: "contact" },
+  privacy: { fr: "politique-de-confidentialite", en: "privacy-policy" },
   // autres slugs dynamiques ici
 };
 
