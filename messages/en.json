@@ -3,7 +3,24 @@
         "home": "Home",
         "about": "About",
         "products": "Products & Services",
-        "contact": "Contact"
+        "contact": "Contact",
+        "team": "Team",
+        "careers": "Careers",
+        "blog": "Blog",
+        "webDevelopment": "Web Development",
+        "cloudSolutions": "Cloud Solutions",
+        "database": "Database",
+        "security": "Security",
+        "helpCenter": "Help Center",
+        "documentation": "Documentation",
+        "status": "Status",
+        "legalNotice": "Legal Notice",
+        "privacyPolicy": "Privacy Policy",
+        "termsOfUse": "Terms of Use",
+        "cookies": "Cookies",
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "linkedin": "LinkedIn"
     },
     "header": {
         "languageSelector": {

@@ -2,29 +2,25 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
-
-const navigation = [
-  { nameKey: "home", href: "/" },
-  { nameKey: "about", href: "/about" },
-  { nameKey: "products", href: "/produits-services" },
-  { nameKey: "contact", href: "/contact" },
-];
+import { navigation } from "@/config/navigation";
 
 export default function Navigation({ mobile = false }) {
   const pathname = usePathname();
   const t = useTranslations("navigation");
-  const locale = useLocale();
+  const locale = useLocale() as "fr" | "en";
 
-  const getLocalizedHref = (href: string) => {
-    return href === "/" ? `/${locale}` : `/${locale}${href}`;
+  const getLocalizedHref = (hrefObj: { fr: string; en: string }) => {
+    return hrefObj[locale]
+      ? `/${locale}${hrefObj[locale]}`
+      : `/${locale}${hrefObj["en"]}`;
   };
 
-  const linkClasses = (href: string) => {
+  const linkClasses = (hrefObj: { fr: string; en: string }) => {
     const baseClasses = mobile
       ? "block px-3 py-2 rounded-md text-base font-medium"
       : "text-sm font-medium";
 
-    const localizedPath = getLocalizedHref(href);
+    const localizedPath = getLocalizedHref(hrefObj);
     return `${baseClasses} ${
       pathname === localizedPath
         ? "text-primary-main"
@@ -34,7 +30,7 @@ export default function Navigation({ mobile = false }) {
 
   return (
     <>
-      {navigation.map((item) => (
+      {navigation.main.map((item) => (
         <Link
           key={item.nameKey}
           href={getLocalizedHref(item.href)}

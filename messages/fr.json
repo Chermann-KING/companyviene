@@ -3,7 +3,24 @@
         "home": "Accueil",
         "about": "À propos",
         "products": "Produits & Services",
-        "contact": "Contact"
+        "contact": "Contact",
+        "team": "Équipe",
+        "careers": "Carrières",
+        "blog": "Blog",
+        "webDevelopment": "Développement Web",
+        "cloudSolutions": "Solutions Cloud",
+        "database": "Base de données",
+        "security": "Sécurité",
+        "helpCenter": "Centre d'aide",
+        "documentation": "Documentation",
+        "status": "Statut",
+        "legalNotice": "Mentions légales",
+        "privacyPolicy": "Politique de confidentialité",
+        "termsOfUse": "Conditions d'utilisation",
+        "cookies": "Cookies",
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "linkedin": "LinkedIn"
     },
     "header": {
         "languageSelector": {
@@ -91,23 +108,23 @@
             "values": {
                 "development": {
                     "title": "Développement humain",
-                    "description": "Au cœur de la vision de CompanyViene, les actions et entreprises initiées par la Holding visent à améliorer durablement le bien-être et l’épanouissement des individus dans leur milieu social par des solutions ingénieuses à forte valeur ajoutée."
+                    "description": "Au cœur de la vision de CompanyViene, les actions et entreprises initiées par la Holding visent à améliorer durablement le bien-être et l'épanouissement des individus dans leur milieu social par des solutions ingénieuses à forte valeur ajoutée."
                 },
                 "sharing": {
                     "title": "Partage",
-                    "description": "Inspiré de systèmes très répandus dans la plupart des pays en développement, le Partage est un mode de fonctionnement qui permet à un groupe d’individus d’améliorer ses conditions de vie, grâce à une meilleure répartition des biens disponibles."
+                    "description": "Inspiré de systèmes très répandus dans la plupart des pays en développement, le Partage est un mode de fonctionnement qui permet à un groupe d'individus d'améliorer ses conditions de vie, grâce à une meilleure répartition des biens disponibles."
                 },
                 "simplicity": {
                     "title": "Simplicité",
-                    "description": "Les solutions proposées par CompanyViene visent à être utilisables par toutes les classes sociales. Pour cela, la simplicité est un principe fondamental de CompanyViene pour permettre d’élargir au maximum le scope d’utilisateurs de ses produits et services."
+                    "description": "Les solutions proposées par CompanyViene visent à être utilisables par toutes les classes sociales. Pour cela, la simplicité est un principe fondamental de CompanyViene pour permettre d'élargir au maximum le scope d'utilisateurs de ses produits et services."
                 },
                 "equity": {
                     "title": "Équité",
-                    "description": "Chaque actionnaire de CompanyViene est détenteur de la Holding à part équitable. Certains prestataires peuvent cependant intervenir à des niveaux spécifiques pour nous apporter leur expertise. L’équité est un modèle durable sur lequel CompanyViene se base pour avoir un impact positif sur ses clients."
+                    "description": "Chaque actionnaire de CompanyViene est détenteur de la Holding à part équitable. Certains prestataires peuvent cependant intervenir à des niveaux spécifiques pour nous apporter leur expertise. L'équité est un modèle durable sur lequel CompanyViene se base pour avoir un impact positif sur ses clients."
                 },
                 "profitability": {
                     "title": "Rentabilité",
-                    "description": "La recherche de profits et de croissance sont essentielles pour nos stratégies d’investissement et de développement. CompanyViene vise une expansion géographique de manière à s’installer dans plusieurs pays cibles en créant de la valeur et des emplois locaux."
+                    "description": "La recherche de profits et de croissance sont essentielles pour nos stratégies d'investissement et de développement. CompanyViene vise une expansion géographique de manière à s'installer dans plusieurs pays cibles en créant de la valeur et des emplois locaux."
                 }
             }
         },
@@ -150,23 +167,23 @@
             "titleHighlight": "Produits",
             "VieneRegister": {
                 "title": "VieneRegister",
-                "description": "VieneRegister est une application mobile sur smartphone (Androïd) conçue et développée par nos équipes. Elle permet aux utilisateurs d’enregistrer dans une base de données sécurisée des informations utiles relatives aux membres d’une organisation grâce à des QR Codes d’identification uniques. Initialement conçue pour répondre à la gestion d’effectif dans l’enseignement, elle peut être déclinée en application de gestion de stock ou de processus.",
+                "description": "VieneRegister est une application mobile sur smartphone (Androïd) conçue et développée par nos équipes. Elle permet aux utilisateurs d'enregistrer dans une base de données sécurisée des informations utiles relatives aux membres d'une organisation grâce à des QR Codes d'identification uniques. Initialement conçue pour répondre à la gestion d'effectif dans l'enseignement, elle peut être déclinée en application de gestion de stock ou de processus.",
                 "features": [
-                    "Ce produit simple d’utilisation permet grâce à une gestion efficace des permissions, d’attribuer une ou plusieurs fonctionnalités spécifiques à un utilisateur donné en fonction de son rôle dans l’organisation (Inscription, Validation du paiement, Vérification du statut en base de données, Extraction de données dans un fichier Excel, Scan de QR Code, Impression de cartes/reçus …).",
-                    "VieneRegister est doté d’une Architecture Robuste qui permet au produit d’évoluer et de s’adapter au besoin du client grâce à son jeu subtil de Permissions.",
+                    "Ce produit simple d'utilisation permet grâce à une gestion efficace des permissions, d'attribuer une ou plusieurs fonctionnalités spécifiques à un utilisateur donné en fonction de son rôle dans l'organisation (Inscription, Validation du paiement, Vérification du statut en base de données, Extraction de données dans un fichier Excel, Scan de QR Code, Impression de cartes/reçus …).",
+                    "VieneRegister est doté d'une Architecture Robuste qui permet au produit d'évoluer et de s'adapter au besoin du client grâce à son jeu subtil de Permissions.",
                     "Une Base de données sécurisée sur le Drive est mise à la disposition de nos clients via cette application."
                 ],
                 "status": "(Produit Disponible)"
             },
             "CoolTrack": {
                 "title": "CoolTrack",
-                "description": "CoolTrack est une application de tracking dans l’acheminement colis. L’application facilite la mise en place d’un système de suivi du statut des bordereaux. Elle permet entre autres de gérer l’enregistrement, les retraits, la facturation des colis ou la messagerie des opérateurs de transport.",
+                "description": "CoolTrack est une application de tracking dans l'acheminement colis. L'application facilite la mise en place d'un système de suivi du statut des bordereaux. Elle permet entre autres de gérer l'enregistrement, les retraits, la facturation des colis ou la messagerie des opérateurs de transport.",
                 "features": [],
                 "status": "(Produit Disponible)"
             },
             "TMS": {
                 "title": "TMS",
-                "description": "TMS est une application destinée à la gestion de tickets de passagers pour les Transports de personnes. L’application permet de faciliter les enregistrements de passagers, la facturation, ou encore de garder de la traçabilité sur les voyages effectués.",
+                "description": "TMS est une application destinée à la gestion de tickets de passagers pour les Transports de personnes. L'application permet de faciliter les enregistrements de passagers, la facturation, ou encore de garder de la traçabilité sur les voyages effectués.",
                 "features": [],
                 "status": "(Produit Disponible)"
             }
@@ -176,7 +193,7 @@
             "titleHighlight": "Services",
             "vieneDesign": {
                 "title": "VieneDesign",
-                "description": "VieneDesign est un service digital de CompanyViene destiné à la conception de charte graphique d’entreprise, image de marque, création de catalogue, conception publicitaire, recherche expérience utilisateur, conception d’application web et mobile. Cette offre se base sur l’expertise de nos équipes à l’internationale et permet de fournir un excellent rapport qualité/prix à nos clients.",
+                "description": "VieneDesign est un service digital de CompanyViene destiné à la conception de charte graphique d'entreprise, image de marque, création de catalogue, conception publicitaire, recherche expérience utilisateur, conception d'application web et mobile. Cette offre se base sur l'expertise de nos équipes à l'internationale et permet de fournir un excellent rapport qualité/prix à nos clients.",
                 "status": "(Service Disponible)"
             },
             "vieneHouse": {
