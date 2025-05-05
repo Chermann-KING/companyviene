@@ -17,8 +17,8 @@ export default function Navigation({ mobile = false }) {
 
   const linkClasses = (hrefObj: { fr: string; en: string }) => {
     const baseClasses = mobile
-      ? "block px-3 py-2 rounded-md text-base font-medium"
-      : "text-sm font-medium";
+      ? "block px-3 py-2 rounded-md text-xl font-medium uppercase"
+      : "text-xl font-medium uppercase";
 
     const localizedPath = getLocalizedHref(hrefObj);
     return `${baseClasses} ${
@@ -29,7 +29,7 @@ export default function Navigation({ mobile = false }) {
   };
 
   return (
-    <>
+    <nav className={mobile ? "flex flex-col" : "hidden md:flex space-x-8"}>
       {navigation.main.map((item) => (
         <Link
           key={item.nameKey}
@@ -39,6 +39,6 @@ export default function Navigation({ mobile = false }) {
           {t(item.nameKey)}
         </Link>
       ))}
-    </>
+    </nav>
   );
 }

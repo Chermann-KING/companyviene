@@ -3,19 +3,13 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import CtaButton from "@/components/ui/CtaButton";
-
 import { usePathname } from "next/navigation";
+import getLocalizedPath from "@/utils/getLocalizedPath";
 
 export default function ContactHero() {
   const tHero = useTranslations("contact.hero");
   const pathname = usePathname();
   const locale = pathname.split("/")[1];
-
-  const getLocalizedPath = (locale: string) => {
-    const segments = pathname.split("/");
-    segments[1] = locale;
-    return segments.join("/");
-  };
 
   return (
     <div className="relative bg-white overflow-hidden h-[calc(100vh-64px)]">
@@ -54,7 +48,7 @@ export default function ContactHero() {
 
             {/* Call to action buttons */}
             <CtaButton
-              href={`${getLocalizedPath(locale)}/#contact-form`}
+              href={getLocalizedPath(locale, "contact-form")}
               label={tHero("cta")}
             />
           </div>
