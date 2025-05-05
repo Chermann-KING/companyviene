@@ -70,3 +70,23 @@ export const navigation = {
     },
   ],
 };
+
+// Table de correspondance des slugs pour les pages dynamiques
+export const SLUGS = {
+  about: { fr: "a-propos", en: "about" },
+  products: { fr: "produits-services", en: "products" },
+  contact: { fr: "contact", en: "contact" },
+  // autres slugs dynamiques ici
+};
+
+// Trouve la clé logique à partir d'un slug et d'une locale
+export function getPageKeyFromSlug(slug, locale) {
+  return Object.keys(SLUGS).find((key) => SLUGS[key][locale] === slug);
+}
+
+// Trouve le slug dans la langue cible à partir du slug courant et de la locale courante
+export function getTranslatedSlug(currentSlug, fromLocale, toLocale) {
+  const pageKey = getPageKeyFromSlug(currentSlug, fromLocale);
+  if (!pageKey) return currentSlug; // fallback
+  return SLUGS[pageKey][toLocale];
+}

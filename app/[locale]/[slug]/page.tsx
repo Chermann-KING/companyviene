@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 import AboutPage from "@/components/pages/about/page";
 import Contact from "@/components/pages/contact/page";
 import ProductsServicesPage from "@/components/pages/produits-services/page";
@@ -8,16 +9,25 @@ const SLUGS = {
   about: { fr: "a-propos", en: "about" },
   products: { fr: "produits-services", en: "products" },
   contact: { fr: "contact", en: "contact" },
-  // Ajoute ici d'autres slugs si besoin
+  // Ici d'autres slugs si besoin
 };
 
-export default function Page({
+export default async function Page({
   params,
 }: {
   params: { locale: string; slug: string };
 }) {
   const { locale, slug } = params;
-  const t = useTranslations();
+
+  // Charge explicitement les messages pour la locale
+  let messages;
+  try {
+    messages = (await import(`../../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+
+  const t = await getTranslations({ locale, messages });
 
   // Trouver la clé logique correspondant au slug et à la locale
   const pageKey = Object.keys(SLUGS).find(
@@ -33,28 +43,20 @@ export default function Page({
     notFound();
   }
 
-  switch (pageKey) {
-    case "about":
-      return (
-        // <div style={{ padding: "2rem" }}>
-        //   <h1 style={{ fontWeight: 700, fontSize: "2.5rem" }}>
-        //     {t("about.hero.title")}{" "}
-        //     <span style={{ color: "#2ba940" }}>
-        //       {t("about.hero.titleHighlight")}
-        //     </span>
-        //     {t("about.hero.titleSymbol")}
-        //   </h1>
-        //   <p style={{ marginTop: "1.5rem", fontSize: "1.2rem", color: "#444" }}>
-        //     {t("about.hero.description")}
-        //   </p>
-        // </div>
-        <AboutPage />
-      );
-    case "products":
-      return <ProductsServicesPage />;
-    case "contact":
-      return <Contact />;
-    default:
-      notFound();
-  }
+  return (
+    <NextIntlClientProvider messages={messages} locale={locale}>
+      {(() => {
+        switch (pageKey) {
+          case "about":
+            return <AboutPage />;
+          case "products":
+            return <ProductsServicesPage />;
+          case "contact":
+            return <Contact />;
+          default:
+            notFound();
+        }
+      })()}
+    </NextIntlClientProvider>
+  );
 }

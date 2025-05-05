@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Navigation from "./Navigation";
 import { useTranslations } from "next-intl";
+import { getTranslatedSlug } from "@/config/navigation";
 
 const locales = ["fr", "en"] as const;
 
@@ -18,7 +19,23 @@ export default function Header() {
   // Fonction pour obtenir le chemin dans une autre langue
   const getLocalizedPath = (locale: string) => {
     const segments = pathname.split("/");
+    const currentLocale = segments[1];
+    const currentSlug = segments[2];
+
+    // Si on est sur la home, pas de slug à traduire
+    if (!currentSlug) {
+      segments[1] = locale;
+      return segments.join("/");
+    }
+
+    // Traduire le slug si possible
+    const translatedSlug = getTranslatedSlug(
+      currentSlug,
+      currentLocale,
+      locale
+    );
     segments[1] = locale;
+    segments[2] = translatedSlug;
     return segments.join("/");
   };
 
