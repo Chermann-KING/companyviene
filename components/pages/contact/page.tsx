@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import ContactHero from "@/components/sections/contact/ContactHero";
+import ContactHero from "@/components/pages/contact/sections/ContactHero";
 import ContactForm from "@/components/ui/ContactForm";
 import Map from "@/components/ui/Map";
 import React from "react";

@@ -1,10 +1,10 @@
 "use client";
 
-import AboutHero from "@/components/sections/about/AboutHero";
-import AboutObjectives from "@/components/sections/about/AboutObjectives";
-import AboutVision from "@/components/sections/about/AboutVision";
-import AboutStructure from "@/components/sections/about/AboutStructure";
-import AboutTeam from "@/components/sections/about/AboutTeam";
+import AboutHero from "@/components/pages/about/sections/AboutHero";
+import AboutObjectives from "@/components/pages/about/sections/AboutObjectives";
+import AboutVision from "@/components/pages/about/sections/AboutVision";
+import AboutStructure from "@/components/pages/about/sections/AboutStructure";
+import AboutTeam from "@/components/pages/about/sections/AboutTeam";
 
 export default function AboutPage() {
   return (

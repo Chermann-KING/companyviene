@@ -4,7 +4,7 @@ export const navigation = {
     { nameKey: "about", href: { fr: "/a-propos", en: "/about" } },
     {
       nameKey: "products",
-      href: { fr: "/produits-services", en: "/products" },
+      href: { fr: "/produits-et-services", en: "/products-and-services" },
     },
     { nameKey: "contact", href: { fr: "/contact", en: "/contact" } },
   ],
@@ -18,19 +18,31 @@ export const navigation = {
     services: [
       {
         nameKey: "webDevelopment",
-        href: { fr: "/produits-services#web", en: "/products#web" },
+        href: {
+          fr: "/produits-et-services#web",
+          en: "/products-and-services#web",
+        },
       },
       {
         nameKey: "cloudSolutions",
-        href: { fr: "/produits-services#cloud", en: "/products#cloud" },
+        href: {
+          fr: "/produits-et-services#cloud",
+          en: "/products-and-services#cloud",
+        },
       },
       {
         nameKey: "database",
-        href: { fr: "/produits-services#database", en: "/products#database" },
+        href: {
+          fr: "/produits-et-services#database",
+          en: "/products-and-services#database",
+        },
       },
       {
         nameKey: "security",
-        href: { fr: "/produits-services#security", en: "/products#security" },
+        href: {
+          fr: "/produits-et-services#security",
+          en: "/products-and-services#security",
+        },
       },
     ],
     support: [
@@ -74,7 +86,7 @@ export const navigation = {
 // Table de correspondance des slugs pour les pages dynamiques
 export const SLUGS = {
   about: { fr: "a-propos", en: "about" },
-  products: { fr: "produits-services", en: "products" },
+  products: { fr: "produits-et-services", en: "products-and-services" },
   contact: { fr: "contact", en: "contact" },
   // autres slugs dynamiques ici
 };

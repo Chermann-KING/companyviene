@@ -3,11 +3,11 @@ import { getTranslations } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import AboutPage from "@/components/pages/about/page";
 import Contact from "@/components/pages/contact/page";
-import ProductsServicesPage from "@/components/pages/produits-services/page";
+import ProductsServicesPage from "@/components/pages/products-and-services/page";
 
 const SLUGS = {
   about: { fr: "a-propos", en: "about" },
-  products: { fr: "produits-services", en: "products" },
+  products: { fr: "produits-et-services", en: "products-and-services" },
   contact: { fr: "contact", en: "contact" },
   // Ici d'autres slugs si besoin
 };
