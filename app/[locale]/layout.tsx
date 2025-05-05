@@ -4,7 +4,6 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n/settings";
-import { Providers } from "../providers";
 import { NextIntlClientProvider } from "next-intl";
 
 const inter = Inter({ subsets: ["latin"] });

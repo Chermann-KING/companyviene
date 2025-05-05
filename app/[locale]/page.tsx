@@ -4,7 +4,13 @@ import DomainesActivites from "@/components/sections/home/DomainesActivites";
 import RecrutementSection from "@/components/sections/home/RecrutementSection";
 import Map from "@/components/ui/Map";
 
-function Home() {
+interface PageProps {
+  params: {
+    locale: string;
+  };
+}
+
+function Home({ params }: PageProps) {
   return (
     <>
       <HeroSection />

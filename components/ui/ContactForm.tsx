@@ -110,7 +110,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="w-2/3 border border-blue-500">
+    <section className="w-2/3">
       <form onSubmit={handleSubmit}>
         {/* Nom complet */}
         <div className="mb-6 relative">

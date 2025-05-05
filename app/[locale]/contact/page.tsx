@@ -36,7 +36,7 @@ function Contact() {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto flex justify-center items-start gap-8  border border-green-500">
+      <div className="max-w-7xl mx-auto flex justify-center items-start gap-8">
         <ContactForm />
         {/* Contact Info */}
         <div className="w-1/3 text-left">

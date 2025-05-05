@@ -3,7 +3,7 @@ export const defaultMapConfig = {
     lat: 0.3924,
     lng: 9.4536,
   },
-  zoom: 13,
+  zoom: 15,
   options: {
     disableDefaultUI: false,
     zoomControl: true,
