@@ -44,7 +44,11 @@
         "titleOf": "of",
         "titleHighlight": "Consultants",
         "description": "Are you a young graduate in digital or engineering fields? Apply for an internship with us",
-        "cta": "Submit application"
+        "cta": "Submit application",
+        "modalTitle": "Apply to",
+        "modalTitleHighlight": "companyViene",
+        "ctaHighlight": "Resume",
+        "ctaHighlight2": "Cover letter"
     },
     "footer": {
         "quickInfos": {
@@ -236,6 +240,8 @@
             "message": "Message",
             "submit": "Send message",
             "submitting": "Sending...",
+            "coverLetter": "Cover letter (PDF ou Word)",
+            "resume": "Resume (PDF ou Word)",
             "placeholder": {
                 "name": "Enter your full name",
                 "email": "Enter your e-mail address",
@@ -254,7 +260,11 @@
                 "nameFormat": "The name must not contain numbers or special characters",
                 "subjectFormat": "The subject must not contain numbers or special characters",
                 "required": "can't be empty",
-                "messageLength": "The message must contain at least 10 characters"
+                "messageLength": "The message must contain at least 10 characters",
+                "resume": "Please upload your CV",
+                "resumeFormat": "The file must be in PDF or Word format",
+                "resumeSize": "The file size must not exceed 2MB",
+                "coverLetter": "Please upload your cover letter"
             },
             "success": {
                 "title": "Thank you for contacting us!",

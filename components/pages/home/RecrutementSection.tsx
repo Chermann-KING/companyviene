@@ -12,19 +12,25 @@ function CandidatureModal({
   open: boolean;
   onClose: () => void;
 }) {
+  const t = useTranslations("recruitment");
+
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      {/* Contenu de la modal */}
       <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg relative">
+        {/* Bouton de fermeture modal */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl"
+          className="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-3xl"
         >
           &times;
         </button>
-        <h2 className="text-2xl font-bold mb-4 text-primary-main">
-          Postuler chez CompanyViene
-        </h2>
+        {/* Titre modal */}
+        <h3 className=" leading-none text-2xl tracking-tight font-extrabold text-secondary-main sm:text-3xl md:text-4xl mb-6">
+          <span>{t("modalTitle")} </span>
+          <span className=" text-primary-main">{t("modalTitleHighlight")}</span>
+        </h3>
         {/* Formulaire de candidature */}
         <CandidatureForm onSuccess={onClose} />
       </div>
@@ -84,8 +90,8 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = t("form.validation.emailFormat");
     if (!formData.message) newErrors.message = t("form.validation.required");
-    if (!cv) newErrors.cv = "Le CV est requis.";
-    if (!lettre) newErrors.lettre = "La lettre de motivation est requise.";
+    if (!cv) newErrors.cv = t("form.validation.resume");
+    if (!lettre) newErrors.lettre = t("form.validation.coverLetter");
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -129,7 +135,7 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
   };
 
   return (
-    <section className="w-2/3 mx-auto">
+    <section className="w-full mx-auto">
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         {/* Nom complet */}
         <div className="mb-6 relative">
@@ -229,7 +235,7 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
             htmlFor="cv"
             className="block text-sm font-medium text-gray-700"
           >
-            CV (PDF ou Word)
+            {t("form.resume")}
           </label>
           <input
             type="file"
@@ -251,7 +257,7 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
             htmlFor="lettre"
             className="block text-sm font-medium text-gray-700"
           >
-            Lettre de motivation (PDF ou Word)
+            {t("form.coverLetter")}
           </label>
           <input
             type="file"

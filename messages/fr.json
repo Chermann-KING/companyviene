@@ -44,7 +44,11 @@
         "titleOf": "de",
         "titleHighlight": "Consultants",
         "description": "Vous êtes jeune diplômé(e) dans les métiers digitaux ou d'ingénierie? Postulez pour un stage chez nous",
-        "cta": "Soumettre une candidature"
+        "cta": "Soumettre une candidature",
+        "modalTitle": "Postuler chez",
+        "modalTitleHighlight": "companyViene",
+        "ctaHighlight": "Curriculum vitae",
+        "ctaHighlight2": "Lettre de motivation"
     },
     "footer": {
         "quickInfos": {
@@ -236,6 +240,8 @@
             "message": "Message",
             "submit": "Envoyer le message",
             "submitting": "Envoi en cours...",
+            "coverLetter": "Lettre de motivation (PDF ou Word)",
+            "resume": "Curriculum vitae (PDF ou Word)",
             "placeholder": {
                 "name": "Entrez votre nom complet",
                 "email": "Entrez votre e-mail",
@@ -254,7 +260,11 @@
                 "nameFormat": "Le nom ne doit pas contenir de chiffres ou de caractères spéciaux",
                 "subjectFormat": "Le sujet ne doit pas contenir de chiffres ou de caractères spéciaux",
                 "required": "ne peut être vide",
-                "messageLength": "Le message doit contenir au moins 10 caractères"
+                "messageLength": "Le message doit contenir au moins 10 caractères",
+                "resume": "Veuillez télécharger votre CV",
+                "resumeFormat": "Le fichier doit être au format PDF ou Word",
+                "resumeSize": "La taille du fichier ne doit pas dépasser 2Mo",
+                "coverLetter": "Veuillez télécharger votre lettre de motivation"
             },
             "success": {
                 "title": "Merci de nous avoir contacté !",
