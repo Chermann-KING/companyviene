@@ -43,7 +43,7 @@ const team = [
   {
     id: 7,
     name: "Olivier NGOH",
-    role: "Expert Architect Engineer/HVAC construction specialist",
+    role: "Expert Architect Engineer/HVAC Construction Specialist",
     linkedin: "https://www.linkedin.com/in/olivier-ngoh-505965152/",
   },
 ];

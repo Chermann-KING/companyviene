@@ -47,11 +47,9 @@
         "cta": "Soumettre une candidature"
     },
     "footer": {
-        "contact": {
-            "title": "Contact",
-            "address": "Libreville, Gabon",
-            "phone": "+241 77 91 58 82",
-            "email": "info@companyviene.com"
+        "quickInfos": {
+            "title": "companyViene",
+            "description": "Nous simplifions votre activité grâce à l'ingénierie et à la digitalisation"
         },
         "quickLinks": {
             "title": "Liens rapides",
