@@ -15,6 +15,7 @@
         "lucide-react": "^0.344.0",
         "next": "^15.3.1",
         "next-intl": "^3.9.1",
+        "nodemailer": "^7.0.2",
         "postcss": "^8.4.35",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -23,6 +24,7 @@
     "devDependencies": {
         "@types/google.maps": "^3.58.1",
         "@types/node": "^20.11.24",
+        "@types/nodemailer": "^6.4.17",
         "@types/react": "^18.2.61",
         "@types/react-dom": "^18.2.19",
         "eslint": "^8.57.0",
