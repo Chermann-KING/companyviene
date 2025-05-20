@@ -263,7 +263,7 @@
                 "messageLength": "Le message doit contenir au moins 10 caractères",
                 "resume": "Veuillez télécharger votre CV",
                 "resumeFormat": "Le fichier doit être au format PDF ou Word",
-                "resumeSize": "La taille du fichier ne doit pas dépasser 2Mo",
+                "resumeSize": "La taille du fichier ne doit pas dépasser 5Mo",
                 "coverLetter": "Veuillez télécharger votre lettre de motivation"
             },
             "success": {

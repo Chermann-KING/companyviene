@@ -1,9 +1,5 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import { useTranslations } from "next-intl";
-import CtaButton from "@/components/ui/CtaButton";
+import { useTranslations } from "use-intl";
 import Script from "next/script";
 
 // Types pour reCAPTCHA
@@ -19,40 +15,7 @@ declare global {
   }
 }
 
-function CandidatureModal({
-  open,
-  onClose,
-}: {
-  open: boolean;
-  onClose: () => void;
-}) {
-  const t = useTranslations("recruitment");
-
-  if (!open) return null;
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      {/* Contenu de la modal */}
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg relative">
-        {/* Bouton de fermeture modal */}
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-3xl"
-        >
-          &times;
-        </button>
-        {/* Titre modal */}
-        <h3 className=" leading-none text-2xl tracking-tight font-extrabold text-secondary-main sm:text-3xl md:text-4xl mb-6">
-          <span>{t("modalTitle")} </span>
-          <span className=" text-primary-main">{t("modalTitleHighlight")}</span>
-        </h3>
-        {/* Formulaire de candidature */}
-        <CandidatureForm onSuccess={onClose} />
-      </div>
-    </div>
-  );
-}
-
-function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
+function ContactForm({ onSuccess }: { onSuccess: () => void }) {
   const t = useTranslations("contact");
   const [formData, setFormData] = useState({
     name: "",
@@ -60,8 +23,6 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
     phone: "",
     message: "",
   });
-  const [cv, setCv] = useState<File | null>(null);
-  const [lettre, setLettre] = useState<File | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [showErrors, setShowErrors] = useState(false);
   const [status, setStatus] = useState({
@@ -71,17 +32,11 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [submitCount, setSubmitCount] = useState(0);
-  const [honeypot, setHoneypot] = useState("");
   const MAX_SUBMISSIONS = 3;
   const SUBMISSION_TIMEOUT = 3600000; // 1 heure en millisecondes
-  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-  const ALLOWED_FILE_TYPES = [
-    "application/pdf",
-    "application/msword",
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  ];
 
   // Générer un token CSRF au chargement du composant
   useEffect(() => {
@@ -116,7 +71,7 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
       window.grecaptcha.ready(() => {
         window.grecaptcha
           .execute(siteKey, {
-            action: "candidature_form",
+            action: "contact_form",
           })
           .then((token: string) => {
             setRecaptchaToken(token);
@@ -124,39 +79,6 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
       });
     }
   }, []);
-
-  const validateFile = (file: File, name: string) => {
-    if (file.size > MAX_FILE_SIZE) {
-      return t("form.validation.fileTooLarge");
-    }
-    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-      return t("form.validation.fileTypeNotAllowed");
-    }
-    return null;
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target;
-    if (files && files[0]) {
-      const file = files[0];
-      const error = validateFile(file, name);
-
-      if (error) {
-        setErrors((prev) => ({ ...prev, [name]: error }));
-        return;
-      }
-
-      if (name === "cv") setCv(file);
-      if (name === "lettre") setLettre(file);
-      if (errors[name]) {
-        setErrors((prev) => {
-          const newErrors = { ...prev };
-          delete newErrors[name];
-          return newErrors;
-        });
-      }
-    }
-  };
 
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
@@ -192,10 +114,6 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
       newErrors.message = t("form.validation.messageTooShort");
     else if (formData.message.length > 1000)
       newErrors.message = t("form.validation.messageTooLong");
-
-    // Validation des fichiers
-    if (!cv) newErrors.cv = t("form.validation.resume");
-    if (!lettre) newErrors.lettre = t("form.validation.coverLetter");
 
     // Vérification du honeypot
     if (honeypot) {
@@ -233,33 +151,27 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
           throw new Error("Clé reCAPTCHA manquante");
         }
         const newToken = await window.grecaptcha.execute(siteKey, {
-          action: "candidature_form",
+          action: "contact_form",
         });
         setRecaptchaToken(newToken);
       }
 
-      const data = new FormData();
-      data.append("name", formData.name.trim());
-      data.append("email", formData.email.trim());
-      data.append("phone", formData.phone.trim());
-      data.append("message", formData.message.trim());
-      data.append("csrfToken", csrfToken);
-      data.append("recaptchaToken", recaptchaToken);
-
-      if (cv) data.append("cv", cv);
-      if (lettre) data.append("lettre", lettre);
-
-      const response = await fetch("/api/candidature", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           "X-CSRF-Token": csrfToken,
           "X-Recaptcha-Token": recaptchaToken,
         },
-        body: data,
+        body: JSON.stringify({
+          ...formData,
+          csrfToken,
+          recaptchaToken,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error("Erreur lors de l'envoi de la candidature");
+        throw new Error("Erreur lors de l'envoi du message");
       }
 
       // Mettre à jour le compteur de soumissions
@@ -271,12 +183,10 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
       setStatus({
         type: "success",
         title: t("form.success.title"),
-        message: "Votre candidature a bien été envoyée !",
+        message: t("form.success.description"),
       });
 
       setFormData({ name: "", email: "", phone: "", message: "" });
-      setCv(null);
-      setLettre(null);
       setShowErrors(false);
       setTimeout(onSuccess, 2000);
     } catch (error) {
@@ -296,11 +206,7 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="afterInteractive"
       />
-      <form
-        onSubmit={handleSubmit}
-        encType="multipart/form-data"
-        className="space-y-6"
-      >
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Champ honeypot caché */}
         <div className="hidden">
           <input
@@ -397,58 +303,6 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
           )}
         </div>
 
-        {/* CV */}
-        <div className="relative">
-          <label
-            htmlFor="cv"
-            className="block text-sm font-medium text-gray-700"
-          >
-            {t("form.resume")}
-          </label>
-          <input
-            type="file"
-            id="cv"
-            name="cv"
-            accept={ALLOWED_FILE_TYPES.join(",")}
-            onChange={handleFileChange}
-            className={`mt-1 block w-full rounded-md shadow-sm ${
-              showErrors && errors.cv
-                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                : "border-gray-300 focus:border-primary-main focus:ring-primary-main"
-            }`}
-            required
-          />
-          {showErrors && errors.cv && (
-            <p className="mt-1 text-sm text-red-600">{errors.cv}</p>
-          )}
-        </div>
-
-        {/* Lettre de motivation */}
-        <div className="relative">
-          <label
-            htmlFor="lettre"
-            className="block text-sm font-medium text-gray-700"
-          >
-            {t("form.coverLetter")}
-          </label>
-          <input
-            type="file"
-            id="lettre"
-            name="lettre"
-            accept={ALLOWED_FILE_TYPES.join(",")}
-            onChange={handleFileChange}
-            className={`mt-1 block w-full rounded-md shadow-sm ${
-              showErrors && errors.lettre
-                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                : "border-gray-300 focus:border-primary-main focus:ring-primary-main"
-            }`}
-            required
-          />
-          {showErrors && errors.lettre && (
-            <p className="mt-1 text-sm text-red-600">{errors.lettre}</p>
-          )}
-        </div>
-
         {/* Message */}
         <div className="relative">
           <label
@@ -493,75 +347,9 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
             <p>{status.message}</p>
           </div>
         )}
-
-        {/* Bouton de soumission */}
-        <div className="flex justify-end">
-          <button
-            type="submit"
-            disabled={isSubmitting || submitCount >= MAX_SUBMISSIONS}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors duration-200 ${
-              isSubmitting || submitCount >= MAX_SUBMISSIONS
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-primary-main hover:bg-primary-dark text-white"
-            }`}
-          >
-            {isSubmitting
-              ? t("form.submitting")
-              : submitCount >= MAX_SUBMISSIONS
-              ? t("form.tooManySubmissions")
-              : t("form.submit")}
-          </button>
-        </div>
       </form>
     </section>
   );
 }
 
-export default function RecrutementSection() {
-  const t = useTranslations("recruitment");
-  const [open, setOpen] = useState(false);
-
-  return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto my-8 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center md:items-stretch gap-8 md:gap-12">
-          {/* Image à gauche */}
-          <div className="w-full md:w-1/2 h-64 md:h-auto relative rounded-lg overflow-hidden">
-            <Image
-              src="/assets/images/comapnyviene-recrutement.png"
-              alt="CompanyViene Recrutement - Poignée de main"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
-              className="object-cover"
-              quality={75}
-              priority
-            />
-          </div>
-
-          {/* Contenu texte à droite */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center">
-            {/* Titre */}
-            <h2 className=" leading-none text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl mb-6">
-              <span>{t("title")}</span>
-              <span className="flex gap-3">
-                <span>{t("titleOf")} </span>
-                <span className=" text-primary-main">
-                  {t("titleHighlight")}
-                </span>
-              </span>
-            </h2>
-
-            {/* Description */}
-            <p className=" text-gray-600 text-xl text-left mb-6">
-              {t("description")}
-            </p>
-
-            {/* Bouton de candidature */}
-            <CtaButton onClick={() => setOpen(true)} label={t("cta")} />
-          </div>
-        </div>
-      </div>
-      <CandidatureModal open={open} onClose={() => setOpen(false)} />
-    </section>
-  );
-}
+export default ContactForm;

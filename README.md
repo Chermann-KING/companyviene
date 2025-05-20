@@ -1,108 +1,99 @@
 # CompanyViene Web App
 
-Site web moderne et responsive pour CompanyViene, développé avec Next.js 15 et Tailwind CSS.
-
-## Technologies utilisées
-
-- Next.js 15.1.3 (App Router)
-- React 18
-- Tailwind CSS 4
-- Lucide Icons
-- Google Maps API
-- i18n pour le multilingue (FR/EN)
-
-## Prérequis
-
-- Node.js 18.17 ou supérieur
-- npm ou yarn
-- Clé API Google Maps
-
-## Installation
-
-1. Clonez le dépôt :
-
-```bash
-git clone https://github.com/companyviene/companyviene-web-app.git
-cd companyviene-web-app
-```
-
-2. Installez les dépendances :
-
-```bash
-npm install
-# ou
-yarn install
-```
-
-3. Créez un fichier `.env.local` à la racine du projet et ajoutez vos variables d'environnement :
-
-```env
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=votre_cle_api_google_maps
-```
-
-4. Lancez le serveur de développement :
-
-```bash
-npm run dev
-# ou
-yarn dev
-```
-
-5. Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
-
-## Structure du projet
-
-```
-/app
-  /[locale]             # Support multilingue (FR/EN)
-    /page.js            # Page d'accueil
-    /a-propos/page.js   # Page À propos
-    /produits-services/page.js # Page Produits & Services
-    /contact/page.js    # Page Contact
-    /layout.js          # Layout principal
-  /api                  # Routes API
-    /contact/route.js   # API pour le formulaire de contact
-
-/components
-  /layout              # Composants de mise en page
-  /ui                  # Composants UI réutilisables
-  /sections            # Sections de pages
-
-/config               # Configuration du site
-/lib                  # Utilitaires et hooks
-/styles               # Styles globaux
-/public               # Assets statiques
-```
+Application web pour CompanyViene avec des formulaires sécurisés et une gestion des candidatures.
 
 ## Fonctionnalités
 
-- Design responsive et moderne
-- Support multilingue (FR/EN)
-- Formulaire de contact avec validation
-- Intégration Google Maps
-- Optimisation SEO
-- Performance optimisée
-- Composants UI réutilisables
-- Système de thème personnalisable
+- Formulaire de contact sécurisé
+- Formulaire de candidature avec upload de fichiers
+- Protection contre les attaques CSRF
+- Protection reCAPTCHA v3
+- Limitation de débit avec Redis
+- Logging structuré
+- En-têtes de sécurité
 
-## Scripts disponibles
+## Prérequis
 
-- `npm run dev` : Lance le serveur de développement
-- `npm run build` : Construit l'application pour la production
-- `npm run start` : Lance l'application en mode production
-- `npm run lint` : Vérifie le code avec ESLint
+- Node.js 18+
+- npm ou yarn
+- Compte Upstash pour Redis
+- Compte Google pour reCAPTCHA v3
+- Serveur SMTP pour l'envoi d'emails
 
-## Contribution
+## Installation
 
-1. Fork le projet
-2. Créez votre branche (`git checkout -b feature/AmazingFeature`)
-3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
+1. Cloner le dépôt :
+
+```bash
+git clone https://github.com/votre-org/companyviene-web-app.git
+cd companyviene-web-app
+```
+
+2. Installer les dépendances :
+
+```bash
+npm install
+```
+
+3. Copier le fichier d'exemple des variables d'environnement :
+
+```bash
+cp .env.example .env.local
+```
+
+4. Configurer les variables d'environnement dans `.env.local` :
+
+- `UPSTASH_REDIS_REST_URL` et `UPSTASH_REDIS_REST_TOKEN` : URL et token d'accès à votre base Redis Upstash
+- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` et `RECAPTCHA_SECRET_KEY` : Clés reCAPTCHA v3 de Google
+- `SMTP_*` : Configuration du serveur SMTP pour l'envoi d'emails
+
+5. Lancer l'application en mode développement :
+
+```bash
+npm run dev
+```
+
+## Sécurité
+
+L'application inclut plusieurs mesures de sécurité :
+
+- Protection CSRF avec des tokens uniques
+- Validation des données avec Zod
+- Limitation de débit par IP
+- En-têtes de sécurité (CSP, HSTS, etc.)
+- Validation des fichiers uploadés
+- Logging des actions importantes
+
+## Structure des dossiers
+
+```
+.
+├── app/                    # Routes et pages Next.js
+│   ├── api/               # Routes API
+│   └── (routes)/          # Pages de l'application
+├── components/            # Composants React
+├── lib/                   # Utilitaires et configurations
+├── public/               # Fichiers statiques
+└── uploads/              # Dossier pour les fichiers uploadés
+```
+
+## Déploiement
+
+1. Construire l'application :
+
+```bash
+npm run build
+```
+
+2. Lancer en production :
+
+```bash
+npm start
+```
 
 ## Licence
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+MIT
 
 ## Contact
 

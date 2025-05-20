@@ -13,6 +13,10 @@ export const metadata = {
   description: "Solutions innovantes pour votre entreprise",
 };
 
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
 export default async function RootLayout({
   children,
   params: { locale },

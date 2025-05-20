@@ -1,134 +1,158 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { z } from "zod";
+import { verifyRecaptcha } from "@/lib/recaptcha";
+import { logger } from "@/lib/logger";
+import { writeFile } from "fs/promises";
+import { join } from "path";
+
+// Schéma de validation des données
+const candidatureSchema = z.object({
+  name: z
+    .string()
+    .min(2)
+    .max(100)
+    .regex(/^[a-zA-ZÀ-ÿ\s-]+$/),
+  email: z.string().email().max(254),
+  phone: z
+    .string()
+    .regex(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)
+    .optional(),
+  message: z.string().min(10).max(1000),
+  csrfToken: z.string(),
+  recaptchaToken: z.string(),
+});
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ALLOWED_FILE_TYPES = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
 
 export async function POST(request: Request) {
   try {
-    // On vérifie si c'est un multipart/form-data
-    const contentType = request.headers.get("content-type") || "";
-    let name = "",
-      email = "",
-      phone = "",
-      message = "";
-    let cvFile: File | null = null;
-    let lettreFile: File | null = null;
+    const formData = await request.formData();
 
-    if (contentType.includes("multipart/form-data")) {
-      const formData = await request.formData();
-      name = formData.get("name") as string;
-      email = formData.get("email") as string;
-      phone = formData.get("phone") as string;
-      message = formData.get("message") as string;
-      cvFile = formData.get("cv") as File;
-      lettreFile = formData.get("lettre") as File;
-    } else {
-      const body = await request.json();
-      name = body.name;
-      email = body.email;
-      phone = body.phone;
-      message = body.message;
+    // Vérifier le token CSRF
+    const csrfToken = request.headers.get("X-CSRF-Token");
+    if (!csrfToken || csrfToken !== formData.get("csrfToken")) {
+      return NextResponse.json(
+        { error: "Token CSRF invalide" },
+        { status: 403 }
+      );
     }
 
-    if (!name || !email || !message) {
+    // Vérifier le token reCAPTCHA
+    const recaptchaToken = request.headers.get("X-Recaptcha-Token");
+    if (!recaptchaToken) {
       return NextResponse.json(
-        { error: "Tous les champs requis doivent être remplis" },
+        { error: "Token reCAPTCHA manquant" },
         { status: 400 }
       );
     }
 
-    const emailRegex = /^[^\s@]+@[^"]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+    if (!recaptchaResult.success) {
       return NextResponse.json(
-        { error: "Format d'email invalide" },
+        { error: "Vérification reCAPTCHA échouée" },
         { status: 400 }
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "node101-eu.n0c.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: "info@companyviene.com",
-        pass: process.env.MAIL_PASSWORD,
+    // Valider les données du formulaire
+    const validatedData = candidatureSchema.parse({
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
+      csrfToken: formData.get("csrfToken"),
+      recaptchaToken: formData.get("recaptchaToken"),
+    });
+
+    // Vérifier les fichiers
+    const cv = formData.get("cv") as File;
+    const lettre = formData.get("lettre") as File;
+
+    if (!cv || !lettre) {
+      return NextResponse.json(
+        { error: "CV et lettre de motivation requis" },
+        { status: 400 }
+      );
+    }
+
+    // Vérifier la taille des fichiers
+    if (cv.size > MAX_FILE_SIZE || lettre.size > MAX_FILE_SIZE) {
+      return NextResponse.json(
+        { error: "Les fichiers ne doivent pas dépasser 5MB" },
+        { status: 400 }
+      );
+    }
+
+    // Vérifier le type des fichiers
+    if (
+      !ALLOWED_FILE_TYPES.includes(cv.type) ||
+      !ALLOWED_FILE_TYPES.includes(lettre.type)
+    ) {
+      return NextResponse.json(
+        { error: "Format de fichier non autorisé" },
+        { status: 400 }
+      );
+    }
+
+    // Générer des noms de fichiers uniques
+    const timestamp = Date.now();
+    const cvFileName = `${validatedData.name
+      .toLowerCase()
+      .replace(/\s+/g, "-")}-cv-${timestamp}.${cv.type.split("/")[1]}`;
+    const lettreFileName = `${validatedData.name
+      .toLowerCase()
+      .replace(/\s+/g, "-")}-lettre-${timestamp}.${lettre.type.split("/")[1]}`;
+
+    // Sauvegarder les fichiers
+    const uploadDir = join(process.cwd(), "uploads");
+    await writeFile(
+      join(uploadDir, cvFileName),
+      Buffer.from(await cv.arrayBuffer())
+    );
+    await writeFile(
+      join(uploadDir, lettreFileName),
+      Buffer.from(await lettre.arrayBuffer())
+    );
+
+    // Logger la soumission
+    await logger.info("Nouvelle candidature reçue", {
+      name: validatedData.name,
+      email: validatedData.email,
+      ip: request.headers.get("x-forwarded-for") || "unknown",
+      userAgent: request.headers.get("user-agent") || "unknown",
+      files: {
+        cv: cvFileName,
+        lettre: lettreFileName,
       },
     });
 
-    // Adresse de réception des candidatures (par défaut info@companyviene.com)
-    const toAddress = "info@companyviene.com";
-    // Pour utiliser une adresse dédiée plus tard, décommente la ligne suivante et commente la précédente :
-    // const toAddress = "recrutement@companyviene.com";
-
-    const adminSubject = `📝 Nouvelle candidature reçue`;
-    const adminHtml = `
-      <h2>Nouvelle candidature via le site CompanyViene</h2>
-      <ul>
-        <li><b>Nom :</b> ${name}</li>
-        <li><b>Email :</b> ${email}</li>
-        <li><b>Téléphone :</b> ${phone || "Non renseigné"}</li>
-      </ul>
-      <h3>Message / Motivation :</h3>
-      <p style="background:#f6f6f6;padding:1em;border-radius:8px;">${message.replace(
-        /\n/g,
-        "<br>"
-      )}</p>
-      <hr>
-      <small>Ce message a été généré automatiquement par le site companyviene.com</small>
-    `;
-
-    // Préparation des pièces jointes
-    const attachments = [];
-    if (cvFile && typeof cvFile === "object" && cvFile.size > 0) {
-      const buffer = Buffer.from(await cvFile.arrayBuffer());
-      attachments.push({
-        filename: cvFile.name,
-        content: buffer,
-      });
-    }
-    if (lettreFile && typeof lettreFile === "object" && lettreFile.size > 0) {
-      const buffer = Buffer.from(await lettreFile.arrayBuffer());
-      attachments.push({
-        filename: lettreFile.name,
-        content: buffer,
-      });
-    }
-
-    await transporter.sendMail({
-      from: `"${name}" <${email}>`,
-      to: toAddress,
-      subject: adminSubject,
-      html: adminHtml,
-      attachments,
-    });
-
-    // Accusé de réception à l'utilisateur
-    const userSubject = "Votre candidature a bien été reçue - CompanyViene";
-    const userHtml = `
-      <p>Bonjour ${name},</p>
-      <p>Nous avons bien reçu votre candidature et vous remercions de l'intérêt que vous portez à CompanyViene.</p>
-      <p>Notre équipe RH étudiera votre profil et vous contactera si votre candidature est retenue.</p>
-      <hr>
-      <p style="font-size:0.95em;">Récapitulatif de votre message :</p>
-      <ul>
-        <li><b>Message / Motivation :</b> ${message.replace(/\n/g, "<br>")}</li>
-      </ul>
-      <br>
-      <p style="font-size:0.9em;color:#888;">Ceci est un accusé de réception automatique, merci de ne pas répondre à cet e-mail.</p>
-      <p>L'équipe CompanyViene</p>
-    `;
-    await transporter.sendMail({
-      from: "CompanyViene <info@companyviene.com>",
-      to: email,
-      subject: userSubject,
-      html: userHtml,
-    });
+    // TODO: Envoyer l'email de notification
 
     return NextResponse.json(
       { message: "Candidature envoyée avec succès" },
       { status: 200 }
     );
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Données invalides", details: error.errors },
+        { status: 400 }
+      );
+    }
+
+    // Logger l'erreur
+    await logger.error("Erreur lors du traitement de la candidature", {
+      error: error instanceof Error ? error.message : "Unknown error",
+      stack: error instanceof Error ? error.stack : undefined,
+    });
+
     return NextResponse.json(
-      { error: "Une erreur est survenue lors de l'envoi de votre candidature" },
+      { error: "Une erreur est survenue" },
       { status: 500 }
     );
   }

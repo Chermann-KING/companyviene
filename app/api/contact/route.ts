@@ -1,96 +1,98 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { z } from "zod";
+import { verifyRecaptcha } from "@/lib/recaptcha";
+import { logger } from "@/lib/logger";
+
+// Schéma de validation des données
+const contactSchema = z.object({
+  name: z
+    .string()
+    .min(2)
+    .max(100)
+    .regex(/^[a-zA-ZÀ-ÿ\s-]+$/),
+  email: z.string().email().max(254),
+  phone: z
+    .string()
+    .regex(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)
+    .optional(),
+  subject: z.string().min(2).max(200),
+  message: z.string().min(10).max(1000),
+  csrfToken: z.string(),
+  recaptchaToken: z.string(),
+});
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { name, email, phone, subject, message } = body;
+    const formData = await request.formData();
 
-    // Validation des champs requis
-    if (!name || !email || !subject || !message) {
+    // Vérifier le token CSRF
+    const csrfToken = request.headers.get("X-CSRF-Token");
+    if (!csrfToken || csrfToken !== formData.get("csrfToken")) {
       return NextResponse.json(
-        { error: "Tous les champs requis doivent être remplis" },
+        { error: "Token CSRF invalide" },
+        { status: 403 }
+      );
+    }
+
+    // Vérifier le token reCAPTCHA
+    const recaptchaToken = request.headers.get("X-Recaptcha-Token");
+    if (!recaptchaToken) {
+      return NextResponse.json(
+        { error: "Token reCAPTCHA manquant" },
         { status: 400 }
       );
     }
 
-    // Validation de l'email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+    if (!recaptchaResult.success) {
       return NextResponse.json(
-        { error: "Format d'email invalide" },
+        { error: "Vérification reCAPTCHA échouée" },
         { status: 400 }
       );
     }
 
-    // Configuration du transporteur SMTP (port 465, SSL)
-    const transporter = nodemailer.createTransport({
-      host: "node101-eu.n0c.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: "info@companyviene.com",
-        pass: process.env.MAIL_PASSWORD,
-      },
+    // Valider les données du formulaire
+    const validatedData = contactSchema.parse({
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+      csrfToken: formData.get("csrfToken"),
+      recaptchaToken: formData.get("recaptchaToken"),
     });
 
-    // Contenu personnalisé pour l'admin
-    const adminSubject = `📬 Nouveau message de contact : ${subject}`;
-    const adminHtml = `
-      <h2>Vous avez reçu un nouveau message via le formulaire de contact :</h2>
-      <ul>
-        <li><b>Nom :</b> ${name}</li>
-        <li><b>Email :</b> ${email}</li>
-        <li><b>Téléphone :</b> ${phone || "Non renseigné"}</li>
-        <li><b>Sujet :</b> ${subject}</li>
-      </ul>
-      <h3>Message :</h3>
-      <p style="background:#f6f6f6;padding:1em;border-radius:8px;">${message.replace(
-        /\n/g,
-        "<br>"
-      )}</p>
-      <hr>
-      <small>Ce message a été généré automatiquement par le site companyviene.com</small>
-    `;
-
-    // Envoi de l'e-mail à l'admin
-    await transporter.sendMail({
-      from: `"${name}" <${email}>`,
-      to: "info@companyviene.com",
-      subject: adminSubject,
-      html: adminHtml,
+    // Logger la soumission
+    await logger.info("Nouveau message de contact reçu", {
+      name: validatedData.name,
+      email: validatedData.email,
+      subject: validatedData.subject,
+      ip: request.headers.get("x-forwarded-for") || "unknown",
+      userAgent: request.headers.get("user-agent") || "unknown",
     });
 
-    // Accusé de réception à l'utilisateur
-    const userSubject = "Votre message a bien été reçu - CompanyViene";
-    const userHtml = `
-      <p>Bonjour ${name},</p>
-      <p>Nous avons bien reçu votre message et vous remercions de nous avoir contactés.</p>
-      <p>Notre équipe vous répondra dans les plus brefs délais.</p>
-      <hr>
-      <p style="font-size:0.95em;">Récapitulatif de votre message :</p>
-      <ul>
-        <li><b>Sujet :</b> ${subject}</li>
-        <li><b>Message :</b> ${message.replace(/\n/g, "<br>")}</li>
-      </ul>
-      <br>
-      <p style="font-size:0.9em;color:#888;">Ceci est un accusé de réception automatique, merci de ne pas répondre à cet e-mail.</p>
-      <p>L'équipe CompanyViene</p>
-    `;
-    await transporter.sendMail({
-      from: "CompanyViene <info@companyviene.com>",
-      to: email,
-      subject: userSubject,
-      html: userHtml,
-    });
+    // TODO: Envoyer l'email de notification
 
     return NextResponse.json(
       { message: "Message envoyé avec succès" },
       { status: 200 }
     );
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Données invalides", details: error.errors },
+        { status: 400 }
+      );
+    }
+
+    // Logger l'erreur
+    await logger.error("Erreur lors du traitement du message de contact", {
+      error: error instanceof Error ? error.message : "Unknown error",
+      stack: error instanceof Error ? error.stack : undefined,
+    });
+
     return NextResponse.json(
-      { error: "Une erreur est survenue lors de l'envoi de votre message" },
+      { error: "Une erreur est survenue" },
       { status: 500 }
     );
   }
