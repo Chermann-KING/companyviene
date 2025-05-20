@@ -29,7 +29,7 @@ export default async function Page({
     notFound();
   }
 
-  const t = await getTranslations({ locale, messages });
+  const t = await getTranslations({ locale });
 
   // Trouver la clé logique correspondant au slug et à la locale
   const pageKey = Object.keys(SLUGS).find(
