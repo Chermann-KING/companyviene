@@ -4,6 +4,15 @@ import React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
+// Chemins des images
+const imagePaths = {
+  digitalisation: "/assets/images/domaine-digitalisation.png",
+  optimisation: "/assets/images/domaine-optimisation.png",
+  durabilite: "/assets/images/domaine-durabilite.png",
+  performance: "/assets/images/domaine-performance.png",
+  energie: "/assets/images/domaine-energie.png",
+};
+
 // Définition du type pour les données des domaines
 type Domaine = {
   id: number;
@@ -18,32 +27,32 @@ const domaines: Domaine[] = [
   {
     id: 1,
     titleKey: "digitalisation.title",
-    imageSrc: "/assets/images/domaine-digitalisation.png",
+    imageSrc: imagePaths.digitalisation,
     descriptionKey: "digitalisation.description",
   },
   {
     id: 2,
     titleKey: "optimisation.title",
-    imageSrc: "/assets/images/domaine-optimisation.png",
+    imageSrc: imagePaths.optimisation,
     descriptionKey: "optimisation.description",
   },
   {
     id: 3,
     titleKey: "durabilite.title",
-    imageSrc: "/assets/images/domaine-durabilite.png",
+    imageSrc: imagePaths.durabilite,
     descriptionKey: "durabilite.description",
   },
   {
     id: 4,
     titleKey: "performance.title",
-    imageSrc: "/assets/images/domaine-performance.png",
+    imageSrc: imagePaths.performance,
     descriptionKey: "performance.description",
   },
   {
     id: 5,
     titleKey: "energie.title",
     subtitle: "Production - Distribution - Transport - Fourniture",
-    imageSrc: "/assets/images/domaine-energie.png",
+    imageSrc: imagePaths.energie,
     descriptionKey: "energie.description",
   },
 ];
@@ -68,9 +77,10 @@ export default function DomainesActivites() {
               key={domaine.id}
               className=" w-[350px] flex flex-col p-6 rounded-lg shadow-lg transition-shadow duration-300"
             >
-              {/* Image circulaire */}
-              <div className="relative self-start w-24 h-24  border-4 border-gray-300 rounded-full overflow-hidden mb-6">
-                <Image
+              {/* Image circulaire */}{" "}
+              <div className="relative self-start w-24 h-24 border-4 border-gray-300 rounded-full overflow-hidden mb-6">
+                <img
+                  className="object-cover w-full h-full"
                   src={domaine.imageSrc}
                   alt={t(`${domaine.titleKey}`)}
                   fill
@@ -80,7 +90,6 @@ export default function DomainesActivites() {
                   loading="lazy"
                 />
               </div>
-
               {/* Titre et sous-titre */}
               <div className="flex flex-col items-center gap-1">
                 <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
@@ -92,7 +101,6 @@ export default function DomainesActivites() {
                   </h4>
                 )}
               </div>
-
               {/* Description */}
               <p className="mt-6 text-gray-600 text-xl max-w-lg">
                 {t(`${domaine.descriptionKey}`)}
