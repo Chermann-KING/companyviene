@@ -19,7 +19,7 @@ export default async function Page({
 }: {
   params: { locale: string; slug: string };
 }) {
-  const { locale, slug } = params;
+  const { locale, slug } = await params;
 
   // Charge explicitement les messages pour la locale
   let messages;
