@@ -247,7 +247,7 @@ export default function PrivacyPage() {
           name="description"
           content="Politique de confidentialité de CompanyViene"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="assets/icons/favicon.ico" />
       </Head>
 
       <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">

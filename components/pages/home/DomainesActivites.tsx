@@ -79,13 +79,12 @@ export default function DomainesActivites() {
             >
               {/* Image circulaire */}{" "}
               <div className="relative self-start w-24 h-24 border-4 border-gray-300 rounded-full overflow-hidden mb-6">
-                <img
+                <Image
                   className="object-cover w-full h-full"
                   src={domaine.imageSrc}
                   alt={t(`${domaine.titleKey}`)}
                   fill
                   sizes="(max-width: 768px) 128px, (max-width: 1024px) 128px, 128px"
-                  className="object-cover"
                   quality={75}
                   loading="lazy"
                 />
