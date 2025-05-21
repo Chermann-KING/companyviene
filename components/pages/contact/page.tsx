@@ -36,10 +36,12 @@ function Contact() {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto flex justify-center items-start gap-8">
-        <ContactForm />
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center md:items-start gap-8 px-4">
+        <div className="w-full md:w-2/3">
+          <ContactForm />
+        </div>
         {/* Contact Info */}
-        <div className="w-1/3 text-left">
+        <div className="w-full md:w-1/3 text-left mt-8 md:mt-0">
           <h3 className="text-lg font-semibold mb-4">{t("address.title")}</h3>
           <div className="space-y-2">
             <div className="flex items-center">

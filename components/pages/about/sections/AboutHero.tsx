@@ -11,10 +11,10 @@ export default function AboutHero() {
       {/* Content Container */}
       <div className="w-full max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 lg:pr-0 py-12 lg:py-16">
         {/* Content wrapper */}
-        <div className="relative flex flex-col lg:flex-row items-center w-full">
+        <div className="relative flex flex-col lg:flex-row items-center w-full px-4 sm:px-0">
           {/* Texte */}
           <div className="w-full lg:w-1/2 mb-12 lg:mb-0">
-            <h1 className="text-4xl tracking-tight font-extrabold text-secondary-main sm:text-5xl md:text-6xl leading-none  max-w-lg">
+            <h1 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl leading-none max-w-lg">
               <span>{t("title")} </span>
               <span className="">
                 <span className="text-primary-main">{t("titleHighlight")}</span>

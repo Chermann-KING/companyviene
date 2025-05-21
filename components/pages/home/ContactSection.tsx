@@ -201,12 +201,12 @@ function ContactForm({ onSuccess }: { onSuccess: () => void }) {
   };
 
   return (
-    <section className="w-full mx-auto">
+    <section className="w-full mx-auto px-4 sm:px-0">
       <Script
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="afterInteractive"
       />
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6 max-w-full">
         {/* Champ honeypot caché */}
         <div className="hidden">
           <input

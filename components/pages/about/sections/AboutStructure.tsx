@@ -16,11 +16,11 @@ export default function AboutStructure() {
         </h2>
 
         {/* <div className="space-y-16"> */}
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-24">
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
           {/* EnerViene */}
-          <div className="flex flex-col gap-4 justify-start items-start text-justify">
-            <div className="flex items-center gap-6">
-              <div className="relative w-20 h-20 border-4 border-gray-300 rounded-full overflow-hidden">
+          <div className="flex flex-col gap-4 justify-start items-start text-justify px-2 sm:px-0">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-2">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 border-4 border-gray-300 rounded-full overflow-hidden">
                 <Image
                   src="/assets/images/icon-Viene.png"
                   alt="Picto companyViene"

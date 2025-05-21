@@ -62,16 +62,19 @@ export default function AboutTeam() {
           </h2>
 
           {/* Grille des membres de l'équipe */}
-          <div className="mt-6 flex flex-wrap justify-center gap-12">
+          <div className="mt-6 flex flex-wrap justify-center gap-8 md:gap-12">
             {team.map((member) => (
-              <div key={member.id} className="team_member w-1/3">
+              <div
+                key={member.id}
+                className="team_member w-full sm:w-2/5 md:w-1/3 px-2 mb-8 sm:mb-6"
+              >
                 <div className="flex flex-col gap-2">
                   {/* Nom et rôle */}
                   <div>
-                    <h4 className="text-xl md:text-2xl font-bold text-left leading-none text-gray-800 uppercase">
+                    <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-left leading-none text-gray-800 uppercase">
                       {member.name}
                     </h4>
-                    <p className="text-xl text-gray-600 whitespace-pre-line">
+                    <p className="text-base sm:text-lg md:text-xl text-gray-600 whitespace-pre-line">
                       {member.role}
                     </p>
                   </div>

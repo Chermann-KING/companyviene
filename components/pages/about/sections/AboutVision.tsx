@@ -40,14 +40,14 @@ export default function AboutVision() {
 
         {/* Valeurs */}
         {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> */}
-        <div className="mt-6 flex flex-wrap justify-center gap-6">
+        <div className="mt-6 flex flex-wrap justify-center gap-4 sm:gap-6">
           {values.map((value) => (
             <div
               key={value.id}
-              className="flex flex-col p-6 rounded-lg shadow-lg transition-shadow duration-300"
+              className="flex flex-col p-4 sm:p-6 rounded-lg shadow-lg transition-shadow duration-300 w-full sm:w-[45%] md:w-[30%] mb-4"
             >
               {/* Icône */}
-              <div className="relative self-start w-24 h-24  border-4 border-gray-300 rounded-full overflow-hidden mb-6">
+              <div className="relative self-start w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-4 border-gray-300 rounded-full overflow-hidden mb-4 sm:mb-6">
                 <Image
                   src={value.icon}
                   alt={t(`values.${value.id}.title`)}
