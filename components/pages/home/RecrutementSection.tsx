@@ -30,21 +30,38 @@ function CandidatureModal({
 
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
       {/* Contenu de la modal */}
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg relative">
+      <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-2xl relative mx-4">
         {/* Bouton de fermeture modal */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-3xl"
+          className="absolute top-4 right-6 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+          aria-label="Fermer"
         >
-          &times;
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
         </button>
         {/* Titre modal */}
-        <h3 className=" leading-none text-2xl tracking-tight font-extrabold text-secondary-main sm:text-3xl md:text-4xl mb-6">
-          <span>{t("modalTitle")} </span>
-          <span className=" text-primary-main">{t("modalTitleHighlight")}</span>
-        </h3>
+        <div className="mb-8">
+          <h3 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl">
+            <span>{t("modalTitle")} </span>
+            <span className="text-primary-main">
+              {t("modalTitleHighlight")}
+            </span>
+          </h3>
+        </div>
         {/* Formulaire de candidature */}
         <CandidatureForm onSuccess={onClose} />
       </div>
@@ -522,42 +539,50 @@ export default function RecrutementSection() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto my-8 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center md:items-stretch gap-8 md:gap-12">
+    <section className="py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           {/* Image à gauche */}
-          <div className="w-full md:w-1/2 h-64 md:h-auto relative rounded-lg overflow-hidden">
+          <div className="w-full lg:w-1/2 h-64 md:h-96 lg:h-[500px] relative rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center mb-8 lg:mb-0">
             <Image
               src="/assets/images/comapnyviene-recrutement.png"
               alt="CompanyViene Recrutement - Poignée de main"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
-              className="object-cover"
-              quality={75}
+              className="object-cover object-center"
+              quality={90}
               priority
             />
           </div>
 
           {/* Contenu texte à droite */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center">
+          <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6 md:space-y-8">
             {/* Titre */}
-            <h2 className=" leading-none text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl mb-6">
-              <span>{t("title")}</span>
-              <span className="flex gap-3">
-                <span>{t("titleOf")} </span>
-                <span className=" text-primary-main">
-                  {t("titleHighlight")}
+            <div className="space-y-2 md:space-y-4">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight font-extrabold text-secondary-main">
+                <span className="block">{t("title")}</span>
+                <span className="flex items-center gap-2 md:gap-3 mt-2">
+                  <span>{t("titleOf")}</span>
+                  <span className="text-primary-main">
+                    {t("titleHighlight")}
+                  </span>
                 </span>
-              </span>
-            </h2>
+              </h2>
+            </div>
 
             {/* Description */}
-            <p className=" text-gray-600 text-xl text-left mb-6">
+            <p className="text-gray-600 text-base md:text-xl leading-relaxed">
               {t("description")}
             </p>
 
             {/* Bouton de candidature */}
-            <CtaButton onClick={() => setOpen(true)} label={t("cta")} />
+            <div className="mt-2 md:mt-4">
+              <CtaButton
+                onClick={() => setOpen(true)}
+                label={t("cta")}
+                className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
+              />
+            </div>
           </div>
         </div>
       </div>

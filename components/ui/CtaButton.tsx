@@ -7,6 +7,7 @@ interface CtaButtonProps {
   label: string;
   Icon?: ReactNode; // Icône optionnelle (par défaut flèche si non fourni)
   onClick?: () => void; // Fonction de rappel pour le clic (optionnelle)
+  className?: string; // Classes CSS optionnelles
   // disabled?: boolean; // État désactivé (optionnel)
 }
 
@@ -15,6 +16,7 @@ export default function CtaButton({
   label,
   Icon,
   onClick,
+  className = "",
 }: CtaButtonProps) {
   const content = (
     <div className="flex items-center">
@@ -30,7 +32,7 @@ export default function CtaButton({
       <button
         type="button"
         onClick={onClick}
-        className="inline-flex items-center group text-lg font-medium hover:text-primary-dark transition-colors duration-300"
+        className={`inline-flex items-center group text-lg font-medium hover:text-primary-dark transition-colors duration-300 ${className}`}
       >
         {content}
       </button>
@@ -39,7 +41,7 @@ export default function CtaButton({
   return (
     <Link
       href={href || "/"}
-      className="inline-flex items-center group text-lg font-medium hover:text-primary-dark transition-colors duration-300"
+      className={`inline-flex items-center group text-lg font-medium hover:text-primary-dark transition-colors duration-300 ${className}`}
     >
       {content}
     </Link>

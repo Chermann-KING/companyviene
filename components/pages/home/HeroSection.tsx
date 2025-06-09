@@ -8,7 +8,7 @@ export default function HeroSection() {
   const t = useTranslations("hero");
 
   return (
-    <div className="relative bg-white overflow-hidden h-[calc(100vh-64px)]">
+    <div className="relative bg-white overflow-hidden h-[calc(100vh-80px)] flex items-center justify-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -16,37 +16,42 @@ export default function HeroSection() {
           alt="Hero banner CompanyViene"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-center"
+          sizes="100vw"
+          quality={90}
         />
-        {/* Overlay for better text contrast if needed */}
-        <div className="absolute inset-0 bg-white/30"></div>
+        {/* Overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/60 to-white/10"></div>
       </div>
 
       {/* Content Container */}
-      <div className="max-w-7xl mx-auto h-full">
-        <div className="relative z-10 flex items-center h-full px-4 sm:px-6 lg:px-8">
-          {/* Content wrapper */}
-          <div className="w-full lg:w-1/2">
-            {/* Title */}
-            <h1 className="text-4xl tracking-tight font-extrabold leading-[1.1] text-secondary-main sm:text-5xl md:text-6xl mb-12">
-              <div className="block">{t("title.line1")}</div>
-              <div className="block">{t("title.line2")}</div>
-              <div className="block">
-                <span>{t("title.line3")} </span>
-                <span className="text-primary-main">
-                  {t("title.engineering")}
-                </span>
-              </div>
-              <div className="block">
-                <span>{t("title.line4")} </span>
-                <span className="text-primary-main">
-                  {t("title.digitalisation")}
-                </span>
-              </div>
-            </h1>
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center md:items-start h-full px-4 sm:px-8">
+        <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+          {/* Title */}
+          <h1 className="mt-48 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-extrabold leading-tight text-secondary-main">
+            <div className="block mb-2">{t("title.line1")}</div>
+            <div className="block mb-2">{t("title.line2")}</div>
+            <div className="block mb-2">
+              <span>{t("title.line3")} </span>
+              <span className="text-primary-main font-bold">
+                {t("title.engineering")}
+              </span>
+            </div>
+            <div className="block">
+              <span>{t("title.line4")} </span>
+              <span className="text-primary-main font-bold">
+                {t("title.digitalisation")}
+              </span>
+            </div>
+          </h1>
 
-            {/* Call to action buttons */}
-            <CtaButton href={"/produits-services"} label={t("cta")} />
+          {/* Call to action buttons */}
+          <div className="mt-4">
+            <CtaButton
+              href={"/produits-services"}
+              label={t("cta")}
+              className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
+            />
           </div>
         </div>
       </div>
