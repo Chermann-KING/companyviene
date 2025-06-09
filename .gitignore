@@ -58,3 +58,4 @@ export/
 # Optional: Ignore storybook if used
 .storybook-out/
 .storybook-static/
+.vercel

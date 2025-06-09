@@ -5,12 +5,14 @@ import RecrutementSection from "@/components/pages/home/RecrutementSection";
 import Map from "@/components/ui/Map";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-function Home({ params }: PageProps) {
+async function Home({ params }: PageProps) {
+  const { locale } = await params;
+
   return (
     <>
       <HeroSection />

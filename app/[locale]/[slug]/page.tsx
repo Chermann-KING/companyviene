@@ -17,7 +17,7 @@ const SLUGS = {
 export default async function Page({
   params,
 }: {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
 

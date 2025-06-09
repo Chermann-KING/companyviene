@@ -13,18 +13,7 @@ import { ReactNode } from "react";
 type LanguageSelectorProps = {
   locales: string[];
   getLocalizedPath?: (locale: string, anchor?: string) => string;
-  t?: {
-    <TargetKey extends any>(
-      key: TargetKey,
-      values?: TranslationValues,
-      formats?: Formats
-    ): string;
-    rich<TargetKey extends any>(
-      key: TargetKey,
-      values?: RichTranslationValues,
-      formats?: Formats
-    ): ReactNode;
-  };
+  t?: any;
 };
 
 export default function LanguageSelector({
