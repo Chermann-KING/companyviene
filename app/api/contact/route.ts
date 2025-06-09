@@ -1,53 +1,34 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { verifyRecaptcha } from "@/lib/recaptcha";
-import { logger } from "@/lib/logger";
 
-// Schéma de validation des données
+// Schéma de validation des données (simplifié)
 const contactSchema = z.object({
-  name: z
-    .string()
-    .min(2)
-    .max(100)
-    .regex(/^[a-zA-ZÀ-ÿ\s-]+$/),
+  name: z.string().min(2).max(100),
   email: z.string().email().max(254),
-  phone: z
-    .string()
-    .regex(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)
-    .optional(),
+  phone: z.string().optional(),
   subject: z.string().min(2).max(200),
   message: z.string().min(10).max(1000),
-  csrfToken: z.string(),
-  recaptchaToken: z.string(),
 });
 
 export async function POST(request: Request) {
   try {
-    // Lire les données JSON au lieu de FormData
+    // Lire les données JSON
     const body = await request.json();
 
-    // Simplifier pour debug - pas de CSRF ni reCAPTCHA pour l'instant
+    console.log("=== DEBUT DEBUG CONTACT ===");
     console.log("Données reçues:", body);
 
-    // Valider les données du formulaire
+    // Valider les données du formulaire (version simplifiée)
     const validatedData = contactSchema.parse({
       name: body.name,
       email: body.email,
       phone: body.phone || "",
       subject: body.subject,
       message: body.message,
-      csrfToken: "debug", // Temporaire
-      recaptchaToken: "debug", // Temporaire
     });
 
-    // Logger la soumission
-    await logger.info("Nouveau message de contact reçu", {
-      name: validatedData.name,
-      email: validatedData.email,
-      subject: validatedData.subject,
-      ip: request.headers.get("x-forwarded-for") || "unknown",
-      userAgent: request.headers.get("user-agent") || "unknown",
-    });
+    console.log("Données validées:", validatedData);
+    console.log("=== FIN DEBUG CONTACT ===");
 
     // TODO: Envoyer l'email de notification
 
@@ -56,23 +37,25 @@ export async function POST(request: Request) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Erreur dans /api/contact:", error);
+    console.error("=== ERREUR CONTACT ===");
+    console.error("Type d'erreur:", error?.constructor?.name);
+    console.error(
+      "Message d'erreur:",
+      error instanceof Error ? error.message : "Unknown error"
+    );
+    console.error("Stack:", error instanceof Error ? error.stack : undefined);
+    console.error("=== FIN ERREUR ===");
 
     if (error instanceof z.ZodError) {
+      console.error("Erreurs de validation:", error.errors);
       return NextResponse.json(
         { error: "Données invalides", details: error.errors },
         { status: 400 }
       );
     }
 
-    // Logger l'erreur
-    await logger.error("Erreur lors du traitement du message de contact", {
-      error: error instanceof Error ? error.message : "Unknown error",
-      stack: error instanceof Error ? error.stack : undefined,
-    });
-
     return NextResponse.json(
-      { error: "Une erreur est survenue" },
+      { error: "Une erreur est survenue lors de l'envoi du message" },
       { status: 500 }
     );
   }
