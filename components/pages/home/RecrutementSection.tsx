@@ -102,88 +102,32 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
 
   // Générer un token CSRF au chargement du composant
   useEffect(() => {
-    console.log("🔧 Génération du token CSRF...");
     const token = Math.random().toString(36).substring(2);
     setCsrfToken(token);
-    console.log("✅ Token CSRF généré:", token);
   }, []);
 
-  // Vérifier le nombre de soumissions
+  // ?Vérifier le nombre de soumissions (supprimé localStorage pour Vercel)
   useEffect(() => {
-    console.log("🔧 Vérification du nombre de soumissions...");
-    const lastSubmission = localStorage.getItem("lastSubmission");
-    const submissionCount = localStorage.getItem("submissionCount");
-
-    if (lastSubmission && submissionCount) {
-      const timeSinceLastSubmission = Date.now() - parseInt(lastSubmission);
-      if (timeSinceLastSubmission < SUBMISSION_TIMEOUT) {
-        setSubmitCount(parseInt(submissionCount));
-        console.log("⚠️ Submissions précédentes trouvées:", submissionCount);
-      } else {
-        localStorage.removeItem("lastSubmission");
-        localStorage.removeItem("submissionCount");
-        console.log("✅ Submissions expirées, nettoyage effectué");
-      }
-    } else {
-      console.log("✅ Aucune soumission précédente");
-    }
+    setSubmitCount(0);
   }, []);
 
-  // Initialiser reCAPTCHA
+  // !Initialiser reCAPTCHA (désactivé temporairement)
   useEffect(() => {
-    console.log("🔧 Initialisation reCAPTCHA...");
-    if (typeof window !== "undefined" && window.grecaptcha) {
-      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string;
-      console.log("🔑 Site key reCAPTCHA:", siteKey ? "définie" : "manquante");
-
-      if (!siteKey) {
-        console.error("❌ Clé reCAPTCHA manquante");
-        return;
-      }
-
-      window.grecaptcha.ready(() => {
-        console.log("🔧 reCAPTCHA ready, génération du token...");
-        window.grecaptcha
-          .execute(siteKey, {
-            action: "candidature_form",
-          })
-          .then((token: string) => {
-            setRecaptchaToken(token);
-            console.log(
-              "✅ Token reCAPTCHA généré:",
-              token.substring(0, 20) + "..."
-            );
-          })
-          .catch((error: any) => {
-            console.error("❌ Erreur génération token reCAPTCHA:", error);
-          });
-      });
-    } else {
-      console.log("⚠️ reCAPTCHA pas encore chargé");
-    }
+    // Désactivé temporairement pour les tests
+    setRecaptchaToken("test-token");
   }, []);
 
   const validateFile = (file: File, name: string) => {
-    console.log(`🔧 Validation fichier ${name}:`, {
-      name: file.name,
-      size: file.size,
-      type: file.type,
-    });
-
     if (file.size > MAX_FILE_SIZE) {
-      console.error(`❌ Fichier ${name} trop gros:`, file.size);
       return t("form.validation.fileTooLarge");
     }
     if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-      console.error(`❌ Type fichier ${name} non autorisé:`, file.type);
       return t("form.validation.fileTypeNotAllowed");
     }
-    console.log(`✅ Fichier ${name} valide`);
     return null;
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("🔧 Changement de fichier:", e.target.name);
     const { name, files } = e.target;
     if (files && files[0]) {
       const file = files[0];
@@ -196,11 +140,9 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
 
       if (name === "cv") {
         setCv(file);
-        console.log("✅ CV sélectionné:", file.name);
       }
       if (name === "lettre") {
         setLettre(file);
-        console.log("✅ Lettre sélectionnée:", file.name);
       }
       if (errors[name]) {
         setErrors((prev) => {
@@ -213,7 +155,6 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
   };
 
   const validateForm = () => {
-    console.log("🔧 Validation du formulaire...");
     const newErrors: { [key: string]: string } = {};
 
     // Validation du nom
@@ -254,79 +195,40 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
 
     // Vérification du honeypot
     if (honeypot) {
-      console.error("❌ Honeypot detecté:", honeypot);
       throw new Error("Spam détecté");
     }
 
     // Vérification du nombre de soumissions
     if (submitCount >= MAX_SUBMISSIONS) {
-      console.error("❌ Trop de soumissions:", submitCount);
       throw new Error(t("form.validation.tooManySubmissions"));
     }
 
-    console.log("📊 Erreurs de validation:", Object.keys(newErrors));
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    console.log("🚀 === DÉBUT SOUMISSION FORMULAIRE ===");
-    console.log("🎯 Event reçu:", e);
-
-    // ALERTE POUR CONFIRMER QUE LA FONCTION SE DÉCLENCHE
-    alert("🚀 FORMULAIRE SOUMIS ! (handleSubmit appelé)");
-
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("✅ preventDefault() appelé");
 
     if (isSubmitting) {
-      console.log("⚠️ Soumission déjà en cours, abandon");
       return;
     }
 
     setIsSubmitting(true);
-    console.log("🔧 État: soumission en cours");
-
     setShowErrors(true);
-    console.log("🔧 Affichage des erreurs activé");
 
     try {
-      console.log("🔧 Début validation...");
       if (!validateForm()) {
-        console.log("❌ Validation échouée, abandon");
         setIsSubmitting(false);
         return;
       }
-      console.log("✅ Validation réussie");
 
-      console.log("🔧 Définition du statut 'loading'...");
       setStatus({ type: "loading", title: "", message: t("form.submitting") });
 
-      // Mettre à jour le token reCAPTCHA
-      console.log("🔧 Mise à jour token reCAPTCHA...");
-      // if (window.grecaptcha) {
-      //   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string;
-      //   if (!siteKey) {
-      //     throw new Error("Clé reCAPTCHA manquante");
-      //   }
-      //   console.log("🔧 Exécution reCAPTCHA...");
-      //   const newToken = await window.grecaptcha.execute(siteKey, {
-      //     action: "candidature_form",
-      //   });
-      //   setRecaptchaToken(newToken);
-      //   console.log(
-      //     "✅ Nouveau token reCAPTCHA:",
-      //     newToken.substring(0, 20) + "..."
-      //   );
-      // } else {
-      //   console.warn("⚠️ reCAPTCHA non disponible");
-      // }
-
-      console.log("🔧 Skip reCAPTCHA pour test");
+      // !Utiliser un token de test pour le moment
       setRecaptchaToken("test-token");
 
       // Création du FormData
-      console.log("🔧 Création du FormData...");
       const data = new FormData();
       data.append("name", formData.name.trim());
       data.append("email", formData.email.trim());
@@ -335,27 +237,12 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
       data.append("csrfToken", csrfToken);
       data.append("recaptchaToken", recaptchaToken);
 
-      console.log("📝 Données ajoutées au FormData:", {
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
-        messageLength: formData.message.trim().length,
-        csrfToken: csrfToken,
-        recaptchaTokenLength: recaptchaToken.length,
-      });
-
       if (cv) {
         data.append("cv", cv);
-        console.log("📎 CV ajouté au FormData:", cv.name);
-      } else {
-        console.error("❌ Pas de CV à ajouter");
       }
 
       if (lettre) {
         data.append("lettre", lettre);
-        console.log("📎 Lettre ajoutée au FormData:", lettre.name);
-      } else {
-        console.error("❌ Pas de lettre à ajouter");
       }
 
       // Préparation des headers
@@ -363,62 +250,33 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
         "X-CSRF-Token": csrfToken,
         "X-Recaptcha-Token": recaptchaToken,
       };
-      console.log("📋 Headers préparés:", headers);
 
       // Appel API
-      console.log("🌐 === DÉBUT APPEL API ===");
-      console.log(
-        "📍 URL complète:",
-        window.location.origin + "/api/candidature"
-      );
-      console.log("🔧 Method: POST");
-      console.log("🔧 Headers:", headers);
-      console.log("🔧 Body: FormData avec", Array.from(data.keys()).join(", "));
-
       const response = await fetch("/api/candidature", {
         method: "POST",
         headers: headers,
         body: data,
       });
 
-      console.log("📨 === RÉPONSE API REÇUE ===");
-      console.log("🔢 Status:", response.status);
-      console.log("📝 StatusText:", response.statusText);
-      console.log("✅ OK:", response.ok);
-      console.log(
-        "📋 Headers réponse:",
-        Object.fromEntries(response.headers.entries())
-      );
-
       if (!response.ok) {
         let errorData;
         try {
           errorData = await response.text();
-          console.error("❌ Erreur réponse (text):", errorData);
         } catch (parseError) {
-          console.error("❌ Erreur parse réponse:", parseError);
           errorData = `Erreur ${response.status}`;
         }
         throw new Error(`Erreur ${response.status}: ${errorData}`);
       }
 
-      let result;
       try {
-        result = await response.json();
-        console.log("✅ Réponse API (JSON):", result);
+        await response.json();
       } catch (parseError) {
-        console.error("❌ Erreur parse JSON:", parseError);
-        const textResult = await response.text();
-        console.log("📝 Réponse API (text):", textResult);
-        result = { message: "Succès" };
+        // Si la réponse n'est pas JSON, c'est probablement un succès
       }
 
       // Mettre à jour le compteur de soumissions
       const newCount = submitCount + 1;
       setSubmitCount(newCount);
-      localStorage.setItem("submissionCount", newCount.toString());
-      localStorage.setItem("lastSubmission", Date.now().toString());
-      console.log("📊 Compteur soumissions mis à jour:", newCount);
 
       setStatus({
         type: "success",
@@ -431,20 +289,8 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
       setLettre(null);
       setShowErrors(false);
       setTimeout(onSuccess, 2000);
-
-      console.log("🎉 === SOUMISSION RÉUSSIE ===");
     } catch (error) {
-      console.error("💥 === ERREUR SOUMISSION ===");
-      console.error("Erreur complète:", error);
-      console.error("Type erreur:", typeof error);
-      console.error(
-        "Message:",
-        error instanceof Error ? error.message : "Unknown"
-      );
-      console.error(
-        "Stack:",
-        error instanceof Error ? error.stack : "No stack"
-      );
+      console.error("Erreur lors de la soumission:", error);
 
       setStatus({
         type: "error",
@@ -454,12 +300,9 @@ function CandidatureForm({ onSuccess }: { onSuccess: () => void }) {
       });
     } finally {
       setIsSubmitting(false);
-      console.log("🔧 État: soumission terminée");
-      console.log("🏁 === FIN SOUMISSION FORMULAIRE ===");
     }
   };
 
-  // Le reste du JSX reste identique...
   return (
     <section className="w-full mx-auto">
       <Script
