@@ -108,19 +108,23 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: emailUser,
       to: emailUser,
-      subject: `CompanyViene Form: ${validatedData.subject}`,
+      subject: `Contact Viene Form: ${validatedData.subject}`,
       html: `
-        <h2>Nouveau message de contact</h2>
-        <p><strong>Nom:</strong> ${validatedData.name}</p>
-        <p><strong>Email:</strong> ${validatedData.email}</p>
+      <h2>🚀 Nouvelle prise de contact reçue</h2>
+      <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <p><strong>👤 Nom :</strong> ${validatedData.name}</p>
+        <p><strong>📧 Email :</strong> ${validatedData.email}</p>
         ${
           validatedData.phone
-            ? `<p><strong>Téléphone:</strong> ${validatedData.phone}</p>`
+            ? `<p><strong>📞 Téléphone :</strong> ${validatedData.phone}</p>`
             : ""
         }
-        <p><strong>Sujet:</strong> ${validatedData.subject}</p>
-        <p><strong>Message:</strong></p>
+        <p><strong>💡Sujet :</strong> ${validatedData.subject}</p>
+        <p><strong>💬 Message :</strong></p>
+        <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #2563eb;">
         <p>${validatedData.message.replace(/\n/g, "<br>")}</p>
+        </div>
+      </div>
       `,
     };
 

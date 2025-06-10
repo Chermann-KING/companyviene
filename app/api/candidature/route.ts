@@ -4,6 +4,7 @@ import { verifyRecaptcha } from "@/lib/recaptcha";
 import { logger } from "@/lib/logger";
 import { writeFile } from "fs/promises";
 import { join } from "path";
+import nodemailer from "nodemailer";
 
 // Schéma de validation des données
 const candidatureSchema = z.object({
@@ -119,6 +120,110 @@ export async function POST(request: Request) {
       Buffer.from(await lettre.arrayBuffer())
     );
 
+    // ✅ Configuration email (même que contact)
+    console.log("Configuration de l'email de candidature...");
+    const emailUser = process.env.EMAIL_USER;
+    const emailPassword = process.env.EMAIL_PASSWORD;
+
+    if (!emailUser || !emailPassword) {
+      console.error("Variables d'environnement email manquantes");
+      return NextResponse.json(
+        { error: "Configuration email manquante" },
+        { status: 500 }
+      );
+    }
+
+    // ✅ Créer le transporteur
+    console.log("Configuration du transporteur...");
+    let transporter;
+    try {
+      transporter = nodemailer.createTransport({
+        host: "node101-eu.n0c.com", // ✅ Serveur SMTP
+        port: 587, // ✅ Port SMTP sécurisé
+        secure: false, // ✅ true pour 465, false pour 587
+        auth: {
+          user: emailUser,
+          pass: emailPassword,
+        },
+        // Paramètres additionnels pour la sécurité
+        tls: {
+          ciphers: "SSLv3",
+          rejectUnauthorized: false,
+        },
+      });
+      console.log("Transporteur créé avec succès");
+    } catch (error) {
+      console.error("Erreur création transporteur:", error);
+      return NextResponse.json(
+        { error: "Erreur configuration email" },
+        { status: 500 }
+      );
+    }
+
+    // ✅ Convertir fichiers en attachements
+    const cvBuffer = Buffer.from(await cv.arrayBuffer());
+    const lettreBuffer = Buffer.from(await lettre.arrayBuffer());
+
+    // ✅ Préparer l'email avec pièces jointes
+    const mailOptions = {
+      from: emailUser,
+      to: emailUser,
+      subject: `Application Viene Form ${validatedData.name}`,
+      html: `
+        <h2 style="color: #2563eb;">🚀 Nouvelle candidature reçue</h2>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <p><strong>👤 Nom :</strong> ${validatedData.name}</p>
+          <p><strong>📧 Email :</strong> ${validatedData.email}</p>
+          ${
+            validatedData.phone
+              ? `<p><strong>📞 Téléphone :</strong> ${validatedData.phone}</p>`
+              : ""
+          }
+          <p><strong>💬 Message :</strong></p>
+          <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #2563eb;">
+            ${validatedData.message.replace(/\n/g, "<br>")}
+          </div>
+        </div>
+        <p><em>📎 Les fichiers CV et lettre de motivation sont en pièces jointes.</em></p>
+        <hr style="margin: 20px 0;">
+        <p style="color: #6b7280; font-size: 14px;">
+          📅 Candidature reçue le ${new Date().toLocaleDateString("fr-FR", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </p>
+      `,
+      attachments: [
+        {
+          filename: cv.name,
+          content: cvBuffer,
+          contentType: cv.type,
+        },
+        {
+          filename: lettre.name,
+          content: lettreBuffer,
+          contentType: lettre.type,
+        },
+      ],
+    };
+
+    // ✅ AJOUTÉ : Envoyer l'email
+    console.log("Envoi de l'email de candidature...");
+    try {
+      const info = await transporter.sendMail(mailOptions);
+      console.log("Email de candidature envoyé avec succès:", info.messageId);
+    } catch (error) {
+      console.error("Erreur envoi email candidature:", error);
+      return NextResponse.json(
+        { error: "Erreur lors de l'envoi de l'email de candidature" },
+        { status: 500 }
+      );
+    }
+
     // Logger la soumission
     await logger.info("Nouvelle candidature reçue", {
       name: validatedData.name,
@@ -130,8 +235,6 @@ export async function POST(request: Request) {
         lettre: lettreFileName,
       },
     });
-
-    // TODO: Envoyer l'email de notification
 
     return NextResponse.json(
       { message: "Candidature envoyée avec succès" },
