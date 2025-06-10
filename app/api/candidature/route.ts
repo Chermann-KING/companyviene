@@ -31,156 +31,62 @@ const ALLOWED_FILE_TYPES = [
 ];
 
 export async function POST(request: Request) {
-  console.log("=== CANDIDATURE API START ===");
-
   try {
-    // 1. Vérifier les headers
-    console.log(
-      "Headers reçus:",
-      Object.fromEntries(request.headers.entries())
-    );
+    // 1. Lire le FormData
+    const formData = await request.formData();
 
-    // 2. Lire le FormData
-    console.log("Lecture du FormData...");
-    let formData: FormData;
-    try {
-      formData = await request.formData();
-      console.log("FormData lu avec succès");
-
-      // Lister tous les champs
-      const fields = [
-        "name",
-        "email",
-        "phone",
-        "message",
-        "csrfToken",
-        "recaptchaToken",
-        "cv",
-        "lettre",
-      ];
-      fields.forEach((key) => {
-        const value = formData.get(key);
-        if (value instanceof File) {
-          console.log(
-            `  ${key}: File(${value.name}, ${value.size} bytes, ${value.type})`
-          );
-        } else if (value) {
-          console.log(`  ${key}: ${value}`);
-        } else {
-          console.log(`  ${key}: null/undefined`);
-        }
-      });
-    } catch (error) {
-      console.error("Erreur lecture FormData:", error);
-      return NextResponse.json(
-        { error: "Erreur lecture FormData" },
-        { status: 400 }
-      );
-    }
-
-    // 3. Vérifier le token CSRF
-    console.log("Vérification CSRF...");
+    // 2. Vérifier le token CSRF
     const csrfToken = request.headers.get("X-CSRF-Token");
     const formCsrfToken = formData.get("csrfToken");
-    console.log("CSRF header:", csrfToken);
-    console.log("CSRF form:", formCsrfToken);
 
     if (!csrfToken || csrfToken !== formCsrfToken) {
-      console.error("Token CSRF invalide");
       return NextResponse.json(
         { error: "Token CSRF invalide" },
         { status: 403 }
       );
     }
 
-    // 4. TEMPORAIREMENT : Skip la vérification reCAPTCHA
-    console.log("⚠️ SKIP vérification reCAPTCHA (mode test)");
+    // 3. Valider les données du formulaire
+    const validatedData = candidatureSchema.parse({
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone") || "",
+      message: formData.get("message"),
+      csrfToken: formData.get("csrfToken"),
+      recaptchaToken: formData.get("recaptchaToken"),
+    });
 
-    // 5. Valider les données du formulaire
-    console.log("Validation des données...");
-    let validatedData;
-    try {
-      validatedData = candidatureSchema.parse({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        phone: formData.get("phone") || "",
-        message: formData.get("message"),
-        csrfToken: formData.get("csrfToken"),
-        recaptchaToken: formData.get("recaptchaToken"),
-      });
-      console.log("Données validées:", {
-        name: validatedData.name,
-        email: validatedData.email,
-        hasPhone: !!validatedData.phone,
-        messageLength: validatedData.message.length,
-      });
-    } catch (error) {
-      console.error("Erreur validation Zod:", error);
-      return NextResponse.json(
-        { error: "Données invalides", details: error },
-        { status: 400 }
-      );
-    }
-
-    // 6. Vérifier les fichiers
-    console.log("Vérification des fichiers...");
+    // 4. Vérifier les fichiers
     const cv = formData.get("cv") as File;
     const lettre = formData.get("lettre") as File;
 
-    console.log(
-      "CV:",
-      cv ? `${cv.name} (${cv.size} bytes, ${cv.type})` : "absent"
-    );
-    console.log(
-      "Lettre:",
-      lettre
-        ? `${lettre.name} (${lettre.size} bytes, ${lettre.type})`
-        : "absent"
-    );
-
     if (!cv || !lettre) {
-      console.error("Fichiers manquants");
       return NextResponse.json(
         { error: "CV et lettre de motivation requis" },
         { status: 400 }
       );
     }
 
-    // 7. Vérifier la taille des fichiers
+    // 5. Vérifier la taille des fichiers
     if (cv.size > MAX_FILE_SIZE || lettre.size > MAX_FILE_SIZE) {
-      console.error("Fichiers trop gros:", {
-        cvSize: cv.size,
-        lettreSize: lettre.size,
-      });
       return NextResponse.json(
         { error: "Les fichiers ne doivent pas dépasser 5MB" },
         { status: 400 }
       );
     }
 
-    // 8. Vérifier le type des fichiers
+    // 6. Vérifier le type des fichiers
     if (
       !ALLOWED_FILE_TYPES.includes(cv.type) ||
       !ALLOWED_FILE_TYPES.includes(lettre.type)
     ) {
-      console.error("Types de fichiers non autorisés:", {
-        cvType: cv.type,
-        lettreType: lettre.type,
-      });
       return NextResponse.json(
         { error: "Format de fichier non autorisé" },
         { status: 400 }
       );
     }
 
-    // 9. ❌ SUPPRIMÉ : Création dossier uploads (pas possible sur Vercel)
-    console.log("⚠️ SKIP création dossier uploads (production)");
-
-    // 10. ❌ SUPPRIMÉ : Sauvegarde fichiers (pas nécessaire, on envoie par email)
-    console.log("⚠️ SKIP sauvegarde fichiers (production)");
-
-    // 11. Configuration email
-    console.log("Configuration de l'email...");
+    // 7. Configuration email
     const emailUser = process.env.EMAIL_USER;
     const emailPassword = process.env.EMAIL_PASSWORD;
 
@@ -192,38 +98,26 @@ export async function POST(request: Request) {
       );
     }
 
-    // 12. Créer le transporteur
-    console.log("Création du transporteur email...");
-    let transporter;
-    try {
-      transporter = nodemailer.createTransport({
-        host: "node101-eu.n0c.com",
-        port: 587,
-        secure: false,
-        auth: {
-          user: emailUser,
-          pass: emailPassword,
-        },
-        tls: {
-          ciphers: "SSLv3",
-          rejectUnauthorized: false,
-        },
-      });
-      console.log("Transporteur créé");
-    } catch (error) {
-      console.error("Erreur création transporteur:", error);
-      return NextResponse.json(
-        { error: "Erreur configuration email" },
-        { status: 500 }
-      );
-    }
+    // 8. Créer le transporteur
+    const transporter = nodemailer.createTransport({
+      host: "node101-eu.n0c.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: emailUser,
+        pass: emailPassword,
+      },
+      tls: {
+        ciphers: "SSLv3",
+        rejectUnauthorized: false,
+      },
+    });
 
-    // 13. Convertir fichiers en attachements
-    console.log("Préparation des pièces jointes...");
+    // 9. Préparer les pièces jointes
     const cvBuffer = Buffer.from(await cv.arrayBuffer());
     const lettreBuffer = Buffer.from(await lettre.arrayBuffer());
 
-    // 14. Préparer l'email
+    // 10. Préparer l'email
     const mailOptions = {
       from: emailUser,
       to: emailUser,
@@ -270,38 +164,20 @@ export async function POST(request: Request) {
       ],
     };
 
-    // 15. Envoyer l'email
-    console.log("Envoi de l'email...");
-    try {
-      const info = await transporter.sendMail(mailOptions);
-      console.log("Email envoyé avec succès:", info.messageId);
-    } catch (error) {
-      console.error("Erreur envoi email:", error);
-      return NextResponse.json(
-        { error: "Erreur lors de l'envoi de l'email" },
-        { status: 500 }
-      );
-    }
+    // 11. Envoyer l'email
+    await transporter.sendMail(mailOptions);
 
-    // 16. Logger la soumission
-    console.log("Logging de la soumission...");
-    console.log("Nouvelle candidature reçue:", {
-      name: validatedData.name,
-      email: validatedData.email,
-      ip: request.headers.get("x-forwarded-for") || "unknown",
-      userAgent: request.headers.get("user-agent") || "unknown",
-      timestamp: new Date().toISOString(),
-    });
+    // 12. Log de la soumission (optionnel)
+    console.log(
+      `Nouvelle candidature reçue: ${validatedData.name} (${validatedData.email})`
+    );
 
-    console.log("=== CANDIDATURE API SUCCESS ===");
     return NextResponse.json(
       { message: "Candidature envoyée avec succès" },
       { status: 200 }
     );
   } catch (error) {
-    console.error("=== CANDIDATURE API ERROR ===");
-    console.error("Erreur générale:", error);
-    console.error("Stack:", error instanceof Error ? error.stack : "No stack");
+    console.error("Erreur lors du traitement de la candidature:", error);
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
@@ -309,11 +185,6 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-
-    console.error("Erreur lors du traitement de la candidature:", {
-      error: error instanceof Error ? error.message : "Unknown error",
-      stack: error instanceof Error ? error.stack : undefined,
-    });
 
     return NextResponse.json(
       { error: "Une erreur est survenue" },
