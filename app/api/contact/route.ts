@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
     console.log("Configuration du transporteur...");
     let transporter;
     try {
-      transporter = nodemailer.createTransporter({
+      transporter = nodemailer.createTransport({
         host: "node101-eu.n0c.com", // ✅ Serveur SMTP
         port: 587, // ✅ Port SMTP sécurisé
         secure: false, // ✅ true pour 465, false pour 587
@@ -78,9 +78,9 @@ export async function POST(request: NextRequest) {
         },
         // Paramètres additionnels pour la sécurité
         tls: {
-          ciphers: 'SSLv3',
-          rejectUnauthorized: false
-        }
+          ciphers: "SSLv3",
+          rejectUnauthorized: false,
+        },
       });
       console.log("Transporteur créé avec succès");
     } catch (error) {
@@ -107,8 +107,8 @@ export async function POST(request: NextRequest) {
     // 8. Préparation du message
     const mailOptions = {
       from: emailUser,
-      to: "contact@companyviene.com",
-      subject: `Nouveau message de contact: ${validatedData.subject}`,
+      to: emailUser,
+      subject: `CompanyViene Form: ${validatedData.subject}`,
       html: `
         <h2>Nouveau message de contact</h2>
         <p><strong>Nom:</strong> ${validatedData.name}</p>
