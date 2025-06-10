@@ -1,10 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-// import { verifyRecaptcha } from "@/lib/recaptcha"; // ❌ TEMPORAIREMENT DÉSACTIVÉ
-import { writeFile, mkdir } from "fs/promises";
-import { join } from "path";
 import nodemailer from "nodemailer";
-import { existsSync } from "fs";
 
 // Schéma de validation des données
 const candidatureSchema = z.object({
@@ -24,7 +20,7 @@ const candidatureSchema = z.object({
     .optional(),
   message: z.string().min(10).max(1000),
   csrfToken: z.string(),
-  recaptchaToken: z.string(), // On garde le champ mais on ne le valide pas
+  recaptchaToken: z.string(),
 });
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
@@ -51,8 +47,7 @@ export async function POST(request: Request) {
       formData = await request.formData();
       console.log("FormData lu avec succès");
 
-      // Lister tous les champs (sans iterator)
-      console.log("Champs FormData:");
+      // Lister tous les champs
       const fields = [
         "name",
         "email",
@@ -100,28 +95,6 @@ export async function POST(request: Request) {
 
     // 4. TEMPORAIREMENT : Skip la vérification reCAPTCHA
     console.log("⚠️ SKIP vérification reCAPTCHA (mode test)");
-    /*
-    console.log("Vérification reCAPTCHA...");
-    const recaptchaToken = request.headers.get("X-Recaptcha-Token");
-    if (!recaptchaToken) {
-      console.error("Token reCAPTCHA manquant");
-      return NextResponse.json(
-        { error: "Token reCAPTCHA manquant" },
-        { status: 400 }
-      );
-    }
-
-    console.log("Appel verifyRecaptcha...");
-    const recaptchaResult = await verifyRecaptcha(recaptchaToken);
-    if (!recaptchaResult.success) {
-      console.error("Vérification reCAPTCHA échouée:", recaptchaResult);
-      return NextResponse.json(
-        { error: "Vérification reCAPTCHA échouée" },
-        { status: 400 }
-      );
-    }
-    console.log("reCAPTCHA validé");
-    */
 
     // 5. Valider les données du formulaire
     console.log("Validation des données...");
@@ -133,7 +106,7 @@ export async function POST(request: Request) {
         phone: formData.get("phone") || "",
         message: formData.get("message"),
         csrfToken: formData.get("csrfToken"),
-        recaptchaToken: formData.get("recaptchaToken"), // On accepte "test-token"
+        recaptchaToken: formData.get("recaptchaToken"),
       });
       console.log("Données validées:", {
         name: validatedData.name,
@@ -200,62 +173,13 @@ export async function POST(request: Request) {
       );
     }
 
-    // 9. Créer le dossier uploads s'il n'existe pas
-    console.log("Vérification du dossier uploads...");
-    const uploadDir = join(process.cwd(), "uploads");
-    console.log("Chemin uploads:", uploadDir);
+    // 9. ❌ SUPPRIMÉ : Création dossier uploads (pas possible sur Vercel)
+    console.log("⚠️ SKIP création dossier uploads (production)");
 
-    if (!existsSync(uploadDir)) {
-      console.log("Dossier uploads n'existe pas, création...");
-      try {
-        await mkdir(uploadDir, { recursive: true });
-        console.log("Dossier uploads créé");
-      } catch (error) {
-        console.error("Erreur création dossier uploads:", error);
-        return NextResponse.json(
-          { error: "Erreur création dossier uploads" },
-          { status: 500 }
-        );
-      }
-    } else {
-      console.log("Dossier uploads existe déjà");
-    }
+    // 10. ❌ SUPPRIMÉ : Sauvegarde fichiers (pas nécessaire, on envoie par email)
+    console.log("⚠️ SKIP sauvegarde fichiers (production)");
 
-    // 10. Générer des noms de fichiers uniques
-    const timestamp = Date.now();
-    const sanitizedName = validatedData.name
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
-    const cvFileName = `${sanitizedName}-cv-${timestamp}.${
-      cv.type.split("/")[1]
-    }`;
-    const lettreFileName = `${sanitizedName}-lettre-${timestamp}.${
-      lettre.type.split("/")[1]
-    }`;
-
-    console.log("Noms de fichiers:", { cvFileName, lettreFileName });
-
-    // 11. Sauvegarder les fichiers
-    console.log("Sauvegarde des fichiers...");
-    try {
-      const cvBuffer = Buffer.from(await cv.arrayBuffer());
-      const lettreBuffer = Buffer.from(await lettre.arrayBuffer());
-
-      await writeFile(join(uploadDir, cvFileName), cvBuffer);
-      console.log("CV sauvegardé");
-
-      await writeFile(join(uploadDir, lettreFileName), lettreBuffer);
-      console.log("Lettre sauvegardée");
-    } catch (error) {
-      console.error("Erreur sauvegarde fichiers:", error);
-      return NextResponse.json(
-        { error: "Erreur sauvegarde fichiers" },
-        { status: 500 }
-      );
-    }
-
-    // 12. Configuration email
+    // 11. Configuration email
     console.log("Configuration de l'email...");
     const emailUser = process.env.EMAIL_USER;
     const emailPassword = process.env.EMAIL_PASSWORD;
@@ -268,7 +192,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // 13. Créer le transporteur
+    // 12. Créer le transporteur
     console.log("Création du transporteur email...");
     let transporter;
     try {
@@ -294,16 +218,16 @@ export async function POST(request: Request) {
       );
     }
 
-    // 14. Convertir fichiers en attachements
+    // 13. Convertir fichiers en attachements
     console.log("Préparation des pièces jointes...");
     const cvBuffer = Buffer.from(await cv.arrayBuffer());
     const lettreBuffer = Buffer.from(await lettre.arrayBuffer());
 
-    // 15. Préparer l'email
+    // 14. Préparer l'email
     const mailOptions = {
       from: emailUser,
       to: emailUser,
-      subject: `🚀 Application Viene Form ${validatedData.name}`,
+      subject: `🚀 Nouvelle candidature - ${validatedData.name}`,
       html: `
         <h2 style="color: #2563eb;">🚀 Nouvelle candidature reçue</h2>
         <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -346,7 +270,7 @@ export async function POST(request: Request) {
       ],
     };
 
-    // 16. Envoyer l'email
+    // 15. Envoyer l'email
     console.log("Envoi de l'email...");
     try {
       const info = await transporter.sendMail(mailOptions);
@@ -359,17 +283,14 @@ export async function POST(request: Request) {
       );
     }
 
-    // 17. Logger la soumission (remplacé par console.log)
+    // 16. Logger la soumission
     console.log("Logging de la soumission...");
     console.log("Nouvelle candidature reçue:", {
       name: validatedData.name,
       email: validatedData.email,
       ip: request.headers.get("x-forwarded-for") || "unknown",
       userAgent: request.headers.get("user-agent") || "unknown",
-      files: {
-        cv: cvFileName,
-        lettre: lettreFileName,
-      },
+      timestamp: new Date().toISOString(),
     });
 
     console.log("=== CANDIDATURE API SUCCESS ===");
@@ -389,7 +310,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Logger l'erreur (remplacé par console.log)
     console.error("Erreur lors du traitement de la candidature:", {
       error: error instanceof Error ? error.message : "Unknown error",
       stack: error instanceof Error ? error.stack : undefined,
