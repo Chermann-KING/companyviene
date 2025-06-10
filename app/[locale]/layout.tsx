@@ -10,7 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "CompanyViene",
-  description: "Solutions innovantes pour votre entreprise",
+  description:
+    "Making your business simpler with engineering and digitalisation",
 };
 
 export async function generateStaticParams() {
