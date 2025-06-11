@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Navigation from "./Navigation";
@@ -18,11 +19,17 @@ export default function Header() {
     <header className="bg-white shadow-md py-3 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
+          {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <span className="text-3xl font-bold text-primary-main tracking-tight">
-                company<span className="text-green-700">V</span>iene
-              </span>
+            <Link href="/" className="flex items-center -mt-2.5">
+              <Image
+                src="/assets/images/logo-companyViene-1024x216.png"
+                alt="CompanyViene Logo"
+                width={200}
+                height={42}
+                priority
+                className="h-auto"
+              />
             </Link>
           </div>
 

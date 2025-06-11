@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Linkedin } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { SLUGS } from "@/config/navigation";
@@ -22,10 +23,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12">
           {/* Quick Info */}
           <div className="mb-6 md:mb-0">
-            <p className="text-3xl font-bold text-green-400 tracking-tight">
-              company<span className="text-green-300">V</span>iene
-            </p>
-            <p className="text-gray-300 mt-3 text-lg leading-relaxed">
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center -mt-2.5">
+              <Image
+                src="/assets/images/logo-companyViene-1024x216.png"
+                alt="CompanyViene Logo"
+                width={200}
+                height={46}
+                priority
+                className="h-auto"
+              />
+            </div>
+            <p className="text-gray-300 mt-6 text-lg leading-relaxed">
               {t("quickInfos.description")}
             </p>
           </div>
@@ -70,6 +79,7 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-700">
           <div className="mb-4 md:mb-0">
             <p className="text-gray-400 text-base">
