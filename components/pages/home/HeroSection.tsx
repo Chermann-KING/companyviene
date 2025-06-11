@@ -1,11 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import CtaButton from "@/components/ui/CtaButton";
+import { navigation } from "@/config/navigation";
 
 export default function HeroSection() {
   const t = useTranslations("hero");
+  const locale = useLocale() as "fr" | "en";
+
+  // Construire l'URL dynamique pour le bouton CTA vers la page produits/services
+  const getProductsUrl = () => {
+    const productsNavItem = navigation.main.find(
+      (item) => item.nameKey === "products"
+    );
+    if (productsNavItem) {
+      return `/${locale}${productsNavItem.href[locale]}`;
+    }
+    // Fallback au cas où
+    return `/${locale}/produits-et-services`;
+  };
 
   return (
     <div className="relative bg-white overflow-hidden h-[calc(100vh-80px)] flex items-center justify-center">
@@ -48,7 +62,7 @@ export default function HeroSection() {
           {/* Call to action buttons */}
           <div className="mt-4">
             <CtaButton
-              href={"/produits-services"}
+              href={getProductsUrl()}
               label={t("cta")}
               className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
             />
