@@ -12,6 +12,19 @@ export const metadata = {
   title: "CompanyViene",
   description:
     "Making your business simpler with engineering and digitalisation",
+  icons: {
+    icon: [
+      {
+        url: "/assets/icons/favicon.ico",
+        sizes: "any",
+      },
+      {
+        url: "/assets/icons/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export async function generateStaticParams() {
