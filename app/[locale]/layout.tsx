@@ -9,7 +9,10 @@ import { NextIntlClientProvider } from "next-intl";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "CompanyViene",
+  title: {
+    template: "CompanyViene | %s",
+    default: "CompanyViene | Accueil",
+  },
   description:
     "Making your business simpler with engineering and digitalisation",
   icons: {

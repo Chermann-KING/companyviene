@@ -14,11 +14,39 @@ const SLUGS = {
   // Ici d'autres slugs si besoin
 };
 
-export default async function Page({
-  params,
-}: {
+interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
-}) {
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { locale, slug } = await params;
+  const t = await getTranslations({ locale, namespace: "navigation" });
+
+  // Trouver la clé logique correspondant au slug et à la locale
+  const pageKey = Object.keys(SLUGS).find(
+    (key) => SLUGS[key as keyof typeof SLUGS][locale as "fr" | "en"] === slug
+  );
+
+  if (!pageKey) {
+    return {
+      title: "Page non trouvée",
+    };
+  }
+
+  // Retourner le titre traduit selon la page
+  const titleMap: Record<string, string> = {
+    about: t("about"),
+    products: t("products"),
+    contact: t("contact"),
+    privacy: t("privacyPolicy"),
+  };
+
+  return {
+    title: titleMap[pageKey] || t("home"),
+  };
+}
+
+export default async function Page({ params }: PageProps) {
   const { locale, slug } = await params;
 
   // Charge explicitement les messages pour la locale
