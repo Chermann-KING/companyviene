@@ -42,19 +42,15 @@ export default function HeroSection() {
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center md:items-start h-full px-4 sm:px-8">
         <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-center md:items-start text-center md:text-left space-y-8">
           {/* Title */}
-          <h1 className="mt-48 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-extrabold leading-tight text-secondary-main">
-            <div className="block mb-2">{t("title.line1")}</div>
-            <div className="block mb-2">{t("title.line2")}</div>
+          <h1 className="mt-48 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-extrabold leading-tight text-secondary-main text-wrap">
             <div className="block mb-2">
-              <span>{t("title.line3")} </span>
+              {t("title.leverageyour")}{" "}
               <span className="text-primary-main font-bold">
-                {t("title.engineering")}
+                {t("title.capacity")}
               </span>
-            </div>
-            <div className="block">
-              <span>{t("title.line4")} </span>
+              <span> {t("title.and")} </span>
               <span className="text-primary-main font-bold">
-                {t("title.digitalisation")}
+                {t("title.gobeyond")}
               </span>
             </div>
           </h1>
@@ -64,7 +60,7 @@ export default function HeroSection() {
             <CtaButton
               href={getProductsUrl()}
               label={t("cta")}
-              className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
+              className="text-base sm:text-lg py-3 sm:py-4"
             />
           </div>
         </div>
