@@ -193,18 +193,22 @@
             "titleHighlight": "Services",
             "vieneDesign": {
                 "title": "VieneDesign",
-                "description": "VieneDesign est un service digital de CompanyViene destiné à la conception de charte graphique d'entreprise, image de marque, création de catalogue, conception publicitaire, recherche expérience utilisateur, conception d'application web et mobile. Cette offre se base sur l'expertise de nos équipes à l'internationale et permet de fournir un excellent rapport qualité/prix à nos clients.",
-                "status": "(Service Disponible)"
+                "descriptions": [
+                    "VieneDesign est un service digital de CompanyViene destiné à la conception de charte graphique d'entreprise, image de marque, création de catalogue, conception publicitaire, recherche expérience utilisateur, conception d'application web et mobile. Cette offre se base sur l'expertise de nos équipes à l'internationale et permet de fournir un excellent rapport qualité/prix à nos clients."
+                ]
             },
-            "vieneHouse": {
-                "title": "VieneHouse",
-                "description": "VieneHouse est un service d'architecture et d'ingénierie civile dans la construction durable, a position globale est d'accompagner nos clients grâce à l'expertise de la simulation numérique dans la construction d'habitation écoénergétique client.",
-                "features": [
-                    "La qualité thermique ou le confort de la température ambiante",
-                    "L'automatisation d'énergie électrique via des panneaux solaires et la récupération d'énergie thermique",
-                    "La Gestion des coûts de construction par l'évaluation des ressources locales et la détermination des matériaux de construction"
+            "vieneEnergy": {
+                "title": "VieneEnergy",
+                "descriptions": [
+                    "L'énergie est au cœur de la sécurité nationale et du développement économique. Sans elle, des secteurs vitaux tels que l'agriculture, le transport, la santé et l'éducation peuvent être paralysés.",
+                    "VieneEnergy, offre des solutions innovantes et sur mesure en matière d'énergie et d'utilités (Eau, gaz).",
+                    "Quels sont les services proposés par VieneEnergy ?"
                 ],
-                "status": "(Service Disponible)"
+                "features": [
+                    "Conseil et Accompagnement : Expertise en production, transport et distribution d'énergie & utilités (Eau, Gaz).",
+                    "Solutions Personnalisées : Réponses adaptées aux besoins des acteurs publics et privés, ainsi qu'aux applications résidentielles pour usagers.",
+                    "Technologies de Pointe : Support dans les stratégies de décentralisation et intégration des nouvelles technologies."
+                ]
             }
         }
     },

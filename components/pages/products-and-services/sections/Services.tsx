@@ -9,13 +9,17 @@ export default function Services() {
   const services = [
     {
       id: "vieneDesign",
-      icon: "/assets/icons/design.svg",
+      icon: "/assets/icons/viene.webp",
+      descriptions: (servicesT.raw("vieneDesign.descriptions") ||
+        []) as string[],
       features: (servicesT.raw("vieneDesign.features") || []) as string[],
     },
     {
-      id: "vieneHouse",
-      icon: "/assets/icons/house.svg",
-      features: (servicesT.raw("vieneHouse.features") || []) as string[],
+      id: "vieneEnergy",
+      icon: "/assets/icons/viene.webp",
+      descriptions: (servicesT.raw("vieneEnergy.descriptions") ||
+        []) as string[],
+      features: (servicesT.raw("vieneEnergy.features") || []) as string[],
     },
   ];
 
@@ -37,21 +41,33 @@ export default function Services() {
             >
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 relative mr-4">
-                  {/* <Image
-                    src={product.icon}
+                  <Image
+                    src={service.icon}
                     alt={servicesT(`${service.id}.title`)}
                     fill
                     className="object-contain"
-                  /> */}
+                  />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
                   {servicesT(`${service.id}.title`)}
                 </h3>
               </div>
 
-              <p className="text-xl text-gray-600 mb-6">
+              {/* <p className="text-xl text-gray-600 mb-6">
                 {servicesT(`${service.id}.description`)}
-              </p>
+              </p> */}
+              {Array.isArray(service.descriptions) &&
+                service.descriptions.length > 0 && (
+                  <div className="text-xl space-y-3 mb-6">
+                    {service.descriptions.map(
+                      (description: string, index: number) => (
+                        <p key={index} className="text-xl text-gray-600 mb-6">
+                          {description}
+                        </p>
+                      )
+                    )}
+                  </div>
+                )}
 
               {Array.isArray(service.features) &&
                 service.features.length > 0 && (
@@ -64,10 +80,6 @@ export default function Services() {
                     ))}
                   </ul>
                 )}
-
-              <div className="mt-6 text-xl text-primary-600 font-medium">
-                {servicesT(`${service.id}.status`)}
-              </div>
             </div>
           ))}
         </div>

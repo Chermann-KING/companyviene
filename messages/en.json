@@ -193,18 +193,22 @@
             "titleHighlight": "Services",
             "vieneDesign": {
                 "title": "VieneDesign",
-                "description": "VieneDesign is CompanyViene's digital service for designing corporate graphics, brand image, catalogue design, advertising design, user experience research and web and mobile application design. This offer is based on the expertise of our international teams and enables us to provide our customers with excellent value for money.",
-                "status": "(Service Available)"
+                "descriptions": [
+                    "VieneDesign is CompanyViene's digital service for designing corporate graphics, brand image, catalogue design, advertising design, user experience research and web and mobile application design. This offer is based on the expertise of our international teams and enables us to provide our customers with excellent value for money."
+                ]
             },
-            "vieneHouse": {
-                "title": "VieneHouse",
-                "description": "VieneHouse is an architectural and civil engineering service in sustainable construction, its global position is to support our customers through the expertise of digital simulation in the construction of energy-efficient housing customer.",
-                "features": [
-                    "Thermal quality or comfort of ambient temperature",
-                    "Automation of electrical energy via solar panels and recovery of thermal energy",
-                    "Managing construction costs by assessing local resources and determining construction materials"
+            "vieneEnergy": {
+                "title": "VieneEnergy",
+                "descriptions": [
+                    "Energy is at the heart of national security and economic development. Without it, vital sectors such as agriculture, transport, health and education can come to a standstill.",
+                    "VieneEnergy offers innovative, tailor-made solutions for energy and utilities (water, gas).",
+                    "What services does VieneEnergy offer?"
                 ],
-                "status": "(Service Available)"
+                "features": [
+                    "Consulting and support: Expertise in the production, transport and distribution of energy and utilities (water, gas).",
+                    "Customised solutions: Solutions tailored to the needs of public and private players, as well as residential applications for users.",
+                    "Cutting-edge technologies: Support for decentralisation strategies and integration of new technologies."
+                ]
             }
         }
     },
