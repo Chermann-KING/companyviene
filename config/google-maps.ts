@@ -1,7 +1,7 @@
 export const defaultMapConfig = {
   center: {
-    lat: 0.3486,
-    lng: 9.5105,
+    lat: 0.41529,
+    lng: 9.42827,
   },
   zoom: 15,
   mapId: process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID,
