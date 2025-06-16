@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "../globals.css";
+import TopHeader from "@/components/layout/TopHeader";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { notFound } from "next/navigation";
@@ -57,6 +58,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <div className="min-h-screen flex flex-col">
+            <TopHeader />
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />

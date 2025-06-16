@@ -22,6 +22,10 @@
         "twitter": "Twitter",
         "linkedin": "LinkedIn"
     },
+    "topHeader": {
+        "phone": "+241 77 91 58 82",
+        "hours": "Lundi - Vendredi 09:00 - 17:00"
+    },
     "header": {
         "languageSelector": {
             "fr": "FR",
