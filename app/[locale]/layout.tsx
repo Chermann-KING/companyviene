@@ -14,8 +14,7 @@ export const metadata = {
     template: "CompanyViene | %s",
     default: "CompanyViene | Accueil",
   },
-  description:
-    "Making your business simpler with engineering and digitalisation",
+  description: "Leverage Your Capacity & Go Beyond",
   icons: {
     icon: [
       {

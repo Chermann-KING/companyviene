@@ -1,7 +1,6 @@
 export const siteConfig = {
   name: "CompanyViene",
-  description:
-    "Making your business simpler with engineering and digitalisation",
+  description: "Leverage Your Capacity & Go Beyond",
   url: "https://companyviene.com",
   ogImage: "https://companyviene.com/og.jpg",
   links: {
