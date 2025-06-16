@@ -135,10 +135,10 @@
         "structure": {
             "title": "Our",
             "titleHighlight": "structure",
-            "enerViene": {
-                "title": "EnerViene",
-                "description": "EnerViene is the Design Office of CompanyViene Holding. It brings together a vast network of engineers, computer scientists and technicians with specialisations in various sectors and professional experience in major international companies.",
-                "strategy": "EnerViene's strategy can be described in 3 main stages:",
+            "vieneEngineering": {
+                "title": "VieneEngineering",
+                "description": "VieneEngineering is the Design Office of CompanyViene Holding. It brings together a vast network of engineers, computer scientists and technicians with specialisations in various sectors and professional experience in major international companies.",
+                "strategy": "VieneEngineering's strategy can be described in 3 main stages:",
                 "steps": [
                     "An initial diagnostic approach (Diagnostic Journey)",
                     "In a second step, a detailed analysis of solutions is carried out (Proof of Validation) and KPIs are implemented",

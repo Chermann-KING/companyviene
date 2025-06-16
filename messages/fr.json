@@ -135,10 +135,10 @@
         "structure": {
             "title": "Notre",
             "titleHighlight": "structure",
-            "enerViene": {
-                "title": "EnerViene",
-                "description": "EnerViene est le Bureau d'études de la Holding CompanyViene. Il regroupe un vaste réseau d'ingénieurs, d'informaticiens, de techniciens avec des domaines de spécialisation dans divers secteurs d'activités et une expérience professionnelle dans de grandes entreprises internationales.",
-                "strategy": "La stratégie d'EnerViene peut se décrire en 3 étapes principales :",
+            "vieneEngineering": {
+                "title": "VieneEngineering",
+                "description": "VieneEngineering est le Bureau d'études de la Holding CompanyViene. Il regroupe un vaste réseau d'ingénieurs, d'informaticiens, de techniciens avec des domaines de spécialisation dans divers secteurs d'activités et une expérience professionnelle dans de grandes entreprises internationales.",
+                "strategy": "La stratégie de VieneEngineering peut se décrire en 3 étapes principales :",
                 "steps": [
                     "Une première approche de diagnostic (Diagnostic Journey)",
                     "Dans une seconde étape, une analyse détaillée de solutions est réalisée (Proof of Validation) et effectuée des KPI",

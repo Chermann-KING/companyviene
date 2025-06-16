@@ -17,7 +17,7 @@ export default function AboutStructure() {
 
         {/* <div className="space-y-16"> */}
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
-          {/* EnerViene */}
+          {/* VieneEngineering */}
           <div className="flex flex-col gap-4 justify-start items-start text-justify px-2 sm:px-0">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-2">
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 border-4 border-gray-300 rounded-full overflow-hidden">
@@ -29,23 +29,25 @@ export default function AboutStructure() {
                 />
               </div>
               <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
-                {t("enerViene.title")}
+                {t("vieneEngineering.title")}
               </h3>
             </div>
             <p className="text-gray-600 text-xl text-justify">
-              {t("enerViene.description")}
+              {t("vieneEngineering.description")}
             </p>
             <p className="text-gray-800 text-xl font-medium">
-              {t("enerViene.strategy")}
+              {t("vieneEngineering.strategy")}
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-600 text-xl ml-4">
               {[0, 1, 2].map((index) => (
                 <li key={index} className="pl-2">
-                  {t(`enerViene.steps.${index}`)}
+                  {t(`vieneEngineering.steps.${index}`)}
                 </li>
               ))}
             </ul>
-            <p className="text-gray-600 text-xl">{t("enerViene.conclusion")}</p>
+            <p className="text-gray-600 text-xl">
+              {t("vieneEngineering.conclusion")}
+            </p>
           </div>
 
           {/* VieneBusiness */}
