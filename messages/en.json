@@ -292,7 +292,19 @@
             "vieneDesign": {
                 "title": "VieneDesign",
                 "descriptions": [
-                    "VieneDesign is CompanyViene's digital service for designing corporate graphics, brand image, catalogue design, advertising design, user experience research and web and mobile application design. This offer is based on the expertise of our international teams and enables us to provide our customers with excellent value for money."
+                    "In a world where brand image determines commercial success, VieneDesign transforms your ideas into powerful visual identities that leave lasting impressions and generate results.",
+                    "Backed by the international expertise of our creative and technical teams, VieneDesign offers a comprehensive digital service that combines creative excellence, technological innovation, and marketing strategy to propel your business to new heights.",
+                    "What are VieneDesign's areas of expertise?"
+                ],
+                "features": [
+                    "Complete Visual Identity: Creation of unique graphic charters, memorable logos, and branding elements that perfectly reflect your company values.",
+                    "Advanced Digital Design: Web and mobile application design with focus on user experience (UX/UI) to maximize engagement and conversion.",
+                    "Impactful Visual Communication: Development of catalogs, advertising materials, and visual campaigns that capture attention and drive sales.",
+                    "UX Research & Strategy: User behavioral analysis and journey optimization to significantly improve digital performance.",
+                    "Custom Creative Solutions: Personalized support from conceptualization to implementation, adapted to your industry's specific requirements."
+                ],
+                "otherDescriptions": [
+                    "With VieneDesign, benefit from exceptional value for money through our international collaborative approach, which guarantees world-class creations adapted to your budget and growth ambitions."
                 ]
             },
             "enerViene": {

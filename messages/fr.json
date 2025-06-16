@@ -292,7 +292,19 @@
             "vieneDesign": {
                 "title": "VieneDesign",
                 "descriptions": [
-                    "VieneDesign est un service digital de CompanyViene destiné à la conception de charte graphique d'entreprise, image de marque, création de catalogue, conception publicitaire, recherche expérience utilisateur, conception d'application web et mobile. Cette offre se base sur l'expertise de nos équipes à l'internationale et permet de fournir un excellent rapport qualité/prix à nos clients."
+                    "Dans un monde où l'image de marque détermine le succès commercial, VieneDesign transforme vos idées en identités visuelles puissantes qui marquent les esprits et génèrent des résultats.",
+                    "Fort de l'expertise internationale de nos équipes créatives et techniques, VieneDesign offre un service digital complet qui allie excellence créative, innovation technologique et stratégie marketing pour propulser votre entreprise vers de nouveaux sommets.",
+                    "Quels sont les domaines d'expertise de VieneDesign ?"
+                ],
+                "features": [
+                    "Identité Visuelle Complète : Création de chartes graphiques uniques, logos mémorables et éléments de branding qui reflètent parfaitement vos valeurs d'entreprise.",
+                    "Design Digital Avancé : Conception d'applications web et mobile avec focus sur l'expérience utilisateur (UX/UI) pour maximiser l'engagement et la conversion.",
+                    "Communication Visuelle Impactante : Élaboration de catalogues, supports publicitaires et campagnes visuelles qui captent l'attention et stimulent les ventes.",
+                    "Recherche & Stratégie UX : Analyse comportementale des utilisateurs et optimisation de parcours pour améliorer significativement les performances digitales.",
+                    "Solutions Créatives Sur-Mesure : Accompagnement personnalisé depuis la conceptualisation jusqu'à la mise en œuvre, adapté aux spécificités de votre secteur d'activité."
+                ],
+                "otherDescriptions": [
+                    "Avec VieneDesign, bénéficiez d'un rapport qualité-prix exceptionnel grâce à notre approche collaborative internationale, qui vous garantit des créations de niveau world-class adaptées à votre budget et à vos ambitions de croissance."
                 ]
             },
             "enerViene": {

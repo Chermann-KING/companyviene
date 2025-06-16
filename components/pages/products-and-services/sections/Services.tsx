@@ -12,6 +12,9 @@ export default function Services() {
       icon: "/assets/icons/viene.webp",
       descriptions: (servicesT.raw("vieneDesign.descriptions") ||
         []) as string[],
+      features: (servicesT.raw("vieneDesign.features") || []) as string[],
+      otherDescriptions: (servicesT.raw("vieneDesign.otherDescriptions") ||
+        []) as string[],
     },
     {
       id: "enerViene",
@@ -53,9 +56,7 @@ export default function Services() {
                 </h3>
               </div>
 
-              {/* <p className="text-xl text-gray-600 mb-6">
-                {servicesT(`${service.id}.description`)}
-              </p> */}
+              {/* Descriptions */}
               {Array.isArray(service.descriptions) &&
                 service.descriptions.length > 0 && (
                   <div className="text-xl space-y-3 mb-6">
@@ -69,6 +70,7 @@ export default function Services() {
                   </div>
                 )}
 
+              {/* Features */}
               {Array.isArray(service.features) &&
                 service.features.length > 0 && (
                   <ul className="text-xl space-y-3 mb-6 pl-8">
@@ -81,6 +83,7 @@ export default function Services() {
                   </ul>
                 )}
 
+              {/* Other Descriptions */}
               {Array.isArray(service.otherDescriptions) &&
                 service.otherDescriptions.length > 0 && (
                   <div className="text-xl space-y-3 mb-6">
