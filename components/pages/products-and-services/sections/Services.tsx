@@ -12,7 +12,6 @@ export default function Services() {
       icon: "/assets/icons/viene.webp",
       descriptions: (servicesT.raw("vieneDesign.descriptions") ||
         []) as string[],
-      features: (servicesT.raw("vieneDesign.features") || []) as string[],
     },
     {
       id: "vieneEnergy",
@@ -20,6 +19,8 @@ export default function Services() {
       descriptions: (servicesT.raw("vieneEnergy.descriptions") ||
         []) as string[],
       features: (servicesT.raw("vieneEnergy.features") || []) as string[],
+      otherDescriptions: (servicesT.raw("vieneEnergy.otherDescriptions") ||
+        []) as string[],
     },
   ];
 
@@ -71,7 +72,7 @@ export default function Services() {
 
               {Array.isArray(service.features) &&
                 service.features.length > 0 && (
-                  <ul className="text-xl space-y-3 mb-6">
+                  <ul className="text-xl space-y-3 mb-6 pl-8">
                     {service.features.map((feature: string, index: number) => (
                       <li key={index} className="flex items-start">
                         <span className="text-primary-600 mr-2">•</span>
@@ -79,6 +80,19 @@ export default function Services() {
                       </li>
                     ))}
                   </ul>
+                )}
+
+              {Array.isArray(service.otherDescriptions) &&
+                service.otherDescriptions.length > 0 && (
+                  <div className="text-xl space-y-3 mb-6">
+                    {service.otherDescriptions.map(
+                      (otherDescription: string, index: number) => (
+                        <p key={index} className="text-xl text-gray-600 mb-6">
+                          {otherDescription}
+                        </p>
+                      )
+                    )}
+                  </div>
                 )}
             </div>
           ))}
