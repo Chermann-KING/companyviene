@@ -171,12 +171,65 @@
             "titleHighlight": "Products",
             "VieneRegister": {
                 "title": "VieneRegister",
-                "description": "VieneRegister is a mobile application for smartphones (Android) designed and developed by our teams. It enables users to record useful information about the members of an organisation in a secure database using unique identification QR codes. Initially designed to meet the needs of workforce management in the education sector, it can also be used as a stock or process management application.",
+                "subtitle": "Revolutionize Workforce Management with QR Code Technology",
+                "description": "Developed by CompanyViene, VieneRegister is an innovative Android mobile application that radically transforms organization member management. Through its advanced QR Code technology and secure database, it fully digitalizes registration, tracking, and validation processes to deliver unprecedented operational efficiency.",
+                "servicesTitle": "VieneRegister Services",
+                "servicesList": [
+                    {
+                        "title": "Unique QR Code Identification",
+                        "items": [
+                            "Automatic generation of personalized identification QR codes for each member.",
+                            "Instant scanning for quick access to information and identity validation.",
+                            "Complete traceability of interactions and consultations."
+                        ]
+                    },
+                    {
+                        "title": "Advanced Permission Management",
+                        "items": [
+                            "Role and functionality assignment according to organizational hierarchy.",
+                            "Granular access control (registration, validation, consultation, extraction).",
+                            "Customizable workflow according to organization-specific needs."
+                        ]
+                    },
+                    {
+                        "title": "Secure Database",
+                        "items": [
+                            "Secure cloud storage with sensitive data encryption.",
+                            "Automatic backup and real-time synchronization.",
+                            "Compliance with personal data protection standards."
+                        ]
+                    },
+                    {
+                        "title": "Integrated Management Tools",
+                        "items": [
+                            "Payment validation and financial transaction tracking.",
+                            "Automatic data extraction to Excel files for reporting.",
+                            "Printing of identification cards and official receipts."
+                        ]
+                    },
+                    {
+                        "title": "Multi-Sector Adaptability",
+                        "items": [
+                            "Flexible configuration for education, inventory management, or business processes.",
+                            "Customizable interface according to industry sector.",
+                            "Scalability to adapt to your organization's growth."
+                        ]
+                    }
+                ],
                 "features": [
-                    "This easy-to-use product uses effective permissions management to assign one or more specific functions to a given user depending on their role in the organisation (registration, payment validation, database status check, data extraction into an Excel file, QR code scanning, card/receipt printing, etc.).",
-                    "VieneRegister has a Robust Architecture that allows the product to evolve and adapt to customer needs thanks to its subtle set of Permissions.",
-                    "A secure database on the Drive can be made available to our customers via this application."
-                ]
+                    "Intuitive mobile interface designed for immediate adoption by all users, reducing training costs.",
+                    "Robust and scalable architecture enabling adaptation to specific needs and organizational growth.",
+                    "Sophisticated permission system ensuring data security and compliance with internal procedures.",
+                    "Reliable QR Code technology ensuring fast and error-free validation processes."
+                ],
+                "benefitsTitle": "Benefits of use :",
+                "benefits": [
+                    "Educational Institutions: Complete digitalization of student management and drastic reduction of administrative tasks",
+                    "Businesses: Personnel management optimization and improved process traceability",
+                    "Managers: Total operational control with automated reporting and real-time monitoring"
+                ],
+                "useCasesTitle": "Use Case :",
+                "useCases": "Initially designed for education, VieneRegister adapts perfectly to inventory management, access control, event management, and any process requiring identification and tracking."
             },
             "DoctoViene": {
                 "title": "DoctoViene",
@@ -220,6 +273,7 @@
                         ]
                     }
                 ],
+                "benefitsTitle": "Benefits of use :",
                 "benefits": [
                     "Healthcare professionals: Intuitive interface for simplified management",
                     "Patients : Improving care and reducing costs"
@@ -278,11 +332,13 @@
                     "Compliance with security and data protection standards to meet regulatory requirements.",
                     "Cutting-edge technology combining ease of use and processing power to optimize your services' productivity."
                 ],
+                "benefitsTitle": "Benefits of use :",
                 "benefits": [
                     "Administrative Services: Considerable time savings and improved operational efficiency",
                     "Management: Reduced physical storage costs and improved document traceability",
                     "Users: Instant access to information and elimination of tedious manual searches"
                 ],
+                "optionalEquipmentTitle": "Optional equipment :",
                 "optionalEquipment": "Latest generation professional scanners can be provided as an option to optimize the digitization process and guarantee exceptional image quality."
             }
         },

@@ -19,6 +19,16 @@ export default function Products() {
       status: productsT("DoctoViene.status"),
     },
     {
+      id: "VieneRegister",
+      icon: "/assets/icons/viene.webp",
+      features: (productsT.raw("VieneRegister.features") || []) as string[],
+      servicesList: (productsT.raw("VieneRegister.servicesList") || []) as {
+        title: string;
+        items: string[];
+      }[],
+      benefits: (productsT.raw("VieneRegister.benefits") || []) as string[],
+    },
+    {
       id: "ArchiViene",
       icon: "/assets/icons/viene.webp",
       features: (productsT.raw("ArchiViene.features") || []) as string[],
@@ -27,11 +37,6 @@ export default function Products() {
         items: string[];
       }[],
       benefits: (productsT.raw("ArchiViene.benefits") || []) as string[],
-    },
-    {
-      id: "VieneRegister",
-      icon: "/assets/icons/viene.webp",
-      features: (productsT.raw("VieneRegister.features") || []) as string[],
     },
   ];
 
@@ -63,7 +68,8 @@ export default function Products() {
                 <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
                   {productsT(`${product.id}.title`)}
                   {(product.id === "DoctoViene" ||
-                    product.id === "ArchiViene") && (
+                    product.id === "ArchiViene" ||
+                    product.id === "VieneRegister") && (
                     <span className="font-normal">
                       {" "}
                       : {productsT(`${product.id}.subtitle`)}
@@ -89,7 +95,9 @@ export default function Products() {
                 )}
 
               {/* services */}
-              {(product.id === "DoctoViene" || product.id === "ArchiViene") &&
+              {(product.id === "DoctoViene" ||
+                product.id === "ArchiViene" ||
+                product.id === "VieneRegister") &&
                 Array.isArray(product.servicesList) &&
                 product.servicesList.length > 0 && (
                   <div className="mb-6">
@@ -114,12 +122,14 @@ export default function Products() {
                 )}
 
               {/* avantages */}
-              {(product.id === "DoctoViene" || product.id === "ArchiViene") &&
+              {(product.id === "DoctoViene" ||
+                product.id === "ArchiViene" ||
+                product.id === "VieneRegister") &&
                 Array.isArray(product.benefits) &&
                 product.benefits.length > 0 && (
                   <div className="mb-6">
                     <h4 className="text-xl font-semibold mb-2">
-                      Avantages d'utilisation :
+                      {productsT(`${product.id}.benefitsTitle`)}
                     </h4>
                     <ul className="list-disc pl-6 space-y-2">
                       {product.benefits.map((benefit, idx) => (
@@ -131,12 +141,25 @@ export default function Products() {
                   </div>
                 )}
 
+              {/* Cas d'usage pour VieneRegister */}
+              {product.id === "VieneRegister" &&
+                productsT(`${product.id}.useCases`) && (
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold mb-2">
+                      {productsT(`${product.id}.useCasesTitle`)}
+                    </h4>
+                    <p className="text-gray-600">
+                      {productsT(`${product.id}.useCases`)}
+                    </p>
+                  </div>
+                )}
+
               {/* Équipement optionnel pour ArchiViene */}
               {product.id === "ArchiViene" &&
                 productsT(`${product.id}.optionalEquipment`) && (
                   <div className="mb-6">
                     <h4 className="text-xl font-semibold mb-2">
-                      Équipement Optionnel :
+                      {productsT(`${product.id}.optionalEquipmentTitle`)}
                     </h4>
                     <p className="text-gray-600">
                       {productsT(`${product.id}.optionalEquipment`)}

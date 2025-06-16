@@ -171,12 +171,65 @@
             "titleHighlight": "Produits",
             "VieneRegister": {
                 "title": "VieneRegister",
-                "description": "VieneRegister est une application mobile sur smartphone (Androïd) conçue et développée par nos équipes. Elle permet aux utilisateurs d'enregistrer dans une base de données sécurisée des informations utiles relatives aux membres d'une organisation grâce à des QR Codes d'identification uniques. Initialement conçue pour répondre à la gestion d'effectif dans l'enseignement, elle peut être déclinée en application de gestion de stock ou de processus.",
+                "subtitle": "Révolutionnez la Gestion d'Effectif avec la Technologie QR Code",
+                "description": "Développée par CompanyViene, VieneRegister est une application mobile Android innovante qui transforme radicalement la gestion des membres d'organisation. Grâce à sa technologie QR Code avancée et sa base de données sécurisée, elle digitalise intégralement les processus d'inscription, de suivi et de validation pour offrir une efficacité opérationnelle sans précédent.",
+                "servicesTitle": "Les Services de VieneRegister",
+                "servicesList": [
+                    {
+                        "title": "Identification QR Code Unique",
+                        "items": [
+                            "Génération automatique de QR codes d'identification personnalisés pour chaque membre.",
+                            "Scan instantané pour accès rapide aux informations et validation d'identité.",
+                            "Traçabilité complète des interactions et consultations."
+                        ]
+                    },
+                    {
+                        "title": "Gestion Avancée des Permissions",
+                        "items": [
+                            "Attribution de rôles et fonctionnalités selon la hiérarchie organisationnelle.",
+                            "Contrôle granulaire des accès (inscription, validation, consultation, extraction).",
+                            "Workflow personnalisable selon les besoins spécifiques de l'organisation."
+                        ]
+                    },
+                    {
+                        "title": "Base de Données Sécurisée",
+                        "items": [
+                            "Stockage cloud sécurisé avec chiffrement des données sensibles.",
+                            "Sauvegarde automatique et synchronisation en temps réel.",
+                            "Conformité aux normes de protection des données personnelles."
+                        ]
+                    },
+                    {
+                        "title": "Outils de Gestion Intégrés",
+                        "items": [
+                            "Validation de paiements et suivi des transactions financières.",
+                            "Extraction automatique de données vers fichiers Excel pour reporting.",
+                            "Impression de cartes d'identification et reçus officiels."
+                        ]
+                    },
+                    {
+                        "title": "Adaptabilité Multi-Secteurs",
+                        "items": [
+                            "Configuration flexible pour l'éducation, la gestion de stock ou les processus métier.",
+                            "Interface personnalisable selon le secteur d'activité.",
+                            "Évolutivité pour s'adapter à la croissance de votre organisation."
+                        ]
+                    }
+                ],
                 "features": [
-                    "Ce produit simple d'utilisation permet grâce à une gestion efficace des permissions, d'attribuer une ou plusieurs fonctionnalités spécifiques à un utilisateur donné en fonction de son rôle dans l'organisation (Inscription, Validation du paiement, Vérification du statut en base de données, Extraction de données dans un fichier Excel, Scan de QR Code, Impression de cartes/reçus …).",
-                    "VieneRegister est doté d'une Architecture Robuste qui permet au produit d'évoluer et de s'adapter au besoin du client grâce à son jeu subtil de Permissions.",
-                    "Une Base de données sécurisée sur le Drive peut être mise à la disposition de nos clients via cette application."
-                ]
+                    "Interface mobile intuitive conçue pour une adoption immédiate par tous les utilisateurs, réduisant les coûts de formation.",
+                    "Architecture robuste et évolutive permettant l'adaptation aux besoins spécifiques et à la croissance organisationnelle.",
+                    "Système de permissions sophistiqué garantissant la sécurité des données et la conformité aux procédures internes.",
+                    "Technologie QR Code fiable assurant des processus de validation rapides et sans erreur."
+                ],
+                "benefitsTitle": "Avantages d'utilisation :",
+                "benefits": [
+                    "Établissements d'Enseignement : Digitalisation complète de la gestion étudiante et réduction drastique des tâches administratives",
+                    "Entreprises : Optimisation de la gestion du personnel et amélioration de la traçabilité des processus",
+                    "Gestionnaires : Contrôle total des opérations avec reporting automatisé et suivi en temps réel"
+                ],
+                "useCasesTitle": "Cas d'usage :",
+                "useCases": "Initialement conçue pour l'enseignement, VieneRegister s'adapte parfaitement à la gestion de stock, le contrôle d'accès, la gestion événementielle et tout processus nécessitant identification et suivi."
             },
             "DoctoViene": {
                 "title": "DoctoViene",
@@ -220,6 +273,7 @@
                         ]
                     }
                 ],
+                "benefitsTitle": "Avantages d'utilisation :",
                 "benefits": [
                     "Professionnels de Santé : Interface intuitive pour une gestion simplifiée",
                     "Patients : Amélioration de la prise en charge et réduction des coûts"
@@ -278,11 +332,13 @@
                     "Conformité aux normes de sécurité et de protection des données pour répondre aux exigences réglementaires.",
                     "Technologie de pointe alliant simplicité d'usage et puissance de traitement pour optimiser la productivité de vos services."
                 ],
+                "benefitsTitle": "Avantages d'utilisation :",
                 "benefits": [
                     "Services Administratifs : Gain de temps considérable et amélioration de l'efficacité opérationnelle",
                     "Dirigeants : Réduction des coûts de stockage physique et amélioration de la traçabilité documentaire",
                     "Utilisateurs : Accès instantané à l'information et élimination des recherches manuelles fastidieuses"
                 ],
+                "optionalEquipmentTitle": "Équipement Optionnel :",
                 "optionalEquipment": "Des scanners professionnels de dernière génération peuvent être fournis en option pour optimiser le processus de numérisation et garantir une qualité d'image exceptionnelle."
             }
         },
