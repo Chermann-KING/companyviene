@@ -235,12 +235,12 @@
                     "VieneDesign is CompanyViene's digital service for designing corporate graphics, brand image, catalogue design, advertising design, user experience research and web and mobile application design. This offer is based on the expertise of our international teams and enables us to provide our customers with excellent value for money."
                 ]
             },
-            "vieneEnergy": {
-                "title": "VieneEnergy",
+            "enerViene": {
+                "title": "EnerViene",
                 "descriptions": [
                     "Energy is at the heart of national security and economic development. Without it, vital sectors such as agriculture, transport, health and education can come to a standstill.",
-                    "VieneEnergy offers innovative, tailor-made solutions for energy and utilities (water, gas).",
-                    "What services does VieneEnergy offer?"
+                    "EnerViene offers innovative, tailor-made solutions for energy and utilities (water, gas).",
+                    "What services does EnerViene offer?"
                 ],
                 "features": [
                     "Consulting and support: Expertise in the production, transport and distribution of energy and utilities (water, gas).",
@@ -248,7 +248,7 @@
                     "Cutting-edge technologies: Support for decentralisation strategies and integration of new technologies."
                 ],
                 "otherDescriptions": [
-                    "VieneEnergy is your ally in ensuring the efficient and sustainable management of energy, essential to the prosperity of all sectors."
+                    "EnerViene is your ally in ensuring the efficient and sustainable management of energy, essential to the prosperity of all sectors."
                 ]
             }
         }

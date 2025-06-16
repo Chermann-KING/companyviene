@@ -235,12 +235,12 @@
                     "VieneDesign est un service digital de CompanyViene destiné à la conception de charte graphique d'entreprise, image de marque, création de catalogue, conception publicitaire, recherche expérience utilisateur, conception d'application web et mobile. Cette offre se base sur l'expertise de nos équipes à l'internationale et permet de fournir un excellent rapport qualité/prix à nos clients."
                 ]
             },
-            "vieneEnergy": {
-                "title": "VieneEnergy",
+            "enerViene": {
+                "title": "EnerViene",
                 "descriptions": [
                     "L'énergie est au cœur de la sécurité nationale et du développement économique. Sans elle, des secteurs vitaux tels que l'agriculture, le transport, la santé et l'éducation peuvent être paralysés.",
-                    "VieneEnergy, offre des solutions innovantes et sur mesure en matière d'énergie et d'utilités (Eau, gaz).",
-                    "Quels sont les services proposés par VieneEnergy ?"
+                    "EnerViene, offre des solutions innovantes et sur mesure en matière d'énergie et d'utilités (Eau, gaz).",
+                    "Quels sont les services proposés par EnerViene ?"
                 ],
                 "features": [
                     "Conseil et Accompagnement : Expertise en production, transport et distribution d'énergie & utilités (Eau, Gaz).",
@@ -248,7 +248,7 @@
                     "Technologies de Pointe : Support dans les stratégies de décentralisation et intégration des nouvelles technologies."
                 ],
                 "otherDescriptions": [
-                    "VieneEnergy est votre allié pour garantir une gestion efficace et durable de l'énergie, essentielle à la prospérité de tous les secteurs."
+                    "EnerViene est votre allié pour garantir une gestion efficace et durable de l'énergie, essentielle à la prospérité de tous les secteurs."
                 ]
             }
         }

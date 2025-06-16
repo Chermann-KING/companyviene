@@ -14,12 +14,11 @@ export default function Services() {
         []) as string[],
     },
     {
-      id: "vieneEnergy",
+      id: "enerViene",
       icon: "/assets/icons/viene.webp",
-      descriptions: (servicesT.raw("vieneEnergy.descriptions") ||
-        []) as string[],
-      features: (servicesT.raw("vieneEnergy.features") || []) as string[],
-      otherDescriptions: (servicesT.raw("vieneEnergy.otherDescriptions") ||
+      descriptions: (servicesT.raw("enerViene.descriptions") || []) as string[],
+      features: (servicesT.raw("enerViene.features") || []) as string[],
+      otherDescriptions: (servicesT.raw("enerViene.otherDescriptions") ||
         []) as string[],
     },
   ];
