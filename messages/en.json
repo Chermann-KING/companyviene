@@ -224,6 +224,66 @@
                     "Healthcare professionals: Intuitive interface for simplified management",
                     "Patients : Improving care and reducing costs"
                 ]
+            },
+            "ArchiViene": {
+                "title": "ArchiViene",
+                "subtitle": "Revolutionize Document Management with Artificial Intelligence",
+                "description": "Developed by CompanyViene, ArchiViene is an intelligent digital archiving solution that radically transforms document management for administrations and businesses. With its embedded Artificial Intelligence and advanced OCR (Optical Character Recognition) technology, it enables digitization, analysis, automatic classification, and instant search of all types of documents from a simple photo.",
+                "servicesTitle": "ArchiViene Services",
+                "servicesList": [
+                    {
+                        "title": "Intelligent Digitization",
+                        "items": [
+                            "Automatic conversion of paper documents to high-quality digital format.",
+                            "Multi-language OCR recognition with optimized image processing.",
+                            "Support for all document formats (A4, A3, cards, invoices, contracts...)."
+                        ]
+                    },
+                    {
+                        "title": "AI-Powered Automatic Classification",
+                        "items": [
+                            "Intelligent content analysis for automatic categorization.",
+                            "Automatic detection of document types (invoices, contracts, certificates...).",
+                            "Automatic metadata indexing for optimized search."
+                        ]
+                    },
+                    {
+                        "title": "Instant Search",
+                        "items": [
+                            "Ultra-fast full-text search engine across all archived documents.",
+                            "Search by keywords, dates, references, or specific content.",
+                            "Advanced filters to refine results according to your criteria."
+                        ]
+                    },
+                    {
+                        "title": "Security and Traceability",
+                        "items": [
+                            "Data encryption and secure access with user rights management.",
+                            "Complete history of consultations and modifications.",
+                            "Automatic backup and data redundancy."
+                        ]
+                    },
+                    {
+                        "title": "Integration and Mobility",
+                        "items": [
+                            "Web and mobile interface for universal access to archives.",
+                            "API for integration with your existing systems (ERP, CRM...).",
+                            "High-performance specialized scanners available as an option."
+                        ]
+                    }
+                ],
+                "features": [
+                    "Intuitive interface designed for immediate adoption by administrative teams, drastically reducing training time.",
+                    "Robust cloud architecture ensuring 24/7 availability and scalability according to your organizational needs.",
+                    "Compliance with security and data protection standards to meet regulatory requirements.",
+                    "Cutting-edge technology combining ease of use and processing power to optimize your services' productivity."
+                ],
+                "benefits": [
+                    "Administrative Services: Considerable time savings and improved operational efficiency",
+                    "Management: Reduced physical storage costs and improved document traceability",
+                    "Users: Instant access to information and elimination of tedious manual searches"
+                ],
+                "optionalEquipment": "Latest generation professional scanners can be provided as an option to optimize the digitization process and guarantee exceptional image quality."
             }
         },
         "services": {

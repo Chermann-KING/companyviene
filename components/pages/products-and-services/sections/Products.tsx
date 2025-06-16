@@ -19,6 +19,16 @@ export default function Products() {
       status: productsT("DoctoViene.status"),
     },
     {
+      id: "ArchiViene",
+      icon: "/assets/icons/viene.webp",
+      features: (productsT.raw("ArchiViene.features") || []) as string[],
+      servicesList: (productsT.raw("ArchiViene.servicesList") || []) as {
+        title: string;
+        items: string[];
+      }[],
+      benefits: (productsT.raw("ArchiViene.benefits") || []) as string[],
+    },
+    {
       id: "VieneRegister",
       icon: "/assets/icons/viene.webp",
       features: (productsT.raw("VieneRegister.features") || []) as string[],
@@ -52,10 +62,11 @@ export default function Products() {
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
                   {productsT(`${product.id}.title`)}
-                  {product.id === "DoctoViene" && (
+                  {(product.id === "DoctoViene" ||
+                    product.id === "ArchiViene") && (
                     <span className="font-normal">
                       {" "}
-                      : {productsT("DoctoViene.subtitle")}
+                      : {productsT(`${product.id}.subtitle`)}
                     </span>
                   )}
                 </h3>
@@ -78,12 +89,12 @@ export default function Products() {
                 )}
 
               {/* services */}
-              {product.id === "DoctoViene" &&
+              {(product.id === "DoctoViene" || product.id === "ArchiViene") &&
                 Array.isArray(product.servicesList) &&
                 product.servicesList.length > 0 && (
                   <div className="mb-6">
                     <h4 className="text-xl font-semibold mb-2">
-                      {productsT("DoctoViene.servicesTitle")}
+                      {productsT(`${product.id}.servicesTitle`)}
                     </h4>
                     <div className="list-decimal pl-6 space-y-2">
                       {product.servicesList.map((service, idx) => (
@@ -103,7 +114,7 @@ export default function Products() {
                 )}
 
               {/* avantages */}
-              {product.id === "DoctoViene" &&
+              {(product.id === "DoctoViene" || product.id === "ArchiViene") &&
                 Array.isArray(product.benefits) &&
                 product.benefits.length > 0 && (
                   <div className="mb-6">
@@ -117,6 +128,19 @@ export default function Products() {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                )}
+
+              {/* Équipement optionnel pour ArchiViene */}
+              {product.id === "ArchiViene" &&
+                productsT(`${product.id}.optionalEquipment`) && (
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold mb-2">
+                      Équipement Optionnel :
+                    </h4>
+                    <p className="text-gray-600">
+                      {productsT(`${product.id}.optionalEquipment`)}
+                    </p>
                   </div>
                 )}
             </div>

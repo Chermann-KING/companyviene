@@ -224,6 +224,66 @@
                     "Professionnels de Santé : Interface intuitive pour une gestion simplifiée",
                     "Patients : Amélioration de la prise en charge et réduction des coûts"
                 ]
+            },
+            "ArchiViene": {
+                "title": "ArchiViene",
+                "subtitle": "Révolutionnez la Gestion Documentaire avec l'Intelligence Artificielle",
+                "description": "Développée par CompanyViene, ArchiViene est une solution d'archivage numérique intelligente qui transforme radicalement la gestion documentaire des administrations et entreprises. Grâce à son Intelligence Artificielle embarquée et sa technologie OCR (reconnaissance optique de caractères) avancée, elle permet la numérisation, l'analyse, le classement automatique et la recherche instantanée de tous types de documents à partir d'une simple photo.",
+                "servicesTitle": "Les Services d'ArchiViene",
+                "servicesList": [
+                    {
+                        "title": "Numérisation Intelligente",
+                        "items": [
+                            "Conversion automatique de documents papier en format numérique haute qualité.",
+                            "Reconnaissance OCR multi-langues avec traitement d'image optimisé.",
+                            "Support de tous formats de documents (A4, A3, cartes, factures, contrats...)."
+                        ]
+                    },
+                    {
+                        "title": "Classification Automatique par IA",
+                        "items": [
+                            "Analyse intelligente du contenu pour un classement automatique par catégories.",
+                            "Détection automatique des types de documents (factures, contrats, certificats...).",
+                            "Indexation automatique des métadonnées pour une recherche optimisée."
+                        ]
+                    },
+                    {
+                        "title": "Recherche Instantanée",
+                        "items": [
+                            "Moteur de recherche full-text ultra-rapide dans tous les documents archivés.",
+                            "Recherche par mots-clés, dates, références ou contenu spécifique.",
+                            "Filtres avancés pour affiner les résultats selon vos critères."
+                        ]
+                    },
+                    {
+                        "title": "Sécurisation et Traçabilité",
+                        "items": [
+                            "Chiffrement des données et accès sécurisé avec gestion des droits utilisateurs.",
+                            "Historique complet des consultations et modifications.",
+                            "Sauvegarde automatique et redondance des données."
+                        ]
+                    },
+                    {
+                        "title": "Intégration et Mobilité",
+                        "items": [
+                            "Interface web et mobile pour un accès universel aux archives.",
+                            "API pour intégration avec vos systèmes existants (ERP, CRM...).",
+                            "Scanners spécialisés haute performance disponibles en option."
+                        ]
+                    }
+                ],
+                "features": [
+                    "Interface intuitive conçue pour une prise en main immédiate par les équipes administratives, réduisant drastiquement le temps de formation.",
+                    "Architecture cloud robuste garantissant la disponibilité 24h/24 et l'évolutivité selon vos besoins organisationnels.",
+                    "Conformité aux normes de sécurité et de protection des données pour répondre aux exigences réglementaires.",
+                    "Technologie de pointe alliant simplicité d'usage et puissance de traitement pour optimiser la productivité de vos services."
+                ],
+                "benefits": [
+                    "Services Administratifs : Gain de temps considérable et amélioration de l'efficacité opérationnelle",
+                    "Dirigeants : Réduction des coûts de stockage physique et amélioration de la traçabilité documentaire",
+                    "Utilisateurs : Accès instantané à l'information et élimination des recherches manuelles fastidieuses"
+                ],
+                "optionalEquipment": "Des scanners professionnels de dernière génération peuvent être fournis en option pour optimiser le processus de numérisation et garantir une qualité d'image exceptionnelle."
             }
         },
         "services": {
