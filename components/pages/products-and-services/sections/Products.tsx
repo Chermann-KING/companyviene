@@ -77,6 +77,7 @@ export default function Products() {
                   </ul>
                 )}
 
+              {/* services */}
               {product.id === "DoctoViene" &&
                 Array.isArray(product.servicesList) &&
                 product.servicesList.length > 0 && (
@@ -84,10 +85,10 @@ export default function Products() {
                     <h4 className="text-xl font-semibold mb-2">
                       {productsT("DoctoViene.servicesTitle")}
                     </h4>
-                    <ol className="list-decimal pl-6 space-y-2">
+                    <div className="list-decimal pl-6 space-y-2">
                       {product.servicesList.map((service, idx) => (
-                        <li key={idx} className="mb-2">
-                          <span className="font-bold">{service.title} :</span>
+                        <div key={idx} className="mb-2">
+                          <h5 className="font-bold">{service.title} :</h5>
                           <ul className="list-disc pl-6 mt-1">
                             {service.items.map((item, subIdx) => (
                               <li key={subIdx} className="text-gray-600">
@@ -95,12 +96,13 @@ export default function Products() {
                               </li>
                             ))}
                           </ul>
-                        </li>
+                        </div>
                       ))}
-                    </ol>
+                    </div>
                   </div>
                 )}
 
+              {/* avantages */}
               {product.id === "DoctoViene" &&
                 Array.isArray(product.benefits) &&
                 product.benefits.length > 0 && (
