@@ -8,19 +8,20 @@ export default function Products() {
 
   const products = [
     {
+      id: "DoctoViene",
+      icon: "/assets/icons/doctoviene.webp",
+      features: (productsT.raw("DoctoViene.features") || []) as string[],
+      servicesList: (productsT.raw("DoctoViene.servicesList") || []) as {
+        title: string;
+        items: string[];
+      }[],
+      benefits: (productsT.raw("DoctoViene.benefits") || []) as string[],
+      status: productsT("DoctoViene.status"),
+    },
+    {
       id: "VieneRegister",
-      // icon: "/assets/icons/register.svg",
+      icon: "/assets/icons/viene.webp",
       features: (productsT.raw("VieneRegister.features") || []) as string[],
-    },
-    {
-      id: "CoolTrack",
-      // icon: "/assets/icons/cooltrack.svg",
-      features: (productsT.raw("CoolTrack.features") || []) as string[],
-    },
-    {
-      id: "TMS",
-      // icon: "/assets/icons/tms.svg",
-      features: (productsT.raw("TMS.features") || []) as string[],
     },
   ];
 
@@ -42,15 +43,21 @@ export default function Products() {
             >
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 relative mr-4">
-                  {/* <Image
+                  <Image
                     src={product.icon}
                     alt={productsT(`${product.id}.title`)}
                     fill
                     className="object-contain"
-                  /> */}
+                  />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
                   {productsT(`${product.id}.title`)}
+                  {product.id === "DoctoViene" && (
+                    <span className="font-normal">
+                      {" "}
+                      : {productsT("DoctoViene.subtitle")}
+                    </span>
+                  )}
                 </h3>
               </div>
 
@@ -70,9 +77,46 @@ export default function Products() {
                   </ul>
                 )}
 
-              <div className="mt-6 text-xl text-primary-600 font-medium">
-                {productsT(`${product.id}.status`)}
-              </div>
+              {product.id === "DoctoViene" &&
+                Array.isArray(product.servicesList) &&
+                product.servicesList.length > 0 && (
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold mb-2">
+                      {productsT("DoctoViene.servicesTitle")}
+                    </h4>
+                    <ol className="list-decimal pl-6 space-y-2">
+                      {product.servicesList.map((service, idx) => (
+                        <li key={idx} className="mb-2">
+                          <span className="font-bold">{service.title} :</span>
+                          <ul className="list-disc pl-6 mt-1">
+                            {service.items.map((item, subIdx) => (
+                              <li key={subIdx} className="text-gray-600">
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+
+              {product.id === "DoctoViene" &&
+                Array.isArray(product.benefits) &&
+                product.benefits.length > 0 && (
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold mb-2">
+                      Avantages d'utilisation :
+                    </h4>
+                    <ul className="list-disc pl-6 space-y-2">
+                      {product.benefits.map((benefit, idx) => (
+                        <li key={idx} className="text-gray-600">
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
             </div>
           ))}
         </div>

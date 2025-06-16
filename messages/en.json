@@ -171,21 +171,55 @@
                 "features": [
                     "This easy-to-use product uses effective permissions management to assign one or more specific functions to a given user depending on their role in the organisation (registration, payment validation, database status check, data extraction into an Excel file, QR code scanning, card/receipt printing, etc.).",
                     "VieneRegister has a Robust Architecture that allows the product to evolve and adapt to customer needs thanks to its subtle set of Permissions.",
-                    "A secure database on the Drive is available to our customers via this application."
+                    "A secure database on the Drive can be made available to our customers via this application."
+                ]
+            },
+            "DoctoViene": {
+                "title": "DoctoViene",
+                "subtitle": "Revolutionising healthcare management through digitisation",
+                "description": "Developed by CompanyViene, DoctoViene is an innovative application designed to optimise the healthcare sector. Its aim is to digitise the healthcare process and improve the efficiency of healthcare professionals, thereby reducing the time spent on care.",
+                "servicesTitle": "DoctoViene services",
+                "servicesList": [
+                    {
+                        "title": "Document security",
+                        "items": [
+                            "Digitisation and archiving of birth certificates, medical certificates, etc.",
+                            "QR code for document authentication."
+                        ]
+                    },
+                    {
+                        "title": "Healthcare Act Management",
+                        "items": [
+                            "Sharing and archiving medical procedures.",
+                            "Real-time visibility for health insurance organisations."
+                        ]
+                    },
+                    {
+                        "title": "Digital Archiving",
+                        "items": [
+                            "Preservation of birth documents against deterioration.",
+                            "Instant search of scanned documents."
+                        ]
+                    },
+                    {
+                        "title": "Patient Management",
+                        "items": [
+                            "Quick registration of patient information.",
+                            "Accessible medical history and instant updates."
+                        ]
+                    },
+                    {
+                        "title": "Occupational medicine",
+                        "items": [
+                            "Queue management and patient care.",
+                            "View and print medical certificates."
+                        ]
+                    }
                 ],
-                "status": "(Product Available)"
-            },
-            "CoolTrack": {
-                "title": "CoolTrack",
-                "description": "CoolTrack is a parcel tracking application. The application makes it easy to set up a system for tracking the status of bills of lading. Among other things, it can be used to manage the registration, withdrawal and invoicing of parcels or courier services by transport operators.",
-                "features": [],
-                "status": "(Product Available)"
-            },
-            "TMS": {
-                "title": "TMS",
-                "description": "TMS is an application designed to manage passenger tickets for passenger transport. The application facilitates passenger check-in and invoicing, as well as keeping track of journeys made.",
-                "features": [],
-                "status": "(Product Available)"
+                "benefits": [
+                    "Healthcare professionals: Intuitive interface for simplified management",
+                    "Patients : Improving care and reducing costs"
+                ]
             }
         },
         "services": {

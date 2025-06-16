@@ -100,7 +100,7 @@
         "objectives": {
             "title": "Nos",
             "titleHighlight": "objectifs",
-            "description": "Apporter à nos clients des solutions simples, optimales en rapport à la durabilité, pour améliorer la qualité de service. Les solutions proposées par CompanyViene se veulent être pratiques, adaptées, personnalisables et SMART. Notre ambition est d’apporter de la valeur ajoutée grâce au recrutement et la formation de personnel local, tout en s’appuyant sur des expertises consolidées au niveau international."
+            "description": "Apporter à nos clients des solutions simples, optimales en rapport à la durabilité, pour améliorer la qualité de service. Les solutions proposées par CompanyViene se veulent être pratiques, adaptées, personnalisables et SMART. Notre ambition est d'apporter de la valeur ajoutée grâce au recrutement et la formation de personnel local, tout en s'appuyant sur des expertises consolidées au niveau international."
         },
         "vision": {
             "title": "Notre",
@@ -171,21 +171,55 @@
                 "features": [
                     "Ce produit simple d'utilisation permet grâce à une gestion efficace des permissions, d'attribuer une ou plusieurs fonctionnalités spécifiques à un utilisateur donné en fonction de son rôle dans l'organisation (Inscription, Validation du paiement, Vérification du statut en base de données, Extraction de données dans un fichier Excel, Scan de QR Code, Impression de cartes/reçus …).",
                     "VieneRegister est doté d'une Architecture Robuste qui permet au produit d'évoluer et de s'adapter au besoin du client grâce à son jeu subtil de Permissions.",
-                    "Une Base de données sécurisée sur le Drive est mise à la disposition de nos clients via cette application."
+                    "Une Base de données sécurisée sur le Drive peut être mise à la disposition de nos clients via cette application."
+                ]
+            },
+            "DoctoViene": {
+                "title": "DoctoViene",
+                "subtitle": "Révolutionnez la Gestion de la Santé avec la Numérisation",
+                "description": "Développée par CompanyViene, DoctoViene est une application innovante conçue pour l'optimisation du secteur de la santé. Elle vise à digitaliser le parcours de soin, et améliorer l'efficacité des professionnels de santé et donc le temps consacré aux soins.",
+                "servicesTitle": "Les Services de DoctoViene",
+                "servicesList": [
+                    {
+                        "title": "Sécurisation des Documents",
+                        "items": [
+                            "Numérisation et archivage des certificats de naissance, certificats médicaux, etc.",
+                            "QR code pour authentification des documents."
+                        ]
+                    },
+                    {
+                        "title": "Gestion des Actes de Soins",
+                        "items": [
+                            "Partage et archivage des actes médicaux.",
+                            "Visibilité en temps réel pour les organismes d'assurance maladie."
+                        ]
+                    },
+                    {
+                        "title": "Archivage Numérique",
+                        "items": [
+                            "Préservation des documents de naissance contre la dégradation.",
+                            "Recherche instantanée des documents numérisés."
+                        ]
+                    },
+                    {
+                        "title": "Gestion de la Patientèle",
+                        "items": [
+                            "Enregistrement rapide des informations des patients.",
+                            "Historique médical accessible et mise à jour instantanée."
+                        ]
+                    },
+                    {
+                        "title": "Médecine du Travail",
+                        "items": [
+                            "Gestion des files d'attente et prise en charge des patients.",
+                            "Consultation et impression de certificats médicaux."
+                        ]
+                    }
                 ],
-                "status": "(Produit Disponible)"
-            },
-            "CoolTrack": {
-                "title": "CoolTrack",
-                "description": "CoolTrack est une application de tracking dans l'acheminement colis. L'application facilite la mise en place d'un système de suivi du statut des bordereaux. Elle permet entre autres de gérer l'enregistrement, les retraits, la facturation des colis ou la messagerie des opérateurs de transport.",
-                "features": [],
-                "status": "(Produit Disponible)"
-            },
-            "TMS": {
-                "title": "TMS",
-                "description": "TMS est une application destinée à la gestion de tickets de passagers pour les Transports de personnes. L'application permet de faciliter les enregistrements de passagers, la facturation, ou encore de garder de la traçabilité sur les voyages effectués.",
-                "features": [],
-                "status": "(Produit Disponible)"
+                "benefits": [
+                    "Professionnels de Santé : Interface intuitive pour une gestion simplifiée",
+                    "Patients : Amélioration de la prise en charge et réduction des coûts"
+                ]
             }
         },
         "services": {
