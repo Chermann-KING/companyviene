@@ -23,7 +23,7 @@ function Contact() {
           <span className="text-primary-main">{t("getInTouchHighlight")}</span>
         </h2>
         <div className="flex-1 flex justify-center items-center">
-          <div className="w-full max-w-md text-center">
+          <div className="w-full md:max-w-md text-center px-4 ">
             {Array.isArray(t.raw("description")) ? (
               t.raw("description").map((text: string, index: number) => (
                 <p key={index} className="text-xl text-gray-600 mb-4">
@@ -36,10 +36,8 @@ function Contact() {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center md:items-start gap-8 px-4">
-        <div className="w-full md:w-2/3">
-          <ContactForm />
-        </div>
+      <div className="max-w-7xl md:mx-auto flex flex-col md:flex-row justify-center items-center md:items-start gap-8 px-4">
+        <ContactForm />
         {/* Contact Info */}
         <div className="w-full md:w-1/3 text-left mt-8 md:mt-0">
           <h3 className="text-lg font-semibold mb-4">{t("address.title")}</h3>
