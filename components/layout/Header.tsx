@@ -15,6 +15,9 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const t = useTranslations("header");
 
+  // Fonction pour fermer le menu mobile
+  const handleNavigate = () => setIsMenuOpen(false);
+
   return (
     <header className="bg-white shadow-md py-3 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +65,7 @@ export default function Header() {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100">
           <div className="px-4 pt-4 pb-6 space-y-3">
-            <Navigation mobile />
+            <Navigation mobile onNavigate={handleNavigate} />
             {/* Language selector mobile */}
             <div className="flex items-center px-3 py-3 border-t border-gray-100 mt-4">
               <LanguageSelector

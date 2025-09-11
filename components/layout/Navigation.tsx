@@ -4,7 +4,15 @@ import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { navigation } from "@/config/navigation";
 
-export default function Navigation({ mobile = false }) {
+type NavigationProps = {
+  mobile?: boolean;
+  onNavigate?: () => void;
+};
+
+export default function Navigation({
+  mobile = false,
+  onNavigate,
+}: NavigationProps) {
   const pathname = usePathname();
   const t = useTranslations("navigation");
   const locale = useLocale() as "fr" | "en";
@@ -39,6 +47,7 @@ export default function Navigation({ mobile = false }) {
           key={item.nameKey}
           href={getLocalizedHref(item.href)}
           className={linkClasses(item.href)}
+          onClick={mobile && onNavigate ? onNavigate : undefined}
         >
           {t(item.nameKey)}
         </Link>
