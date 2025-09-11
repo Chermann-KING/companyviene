@@ -12,7 +12,7 @@ export default function ContactHero() {
   const locale = pathname.split("/")[1];
 
   return (
-    <div className="relative bg-white overflow-hidden h-[calc(100vh-64px)]">
+    <div className="relative bg-white overflow-hidden h-[30vh] mt-8 sm:mt-0 sm:h-[80vh] lg:h-[calc(100vh-64px)]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -20,7 +20,7 @@ export default function ContactHero() {
           alt="Hero banner CompanyViene"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-right-top opacity-20 sm:opacity-100 sm:object-center"
         />
         {/* Overlay for better text contrast if needed */}
         <div className="absolute inset-0 bg-white/30"></div>
@@ -30,11 +30,11 @@ export default function ContactHero() {
       <div className="max-w-7xl mx-auto h-full">
         <div className="relative z-10 flex items-center h-full px-4 sm:px-6 lg:px-8">
           {/* Content wrapper */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 border border-red-500">
             {/* Title */}
             <h1 className="text-4xl tracking-tight font-extrabold leading-[1.1] text-secondary-main sm:text-5xl md:text-6xl mb-12">
               <span className="block">{tHero("title")}</span>
-              <div className="flex gap-x-4">
+              <div className="flex flex-wrap sm:flex-nowrap gap-x-2 gap-y-1">
                 <span className="text-primary-main">
                   {tHero("titleHighlightChallenge")}{" "}
                 </span>

@@ -22,7 +22,8 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="relative bg-white overflow-hidden h-[calc(100vh-80px)] flex items-center justify-center">
+    // <div className="relative bg-white overflow-hidden h-[calc(100vh-80px)] flex items-center justify-center">
+    <div className="relative bg-white overflow-hidden h-[30vh] mt-8 sm:mt-0 sm:h-[80vh] lg:h-[calc(100vh-64px)]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -42,7 +43,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center md:items-start h-full px-4 sm:px-8">
         <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-center md:items-start text-center md:text-left space-y-8">
           {/* Title */}
-          <h1 className="mt-48 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-extrabold leading-tight text-secondary-main text-wrap">
+          <h1 className="mt-5 sm:mt-48 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-extrabold leading-tight text-secondary-main text-wrap">
             <div className="block mb-2">
               {t("title.leverageyour")}{" "}
               <span className="text-primary-main font-bold">
