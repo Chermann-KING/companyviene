@@ -30,7 +30,7 @@ export default function ContactHero() {
       <div className="max-w-7xl mx-auto h-full">
         <div className="relative z-10 flex items-center h-full px-4 sm:px-6 lg:px-8">
           {/* Content wrapper */}
-          <div className="w-full lg:w-1/2 border border-red-500">
+          <div className="w-full lg:w-1/2">
             {/* Title */}
             <h1 className="text-4xl tracking-tight font-extrabold leading-[1.1] text-secondary-main sm:text-5xl md:text-6xl mb-12">
               <span className="block">{tHero("title")}</span>
