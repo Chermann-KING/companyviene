@@ -24,7 +24,10 @@
     },
     "topHeader": {
         "phone": "+241 77 91 58 82",
-        "hours": "Monday - Friday 09:00 - 17:00"
+        "hours": "Monday - Friday 09:00 - 17:00",
+        "social": {
+            "linkedin": "Follow us on LinkedIn"
+        }
     },
     "header": {
         "languageSelector": {
