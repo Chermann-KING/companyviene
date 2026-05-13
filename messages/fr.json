@@ -340,6 +340,266 @@
                 ],
                 "optionalEquipmentTitle": "Équipement Optionnel :",
                 "optionalEquipment": "Des scanners professionnels de dernière génération peuvent être fournis en option pour optimiser le processus de numérisation et garantir une qualité d'image exceptionnelle."
+            },
+            "VieneID": {
+                "title": "VieneID",
+                "subtitle": "Identification Biométrique Faciale par Intelligence Artificielle",
+                "description": "Développée par CompanyViene, VieneID est une solution de reconnaissance faciale basée sur navigateur permettant l'inscription et la vérification biométrique en temps réel. Grâce à son widget intégrable sécurisé, les applications tierces peuvent ajouter la biométrie faciale à leurs processus sans développement complexe.",
+                "servicesTitle": "Les Services de VieneID",
+                "servicesList": [
+                    {
+                        "title": "Inscription Biométrique",
+                        "items": [
+                            "Capture du visage via la caméra du navigateur avec détection automatique.",
+                            "Stockage sécurisé des embeddings faciaux (512 dimensions) par tenant.",
+                            "Widget d'inscription intégrable dans toute application tierce via iframe."
+                        ]
+                    },
+                    {
+                        "title": "Vérification en Temps Réel",
+                        "items": [
+                            "Correspondance biométrique instantanée via flux caméra en direct.",
+                            "API REST pour vérification d'image et de photo côté serveur.",
+                            "Seuil de correspondance configurable par organisation."
+                        ]
+                    },
+                    {
+                        "title": "Gestion Multi-Tenant",
+                        "items": [
+                            "Isolation complète des données biométriques par organisation.",
+                            "Gestion des membres et des rôles d'accès par tenant.",
+                            "Administration globale centralisée pour les super admins."
+                        ]
+                    },
+                    {
+                        "title": "Sécurité & Audit",
+                        "items": [
+                            "Authentification via Keycloak OIDC pour tous les accès.",
+                            "Journal d'audit complet de chaque action (inscription, vérification, connexion).",
+                            "Widget sécurisé par clé API et liste blanche d'origines autorisées."
+                        ]
+                    }
+                ],
+                "features": [
+                    "Reconnaissance faciale 100% côté client (navigateur) sans transmission de données brutes vers le serveur.",
+                    "Widget iframe intégrable en quelques lignes pour sécuriser toute application tierce par biométrie.",
+                    "Architecture multi-tenant permettant à plusieurs organisations de partager la même infrastructure en totale isolation.",
+                    "Internationalisation (français/anglais) avec changement de langue en temps réel, y compris dans le widget."
+                ],
+                "benefitsTitle": "Avantages d'utilisation :",
+                "benefits": [
+                    "Entreprises : Sécurisation des accès sans mot de passe grâce à la biométrie faciale",
+                    "Développeurs : Intégration rapide via widget ou API REST pour ajouter la reconnaissance faciale à n'importe quelle application",
+                    "Administrateurs : Contrôle total des inscriptions, vérifications et membres par organisation"
+                ]
+            },
+            "VieneCheckIn": {
+                "title": "VieneCheckIn",
+                "subtitle": "Pointage Intelligent par Géolocalisation et Reconnaissance Faciale",
+                "description": "Développée par CompanyViene, VieneCheckIn est une solution SaaS de gestion des présences multi-tenant conçue pour les entreprises. Elle combine le géofencing GPS et la vérification biométrique via VieneID pour garantir l'intégrité et la fiabilité des pointages.",
+                "servicesTitle": "Les Services de VieneCheckIn",
+                "servicesList": [
+                    {
+                        "title": "Pointage par Géofencing GPS",
+                        "items": [
+                            "Validation automatique de la localisation avant enregistrement de présence.",
+                            "Définition de zones de pointage autorisées par entreprise.",
+                            "Affichage de la précision GPS et autocomplétion d'adresse via OpenStreetMap."
+                        ]
+                    },
+                    {
+                        "title": "Vérification Biométrique via VieneID",
+                        "items": [
+                            "Intégration du widget VieneID pour la vérification faciale au pointage.",
+                            "Confirmation de l'identité de l'employé avant validation de la présence.",
+                            "Historique complet des pointages avec données biométriques associées."
+                        ]
+                    },
+                    {
+                        "title": "Gestion Multi-Tenant",
+                        "items": [
+                            "Isolation complète des données de présence par entreprise.",
+                            "3 niveaux d'accès : Super Admin, Company Admin, Employé.",
+                            "Tableau de bord personnalisé par rôle et par organisation."
+                        ]
+                    },
+                    {
+                        "title": "Reporting & Suivi RH",
+                        "items": [
+                            "Historique des présences en temps réel avec filtrage avancé.",
+                            "Statistiques de ponctualité et d'assiduité par employé et par équipe.",
+                            "Export des données de présence pour la paie et le reporting RH."
+                        ]
+                    }
+                ],
+                "features": [
+                    "Double validation (GPS + reconnaissance faciale) éliminant les fraudes au pointage par proxy.",
+                    "Architecture SaaS multi-tenant permettant à plusieurs entreprises de gérer leurs présences sur une seule plateforme.",
+                    "Intégration native avec VieneID pour une vérification biométrique sans développement supplémentaire.",
+                    "Interface mobile-first accessible depuis n'importe quel appareil avec navigateur web."
+                ],
+                "benefitsTitle": "Avantages d'utilisation :",
+                "benefits": [
+                    "Employeurs : Élimination des fraudes au pointage et automatisation du suivi des présences",
+                    "RH : Données de présence fiables et exportables pour la paie et le reporting",
+                    "Employés : Pointage rapide et sans contact depuis leur appareil mobile"
+                ]
+            },
+            "OkiraLib": {
+                "title": "OkiraLib",
+                "subtitle": "Plateforme d'Administration et API Backend pour Réseaux de Boutiques",
+                "description": "Développée par CompanyViene, OkiraLib est l'interface d'administration web et l'API backend centralisée du réseau de boutiques CompanyViene. Elle gère le catalogue produits, les catégories, les utilisateurs et le suivi géographique des points de vente OkiraViene.",
+                "servicesTitle": "Les Services d'OkiraLib",
+                "servicesList": [
+                    {
+                        "title": "Gestion du Catalogue",
+                        "items": [
+                            "Administration centralisée des produits, catégories et unités de mesure.",
+                            "Gestion des prix, stocks et images produits via Cloudinary.",
+                            "Synchronisation du catalogue vers toutes les boutiques OkiraViene connectées."
+                        ]
+                    },
+                    {
+                        "title": "API Backend pour OkiraViene",
+                        "items": [
+                            "Endpoints /api/sync/ pour la lecture et l'écriture des données boutique.",
+                            "Authentification JWT par boutique via /api/store-token.",
+                            "Synchronisation delta pour minimiser la consommation de bande passante."
+                        ]
+                    },
+                    {
+                        "title": "Suivi Géographique des Boutiques",
+                        "items": [
+                            "Cartographie et localisation de chaque point de vente du réseau.",
+                            "Tableau de bord des performances commerciales par boutique.",
+                            "Gestion des droits d'accès par boutique et par utilisateur."
+                        ]
+                    },
+                    {
+                        "title": "Administration Utilisateurs",
+                        "items": [
+                            "Gestion des comptes super admin, gérants et vendeurs.",
+                            "Attribution des rôles et permissions par boutique.",
+                            "Historique des connexions et actions des utilisateurs."
+                        ]
+                    }
+                ],
+                "features": [
+                    "Source unique de vérité pour l'ensemble du réseau de boutiques CompanyViene.",
+                    "API REST sécurisée par JWT permettant à OkiraViene de synchroniser les données en mode offline-first.",
+                    "Interface d'administration web intuitive pour la gestion centralisée du catalogue et des utilisateurs.",
+                    "Architecture PostgreSQL robuste avec Row Level Security pour l'isolation des données par boutique."
+                ],
+                "benefitsTitle": "Avantages d'utilisation :",
+                "benefits": [
+                    "Gérants réseau : Visibilité centralisée sur l'ensemble des boutiques et du catalogue produits",
+                    "Boutiques : Accès aux données produits à jour via synchronisation automatique avec OkiraViene",
+                    "Développeurs : API claire et documentée pour l'intégration avec OkiraViene et d'autres systèmes"
+                ]
+            },
+            "OkiraViene": {
+                "title": "OkiraViene",
+                "subtitle": "Application POS Mobile Android Offline-First pour Boutiques",
+                "description": "Développée par CompanyViene, OkiraViene est une application Point de Vente (POS) Android conçue pour les boutiques du réseau CompanyViene. Elle fonctionne en mode hors ligne complet et synchronise automatiquement les données vers OkiraLib dès que la connexion internet est disponible.",
+                "servicesTitle": "Les Services d'OkiraViene",
+                "servicesList": [
+                    {
+                        "title": "Caisse Enregistreuse Mobile",
+                        "items": [
+                            "Interface de vente intuitive adaptée aux écrans Android tactiles.",
+                            "Gestion des articles, quantités, remises et totaux en temps réel.",
+                            "Impression de reçus et archivage automatique des transactions."
+                        ]
+                    },
+                    {
+                        "title": "Mode Hors Ligne Complet",
+                        "items": [
+                            "Stockage local de toutes les données dans SQLite (expo-sqlite).",
+                            "Traitement des ventes sans connexion internet.",
+                            "Outbox de mutations : les opérations locales sont synchronisées dès le retour du réseau."
+                        ]
+                    },
+                    {
+                        "title": "Synchronisation Intelligente",
+                        "items": [
+                            "Synchronisation delta avec OkiraLib toutes les 30 secondes ou au retour réseau.",
+                            "Synchronisation P2P Bluetooth entre appareils de la même boutique sans internet.",
+                            "Résolution automatique des conflits de données entre devices."
+                        ]
+                    },
+                    {
+                        "title": "Gestion des Stocks",
+                        "items": [
+                            "Mise à jour des stocks en temps réel lors de chaque vente.",
+                            "Alertes de rupture de stock configurables par produit.",
+                            "Historique des mouvements de stock synchronisé avec OkiraLib."
+                        ]
+                    }
+                ],
+                "features": [
+                    "Mode hors ligne total : OkiraViene fonctionne sans internet, idéal pour les zones à connectivité limitée.",
+                    "Synchronisation P2P Bluetooth permettant aux vendeurs d'une même boutique de partager les données sans serveur.",
+                    "Intégration native avec OkiraLib comme source de vérité cloud pour le catalogue et la comptabilité.",
+                    "Architecture offline-first avec outbox garantissant qu'aucune transaction n'est perdue même en cas de coupure réseau."
+                ],
+                "benefitsTitle": "Avantages d'utilisation :",
+                "benefits": [
+                    "Boutiques : Continuité des ventes garantie même sans connexion internet",
+                    "Vendeurs : Interface simple et rapide sur smartphone Android, sans formation complexe",
+                    "Gérants : Consolidation automatique de toutes les transactions boutique dans OkiraLib"
+                ]
+            },
+            "VieneBid": {
+                "title": "VieneBid",
+                "subtitle": "Digitalisation des Appels d'Offres et de la Gestion des Achats",
+                "description": "Développée par CompanyViene, VieneBid est une application web de gestion des processus d'achats et des appels d'offres. Elle digitalise le cycle complet de l'achat : demandes d'achat, sélection des fournisseurs, soumission des offres et validation budgétaire par direction et division.",
+                "servicesTitle": "Les Services de VieneBid",
+                "servicesList": [
+                    {
+                        "title": "Gestion des Demandes d'Achat",
+                        "items": [
+                            "Création et suivi des demandes d'achat par département et direction.",
+                            "Workflow de validation multi-niveaux avec historique des approbations.",
+                            "Attachement de documents justificatifs aux demandes d'achat."
+                        ]
+                    },
+                    {
+                        "title": "Appels d'Offres Fournisseurs",
+                        "items": [
+                            "Invitation automatique des fournisseurs qualifiés pour chaque appel d'offres.",
+                            "Soumission et comparaison des offres fournisseurs en ligne.",
+                            "Attribution transparente avec traçabilité complète du processus de sélection."
+                        ]
+                    },
+                    {
+                        "title": "Gestion Budgétaire",
+                        "items": [
+                            "Suivi des budgets par direction et division en temps réel.",
+                            "Alertes automatiques en cas de dépassement de seuils budgétaires.",
+                            "Reporting financier par période, département et catégorie d'article."
+                        ]
+                    },
+                    {
+                        "title": "Gestion des Fournisseurs",
+                        "items": [
+                            "Registre centralisé des fournisseurs avec attestations et certifications.",
+                            "Évaluation et notation des fournisseurs après chaque commande.",
+                            "Gestion des activités et du statut de chaque fournisseur partenaire."
+                        ]
+                    }
+                ],
+                "features": [
+                    "Digitalisation complète du cycle d'achat de la demande initiale à l'attribution finale.",
+                    "Gestion budgétaire en temps réel par direction et division avec alertes automatiques.",
+                    "Processus d'appel d'offres transparent garantissant l'équité dans la sélection des fournisseurs.",
+                    "Sécurisation via Keycloak avec gestion des rôles et droits d'accès par profil utilisateur."
+                ],
+                "benefitsTitle": "Avantages d'utilisation :",
+                "benefits": [
+                    "Direction : Visibilité totale sur les dépenses et respect des budgets alloués par département",
+                    "Acheteurs : Processus d'appel d'offres structuré et traçable, réduisant les délais et les erreurs",
+                    "Fournisseurs : Participation simplifiée aux appels d'offres et suivi en ligne de leurs offres"
+                ]
             }
         },
         "services": {

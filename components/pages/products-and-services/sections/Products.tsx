@@ -38,7 +38,62 @@ export default function Products() {
       }[],
       benefits: (productsT.raw("ArchiViene.benefits") || []) as string[],
     },
+    {
+      id: "VieneID",
+      icon: "/assets/icons/viene.webp",
+      features: (productsT.raw("VieneID.features") || []) as string[],
+      servicesList: (productsT.raw("VieneID.servicesList") || []) as {
+        title: string;
+        items: string[];
+      }[],
+      benefits: (productsT.raw("VieneID.benefits") || []) as string[],
+    },
+    {
+      id: "VieneCheckIn",
+      icon: "/assets/icons/viene.webp",
+      features: (productsT.raw("VieneCheckIn.features") || []) as string[],
+      servicesList: (productsT.raw("VieneCheckIn.servicesList") || []) as {
+        title: string;
+        items: string[];
+      }[],
+      benefits: (productsT.raw("VieneCheckIn.benefits") || []) as string[],
+    },
+    {
+      id: "OkiraLib",
+      icon: "/assets/icons/viene.webp",
+      features: (productsT.raw("OkiraLib.features") || []) as string[],
+      servicesList: (productsT.raw("OkiraLib.servicesList") || []) as {
+        title: string;
+        items: string[];
+      }[],
+      benefits: (productsT.raw("OkiraLib.benefits") || []) as string[],
+    },
+    {
+      id: "OkiraViene",
+      icon: "/assets/icons/viene.webp",
+      features: (productsT.raw("OkiraViene.features") || []) as string[],
+      servicesList: (productsT.raw("OkiraViene.servicesList") || []) as {
+        title: string;
+        items: string[];
+      }[],
+      benefits: (productsT.raw("OkiraViene.benefits") || []) as string[],
+    },
+    {
+      id: "VieneBid",
+      icon: "/assets/icons/viene.webp",
+      features: (productsT.raw("VieneBid.features") || []) as string[],
+      servicesList: (productsT.raw("VieneBid.servicesList") || []) as {
+        title: string;
+        items: string[];
+      }[],
+      benefits: (productsT.raw("VieneBid.benefits") || []) as string[],
+    },
   ];
+
+  const FULL_DETAIL_IDS = new Set([
+    "DoctoViene", "ArchiViene", "VieneRegister",
+    "VieneID", "VieneCheckIn", "OkiraLib", "OkiraViene", "VieneBid",
+  ]);
 
   return (
     <section className="relative bg-gray-50 overflow-hidden h-[calc(100vh-64px)]py-16">
@@ -67,9 +122,7 @@ export default function Products() {
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
                   {productsT(`${product.id}.title`)}
-                  {(product.id === "DoctoViene" ||
-                    product.id === "ArchiViene" ||
-                    product.id === "VieneRegister") && (
+                    {FULL_DETAIL_IDS.has(product.id) && (
                     <span className="font-normal">
                       {" "}
                       : {productsT(`${product.id}.subtitle`)}
@@ -95,9 +148,7 @@ export default function Products() {
                 )}
 
               {/* services */}
-              {(product.id === "DoctoViene" ||
-                product.id === "ArchiViene" ||
-                product.id === "VieneRegister") &&
+              {FULL_DETAIL_IDS.has(product.id) &&
                 Array.isArray(product.servicesList) &&
                 product.servicesList.length > 0 && (
                   <div className="mb-6">
@@ -122,9 +173,7 @@ export default function Products() {
                 )}
 
               {/* avantages */}
-              {(product.id === "DoctoViene" ||
-                product.id === "ArchiViene" ||
-                product.id === "VieneRegister") &&
+              {FULL_DETAIL_IDS.has(product.id) &&
                 Array.isArray(product.benefits) &&
                 product.benefits.length > 0 && (
                   <div className="mb-6">
