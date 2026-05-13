@@ -1,60 +1,63 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { defaultMapConfig, mapContainerStyle } from "@/config/google-maps";
-import { Loader } from "@googlemaps/js-api-loader";
+import { useEffect, useRef } from "react";
+import "leaflet/dist/leaflet.css";
+
+const CENTER = { lat: 0.41529, lng: 9.42827 };
 
 export default function Map() {
-  const [map, setMap] = useState<google.maps.Map | null>(null);
-
-  const initMap = useCallback(async () => {
-    const loader = new Loader({
-      apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
-      version: "weekly",
-      libraries: ["marker"],
-    });
-
-    try {
-      const google = await loader.load();
-      const { Map } = google.maps;
-      const { AdvancedMarkerElement } = (await google.maps.importLibrary(
-        "marker"
-      )) as google.maps.MarkerLibrary;
-
-      const newMap = new Map(
-        document.getElementById("map-container") as HTMLElement,
-        {
-          ...defaultMapConfig,
-          center: new google.maps.LatLng(
-            defaultMapConfig.center.lat,
-            defaultMapConfig.center.lng
-          ),
-        }
-      );
-
-      new AdvancedMarkerElement({
-        map: newMap,
-        position: defaultMapConfig.center,
-        title: "CompanyViene",
-      });
-
-      setMap(newMap);
-    } catch (error) {
-      console.error("Error loading Google Maps:", error);
-    }
-  }, []);
+  const containerRef = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mapRef = useRef<any>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && !map) {
-      initMap();
-    }
+    if (!containerRef.current || mapRef.current) return;
+
+    let destroyed = false;
+
+    (async () => {
+      const L = (await import("leaflet")).default;
+
+      if (destroyed || !containerRef.current) return;
+
+      // Corriger l'icône par défaut (problème webpack / Next.js)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      delete (L.Icon.Default.prototype as any)._getIconUrl;
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl:
+          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
+        iconUrl:
+          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png",
+        shadowUrl:
+          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
+      });
+
+      const map = L.map(containerRef.current, {
+        center: [CENTER.lat, CENTER.lng],
+        zoom: 15,
+        zoomControl: true,
+        scrollWheelZoom: false,
+      });
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19,
+      }).addTo(map);
+
+      L.marker([CENTER.lat, CENTER.lng]).addTo(map).bindPopup("CompanyViene");
+
+      mapRef.current = map;
+    })();
 
     return () => {
-      if (map) {
-        // Cleanup if needed
+      destroyed = true;
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
       }
     };
-  }, [map, initMap]);
+  }, []);
 
-  return <div id="map-container" style={mapContainerStyle} />;
+  return <div ref={containerRef} style={{ width: "100%", height: "400px" }} />;
 }
