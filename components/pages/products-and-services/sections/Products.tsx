@@ -1,221 +1,84 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
+
+const PRODUCT_IDS = [
+  {
+    id: "DoctoViene",
+    icon: "/assets/icons/doctoviene.webp",
+    slug: "doctoviene",
+  },
+  {
+    id: "VieneRegister",
+    icon: "/assets/icons/viene.webp",
+    slug: "viene-register",
+  },
+  { id: "ArchiViene", icon: "/assets/icons/viene.webp", slug: "archiviene" },
+  { id: "VieneID", icon: "/assets/icons/viene.webp", slug: "viene-id" },
+  {
+    id: "VieneCheckIn",
+    icon: "/assets/icons/viene.webp",
+    slug: "viene-checkin",
+  },
+  { id: "OkiraLib", icon: "/assets/icons/viene.webp", slug: "okira-lib" },
+  { id: "OkiraViene", icon: "/assets/icons/viene.webp", slug: "okira-viene" },
+  { id: "VieneBid", icon: "/assets/icons/viene.webp", slug: "viene-bid" },
+];
+
+const PAGE_SLUG: Record<string, string> = {
+  fr: "produits-et-services",
+  en: "products-and-services",
+};
 
 export default function Products() {
-  const productsT = useTranslations("productsandservices.products");
-
-  const products = [
-    {
-      id: "DoctoViene",
-      icon: "/assets/icons/doctoviene.webp",
-      features: (productsT.raw("DoctoViene.features") || []) as string[],
-      servicesList: (productsT.raw("DoctoViene.servicesList") || []) as {
-        title: string;
-        items: string[];
-      }[],
-      benefits: (productsT.raw("DoctoViene.benefits") || []) as string[],
-      status: productsT("DoctoViene.status"),
-    },
-    {
-      id: "VieneRegister",
-      icon: "/assets/icons/viene.webp",
-      features: (productsT.raw("VieneRegister.features") || []) as string[],
-      servicesList: (productsT.raw("VieneRegister.servicesList") || []) as {
-        title: string;
-        items: string[];
-      }[],
-      benefits: (productsT.raw("VieneRegister.benefits") || []) as string[],
-    },
-    {
-      id: "ArchiViene",
-      icon: "/assets/icons/viene.webp",
-      features: (productsT.raw("ArchiViene.features") || []) as string[],
-      servicesList: (productsT.raw("ArchiViene.servicesList") || []) as {
-        title: string;
-        items: string[];
-      }[],
-      benefits: (productsT.raw("ArchiViene.benefits") || []) as string[],
-    },
-    {
-      id: "VieneID",
-      icon: "/assets/icons/viene.webp",
-      features: (productsT.raw("VieneID.features") || []) as string[],
-      servicesList: (productsT.raw("VieneID.servicesList") || []) as {
-        title: string;
-        items: string[];
-      }[],
-      benefits: (productsT.raw("VieneID.benefits") || []) as string[],
-    },
-    {
-      id: "VieneCheckIn",
-      icon: "/assets/icons/viene.webp",
-      features: (productsT.raw("VieneCheckIn.features") || []) as string[],
-      servicesList: (productsT.raw("VieneCheckIn.servicesList") || []) as {
-        title: string;
-        items: string[];
-      }[],
-      benefits: (productsT.raw("VieneCheckIn.benefits") || []) as string[],
-    },
-    {
-      id: "OkiraLib",
-      icon: "/assets/icons/viene.webp",
-      features: (productsT.raw("OkiraLib.features") || []) as string[],
-      servicesList: (productsT.raw("OkiraLib.servicesList") || []) as {
-        title: string;
-        items: string[];
-      }[],
-      benefits: (productsT.raw("OkiraLib.benefits") || []) as string[],
-    },
-    {
-      id: "OkiraViene",
-      icon: "/assets/icons/viene.webp",
-      features: (productsT.raw("OkiraViene.features") || []) as string[],
-      servicesList: (productsT.raw("OkiraViene.servicesList") || []) as {
-        title: string;
-        items: string[];
-      }[],
-      benefits: (productsT.raw("OkiraViene.benefits") || []) as string[],
-    },
-    {
-      id: "VieneBid",
-      icon: "/assets/icons/viene.webp",
-      features: (productsT.raw("VieneBid.features") || []) as string[],
-      servicesList: (productsT.raw("VieneBid.servicesList") || []) as {
-        title: string;
-        items: string[];
-      }[],
-      benefits: (productsT.raw("VieneBid.benefits") || []) as string[],
-    },
-  ];
-
-  const FULL_DETAIL_IDS = new Set([
-    "DoctoViene", "ArchiViene", "VieneRegister",
-    "VieneID", "VieneCheckIn", "OkiraLib", "OkiraViene", "VieneBid",
-  ]);
+  const t = useTranslations("productsandservices.products");
+  const locale = useLocale();
+  const pageSlug = PAGE_SLUG[locale] ?? "products-and-services";
 
   return (
-    <section className="relative bg-gray-50 overflow-hidden h-[calc(100vh-64px)]py-16">
-      <div className="container mx-auto px-4 py-16">
+    <section className="bg-gray-50 py-16">
+      <div className="container mx-auto px-4">
         <h2 className="text-3xl tracking-tight font-extrabold text-secondary-main sm:text-4xl md:text-5xl mb-16">
-          {productsT("title")}{" "}
-          <span className="text-primary-main">
-            {productsT("titleHighlight")}
-          </span>
+          {t("title")}{" "}
+          <span className="text-primary-main">{t("titleHighlight")}</span>
         </h2>
 
-        <div className="grid md:grid-cols-1 gap-8 mb-8">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow"
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PRODUCT_IDS.map(({ id, icon, slug }) => (
+            <Link
+              key={id}
+              href={`/${locale}/${pageSlug}/${slug}`}
+              className="group bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all flex flex-col gap-4"
             >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 relative mr-4">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 relative shrink-0">
                   <Image
-                    src={product.icon}
-                    alt={productsT(`${product.id}.title`)}
+                    src={icon}
+                    alt={t(`${id}.title`)}
                     fill
                     className="object-contain"
                   />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-left leading-none">
-                  {productsT(`${product.id}.title`)}
-                    {FULL_DETAIL_IDS.has(product.id) && (
-                    <span className="font-normal">
-                      {" "}
-                      : {productsT(`${product.id}.subtitle`)}
-                    </span>
-                  )}
-                </h3>
+                <div className="min-w-0">
+                  <h3 className="text-base font-bold text-secondary-main group-hover:text-primary-main transition-colors leading-snug">
+                    {t(`${id}.title`)}
+                  </h3>
+                  <p className="text-xs text-gray-400 leading-snug mt-0.5 line-clamp-2">
+                    {t(`${id}.subtitle`)}
+                  </p>
+                </div>
               </div>
 
-              <p className="text-xl text-gray-600 mb-6">
-                {productsT(`${product.id}.description`)}
+              <p className="text-sm text-gray-600 line-clamp-3 flex-1">
+                {t(`${id}.description`)}
               </p>
 
-              {Array.isArray(product.features) &&
-                product.features.length > 0 && (
-                  <ul className="text-xl space-y-3 mb-6">
-                    {product.features.map((feature: string, index: number) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-primary-600 mr-2">•</span>
-                        <span className="text-gray-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-              {/* services */}
-              {FULL_DETAIL_IDS.has(product.id) &&
-                Array.isArray(product.servicesList) &&
-                product.servicesList.length > 0 && (
-                  <div className="mb-6">
-                    <h4 className="text-xl font-semibold mb-2">
-                      {productsT(`${product.id}.servicesTitle`)}
-                    </h4>
-                    <div className="list-decimal pl-6 space-y-2">
-                      {product.servicesList.map((service, idx) => (
-                        <div key={idx} className="mb-2">
-                          <h5 className="font-bold">{service.title} :</h5>
-                          <ul className="list-disc pl-6 mt-1">
-                            {service.items.map((item, subIdx) => (
-                              <li key={subIdx} className="text-gray-600">
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-              {/* avantages */}
-              {FULL_DETAIL_IDS.has(product.id) &&
-                Array.isArray(product.benefits) &&
-                product.benefits.length > 0 && (
-                  <div className="mb-6">
-                    <h4 className="text-xl font-semibold mb-2">
-                      {productsT(`${product.id}.benefitsTitle`)}
-                    </h4>
-                    <ul className="list-disc pl-6 space-y-2">
-                      {product.benefits.map((benefit, idx) => (
-                        <li key={idx} className="text-gray-600">
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-              {/* Cas d'usage pour VieneRegister */}
-              {product.id === "VieneRegister" &&
-                productsT(`${product.id}.useCases`) && (
-                  <div className="mb-6">
-                    <h4 className="text-xl font-semibold mb-2">
-                      {productsT(`${product.id}.useCasesTitle`)}
-                    </h4>
-                    <p className="text-gray-600">
-                      {productsT(`${product.id}.useCases`)}
-                    </p>
-                  </div>
-                )}
-
-              {/* Équipement optionnel pour ArchiViene */}
-              {product.id === "ArchiViene" &&
-                productsT(`${product.id}.optionalEquipment`) && (
-                  <div className="mb-6">
-                    <h4 className="text-xl font-semibold mb-2">
-                      {productsT(`${product.id}.optionalEquipmentTitle`)}
-                    </h4>
-                    <p className="text-gray-600">
-                      {productsT(`${product.id}.optionalEquipment`)}
-                    </p>
-                  </div>
-                )}
-            </div>
+              <span className="text-sm font-semibold text-primary-main group-hover:underline">
+                {t("learnMore")} →
+              </span>
+            </Link>
           ))}
         </div>
       </div>

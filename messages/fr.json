@@ -172,6 +172,9 @@
         "products": {
             "title": "Nos",
             "titleHighlight": "Produits",
+            "learnMore": "En savoir plus",
+            "backToProducts": "← Retour aux produits",
+            "featuresTitle": "Fonctionnalités clés",
             "VieneRegister": {
                 "title": "VieneRegister",
                 "subtitle": "Révolutionnez la Gestion d'Effectif avec la Technologie QR Code",

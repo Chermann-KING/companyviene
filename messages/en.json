@@ -172,6 +172,9 @@
         "products": {
             "title": "Our",
             "titleHighlight": "Products",
+            "learnMore": "Learn more",
+            "backToProducts": "← Back to products",
+            "featuresTitle": "Key features",
             "VieneRegister": {
                 "title": "VieneRegister",
                 "subtitle": "Revolutionize Workforce Management with QR Code Technology",
